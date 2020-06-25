@@ -7,6 +7,7 @@ use App\Http\Requests\RqGuardarFichaPI;
 use App\Models\AreaTrabajo;
 use App\Models\Empresa;
 use App\Models\FichaPI;
+use App\Models\TestCage;
 use App\Models\TestFagerstorm;
 use App\Models\TestFagertom;
 use App\User;
@@ -129,6 +130,11 @@ class FichasPI extends Controller
                 $test_f->save();
             }
             
+            if($request->alcohol){
+                $test_c=new TestCage();
+                $test_c->ficha_p_i_id=$f->id;
+                $test_c->save();
+            }
 
             DB::commit();
             $request->session()->flash('success','Ficha prelaboral incial, ingresado');
@@ -145,7 +151,11 @@ class FichasPI extends Controller
     public function detalle($idFi)
     {
         $fi=FichaPI::findOrFail($idFi);
-        $data = array('ficha' => $fi ,'test_f'=>$fi->testFagerstom_m);
+        $data = array(
+            'ficha' => $fi ,
+            'test_f'=>$fi->testFagerstom_m,
+            'test_c'=>$fi->testCage_m
+        );
         return view('fichas_pi.detalle',$data);
     }
 

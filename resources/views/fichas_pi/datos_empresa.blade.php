@@ -149,7 +149,7 @@
             </td>
             <td>
                 <div class="md-form md-outline my-0">
-                    <input type="number" id="edad" name="edad" value="{{ old('edad') }}" class="form-control @error('edad') is-invalid @enderror">
+                    <input type="number" id="edad" name="edad" value="{{ old('edad') }}" class="form-control @error('edad') is-invalid @enderror" required>
                     <label for="edad">Edad</label>
                     @error('edad')
                         <span class="invalid-feedback" role="alert">

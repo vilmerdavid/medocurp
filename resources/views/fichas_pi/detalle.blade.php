@@ -15,7 +15,7 @@
     @endif
 
 
-    @if ($ficha->alcohol=='SI')
+    @if ($test_c)
         <div class="alert alert-danger" role="alert">
             <strong><i class="fas fa-wine-bottle fa-2x"></i> APLICAR TEST DE ALCOHOL</strong>
         </div>
