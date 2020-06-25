@@ -22,7 +22,6 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // datos accer
-Route::get('/obtener-empresa/{empresa}', 'HomeController@obtenerEmpresa')->name('obtenerEmpresa');
 Route::get('/obtener-antecedentes-hombre', 'HomeController@cargarAntecedentesHombre')->name('cargarAntecedentesHombre');
 Route::get('/obtener-antecedentes-mujer', 'HomeController@cargarAntecedentesMujer')->name('cargarAntecedentesMujer');
 
@@ -39,5 +38,8 @@ Route::get('/areas/{empresa}', 'Empresas@areas')->name('areas');
 Route::post('/guardar-area', 'Empresas@guardarArea')->name('guardarArea');
 
 // rutas para fichas prelaboral inicial
-Route::get('/crear-ficha-prelaboral-inicial', 'FichasPI@crear')->name('crearFichaPI');
+Route::get('/crear-ficha-prelaboral-inicial/{empresa}', 'FichasPI@crear')->name('crearFichaPI');
+Route::post('/guardar-ficha-prelaboral-inicial', 'FichasPI@guardar')->name('guardarFichaPI');
+Route::get('/detalle-ficha-prelaboral-inicial/{id}', 'FichasPI@detalle')->name('detalleFichaPI');
+Route::post('/actualizar-test-fagerstom', 'FichasPI@actualizarTestFagerstom')->name('actualizarTestFagerstom');
 

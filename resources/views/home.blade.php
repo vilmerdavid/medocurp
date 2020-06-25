@@ -13,7 +13,10 @@
             <div class="card" style="width: 18rem;">
                 <img src="{{ asset('img/lista.svg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <a href="{{ route('crearFichaPI') }}" class="btn btn-primary btn-block">Crear Ficha Prelaboral Inicial</a>
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
+                        <i class="fas fa-university"></i>
+                        CREAR FICHA PRELABORAL INICIAL
+                    </button>
                 </div>
             </div>
         </div>
@@ -27,4 +30,43 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Selecionar una empresa</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="table-responsive">
+        {!! $dataTable->table()  !!}
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+@prepend('scriptsHeader')
+<link rel="stylesheet" href="{{ asset('js/DataTables/datatables.min.css') }}">
+<script src="{{ asset('js/DataTables/datatables.min.js') }}"></script>
+<script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+{{-- confirm --}}
+<link rel="stylesheet" href="{{ asset('js/confirm/jquery-confirm.min.css') }}">
+<script src="{{ asset('js/confirm/jquery-confirm.min.js') }}"></script>
+@endprepend
+
+@push('scriptsFooter')
+
+{!! $dataTable->scripts() !!}
+
+
+@endpush
 @endsection

@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->enum('sexo',['Hombre','Mujer'])->nullable();
             $table->integer('edad')->nullable();
             $table->enum('estado_civil',['Casado','Soltero','Vuido','Unión libre','Divorciado'])->nullable();
-            $table->enum('religion',['Evangélica','Testigo de Jehova','Mormona','Otras'])->nullable();
+            $table->enum('religion',['Católica','Evangélica','Testigo de Jehova','Mormona','Otras'])->nullable();
 
             $grupo_sanguineo = array(
                 'O+','O-','A+','A-','B+','B-','AB+','AB-','N.S'

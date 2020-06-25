@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\FichasPI\EmpresasDataTable;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
 
@@ -22,22 +23,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(EmpresasDataTable $dataTable)
     {
-        return view('home');
+        return $dataTable->render('home');
     }
 
-    public function obtenerEmpresa($idEmp)
-    {
-        $empresa=Empresa::findOrFail($idEmp);
-        $data = array('emp' => $empresa );
-        return view('fichas_pi.datos_empresa',$data);
-    }
-
+    // cargar antecedentes de hombre en crear ficha prelaboral inicila
     public function cargarAntecedentesHombre()
     {
         return view('fichas_pi.cargarAntecedentesHombre');
     }
+    // cargar antecedentes de mujer en crear ficha prelaboral inicila
     public function cargarAntecedentesMujer()
     {
         return view('fichas_pi.cargarAntecedentesMujer');

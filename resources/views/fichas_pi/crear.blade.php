@@ -2,16 +2,19 @@
 @section('breadcrumbs', Breadcrumbs::render('home'))
 @section('content')
 <div class="container-fluid">
-    <form action="">
+    <form action="{{ route('guardarFichaPI') }}" method="POST">
+      @csrf
         <div class="card">
             <div class="card-header">
                 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
                     <i class="fas fa-university"></i>
-                    Seleciona una empresa
+                    Cambiar de empresa
                   </button>
             </div>
-            <div class="card-body">
-                <div class="table-responsive" id="datos_empresa"></div>
+            <div class="card-body" id="datos_empresa">
+                
+                  @include('fichas_pi.datos_empresa',['emp'=>$empresa])
+                
             </div>
             <div class="card-footer text-muted">
                 <button class="btn btn-primary">Guardar</button>
@@ -19,6 +22,7 @@
         </div>
     </form>
 </div>
+
 
 
   <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -61,14 +65,7 @@
     <script>
         $('#menuEmpresas').addClass('active')
         
-        // cargar empresa
-        function cargarEmpresa(arg){
-            $('#basicExampleModal').modal('hide');
-            var url="{{ route('obtenerEmpresa',':empresa') }}".replace(':empresa',$(arg).data('empresa'));
-            $( "#datos_empresa" ).load(url);
-
-            
-        }
+        
 
 
         function mostrarPorcentajeDiscapacidad(arg){
@@ -92,10 +89,17 @@
             $('#antecedentes').load(url);
         }
 
-        
-        
-        
-        
+        $('#antecedentes').load("{{ route('cargarAntecedentesHombre') }}");
+
+        function mostrarOtrasDrogas(arg){
+          var valor=$(arg).val();
+          if(valor=='SI'){
+            $('#selecionar_drogas').show();
+          }else{
+            $('#selecionar_drogas').hide();
+          }
+        }
+
     </script>
 
 
