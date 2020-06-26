@@ -178,7 +178,7 @@
             <td>
                 <div class="md-form md-outline">
                     <input type="number" id="tiempo_papanicolaou_mujer" name="tiempo_papanicolaou_mujer" value="{{ old('tiempo_papanicolaou_mujer') }}" class="form-control @error('tiempo_papanicolaou_mujer') is-invalid @enderror">
-                    <label for="tiempo_papanicolaou_mujer">Tiempo Papanicolaou</label>
+                    <label for="tiempo_papanicolaou_mujer">Tiempo del ultimo Papanicolaou</label>
                 </div>
                 
             </td>
