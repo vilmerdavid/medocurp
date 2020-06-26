@@ -56,6 +56,7 @@
     {{-- confirm --}}
     <link rel="stylesheet" href="{{ asset('js/confirm/jquery-confirm.min.css') }}">
     <script src="{{ asset('js/confirm/jquery-confirm.min.js') }}"></script>
+    
     @endprepend
 
     @push('scriptsFooter')

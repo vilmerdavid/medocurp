@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <tr>
             <th scope="col" colspan="5">
                 <img src="{{ Storage::url($emp->logo) }}" alt="" class="img-fluid">
@@ -13,7 +13,7 @@
     </table>
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead>
 
             <tr class="grey">
@@ -84,23 +84,20 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead class="grey lighten-2">
             <tr>
                 <th scope="col">APELLIDOS</th>
                 <th scope="col">NOMBRES</th>
-                <th scope="col">SEXO</th>
-                <th scope="col">EDAD</th>
-                <th scope="col">ESTADO CÍVIL</th>
-                <th scope="col">RELIGIÓN</th>
-                <th scope="col">GRUPO SANGUÍNEO</th>
-                <th scope="col">LATERALIDAD</th>
+                <th scope="col" style="width: 10%">SEXO</th>
+                <th scope="col" style="width:10%">EDAD</th>
             </tr>
         </thead>
         <tbody>
         <tr>
             <td>
-                <div class="md-form md-outline my-0">
+                <div class="form-row">
+                <div class="md-form md-outline my-0 col">
                     <input type="text" id="apellido_uno" name="apellido_uno" value="{{ old('apellido_uno') }}" class="form-control @error('apellido_uno') is-invalid @enderror"  required>
                     <label for="apellido_uno">Primer apellido</label>
                     @error('apellido_uno')
@@ -109,7 +106,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="md-form md-outline my-0">
+                <div class="md-form md-outline my-0 col">
                     <input type="text" id="apellido_dos" name="apellido_dos" value="{{ old('apellido_dos') }}" class="form-control @error('apellido_dos') is-invalid @enderror">
                     <label for="apellido_dos">Segundo apellido</label>
                     @error('apellido_dos')
@@ -118,10 +115,11 @@
                         </span>
                     @enderror
                 </div>
+            </div>
             </td>
             <td>
-                
-                <div class="md-form md-outline my-0">
+                <div class="form-row">
+                <div class="md-form md-outline my-0 col">
                     <input type="text" id="nombre_uno" name="nombre_uno" value="{{ old('nombre_uno') }}" class="form-control @error('nombre_uno') is-invalid @enderror"  required>
                     <label for="nombre_uno">Primer nombre</label>
                     @error('nombre_uno')
@@ -130,7 +128,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="md-form md-outline my-0">
+                <div class="md-form md-outline my-0 col">
                     <input type="text" id="nombre_dos" name="nombre_dos" value="{{ old('nombre_dos') }}" class="form-control @error('nombre_dos') is-invalid @enderror">
                     <label for="nombre_dos">Segundo nombre</label>
                     @error('nombre_dos')
@@ -138,6 +136,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                </div>
                 </div>
             </td>
             
@@ -158,6 +157,16 @@
                     @enderror
                 </div>
             </td>
+            
+        </tr>
+
+        <tr class="grey lighten-2">
+            <th scope="col">ESTADO CÍVIL</th>
+            <th scope="col">RELIGIÓN</th>
+            <th scope="col">GRUPO SANGUÍNEO</th>
+            <th scope="col">LATERALIDAD</th>
+        </tr>
+        <tr>
             <td>
                 <select class="form-control @error('estado_civil') is-invalid @enderror" id="estado_civil" name="estado_civil" required>
                     <option value="Casado">Casado</option>
@@ -198,13 +207,12 @@
                 </select>
             </td>
         </tr>
-        
         </tbody>
     </table>
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead>
             <tr class="grey lighten-2">
                 <th>
@@ -297,7 +305,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead class="grey lighten-2">
         <tr class="grey lighten-2 text-center">
             <th>
@@ -309,7 +317,7 @@
         <tr>
             <td>
                 <div class="md-form md-outline my-0">
-                    <textarea class="form-control @error('actividades_relevantes') is-invalid @enderror" name="actividades_relevantes" id="actividades_relevantes" required>{{ old('actividades_relevantes') }}</textarea>
+                    <textarea class="form-control @error('actividades_relevantes') is-invalid @enderror" name="actividades_relevantes" id="actividades_relevantes" required>{{ old('actividades_relevantes','Ninguna') }}</textarea>
                     <label for="actividades_relevantes">Actividades</label>
                 </div>
             </td>
@@ -319,7 +327,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead>
             <tr class="grey text-center">
                 <th colspan="7">
@@ -330,7 +338,7 @@
         <tbody>
             <td colspan="7">
                 <div class="md-form md-outline my-0">
-                    <textarea class="form-control @error('motivo_cosulta') is-invalid @enderror" name="motivo_cosulta" id="motivo_cosulta" required>{{ old('motivo_cosulta') }}</textarea>
+                    <textarea class="form-control @error('motivo_cosulta') is-invalid @enderror" name="motivo_cosulta" id="motivo_cosulta" required>{{ old('motivo_cosulta','Ninguna') }}</textarea>
                     <label for="motivo_cosulta">Motivos</label>
                     </div>
                 </td>
@@ -340,7 +348,7 @@
 </div>
       
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead>
             <tr class="grey text-center">
                 <th colspan="7">
@@ -352,11 +360,11 @@
             <tr>
                 <td colspan="7">
                     <div class="md-form md-outline my-0">
-                        <textarea class="form-control @error('antecedentes_clinicos') is-invalid @enderror" name="antecedentes_clinicos" id="antecedentes_clinicos" required>{{ old('antecedentes_clinicos') }}</textarea>
+                        <textarea class="form-control @error('antecedentes_clinicos') is-invalid @enderror" name="antecedentes_clinicos" id="antecedentes_clinicos" required>{{ old('antecedentes_clinicos','Ninguna') }}</textarea>
                         <label for="antecedentes_clinicos">ANTECEDENTES PATOLÓGICOS CLÍNICOS</label>
                     </div>
                     <div class="md-form md-outline my-0">
-                        <textarea class="form-control @error('antecedentes_quirurgicos') is-invalid @enderror" name="antecedentes_quirurgicos" id="antecedentes_quirurgicos" required>{{ old('antecedentes_quirurgicos') }}</textarea>
+                        <textarea class="form-control @error('antecedentes_quirurgicos') is-invalid @enderror" name="antecedentes_quirurgicos" id="antecedentes_quirurgicos" required>{{ old('antecedentes_quirurgicos','Ninguna') }}</textarea>
                         <label for="antecedentes_quirurgicos">ANTECEDENTES PATOLÓGICOS QUIRÚRGICOS</label>
                     </div>
                 </td>
@@ -372,7 +380,7 @@
 
 {{-- habitos toxicos --}}
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead>
             <tr class="grey text-center">
                 <th colspan="5">HÁBITOS TÓXICOS</th>
@@ -389,7 +397,7 @@
                     CANTIDAD
                 </td>
                 <td>
-                    EXCONSUMIDOR
+                    EX-CONSUMIDOR
                 </td>
                 <td>
                     TIEMPO DE ABASTECIMIENTO
@@ -403,13 +411,14 @@
                 <td>
                     <div class="form-group">
                         <label for="tabaco">TABACO</label>
-                        <select class="form-control" id="tabaco" name="tabaco">
+                        <select class="form-control" id="tabaco" name="tabaco" onchange="selecionarTabaco(this);">
                             <option></option>
                             <option value="SI">SI</option>
                         <option value="NO">NO</option>
                         </select>
                     </div>
                 </td>
+                
                 <td>
                     <div class="md-form md-outline">
                         <input type="number" id="tiempo_consumo_tabaco" name="tiempo_consumo_tabaco" value="{{ old('tiempo_consumo_tabaco') }}" class="form-control @error('tiempo_consumo_tabaco') is-invalid @enderror">
@@ -437,6 +446,25 @@
                     </div>
                 </td>
             </tr>
+            <script>
+                function selecionarTabaco(arg){
+                    if($(arg).val()=='SI'){
+                        $('#exconsumidor_tabaco').attr('disabled', true);
+                        $('#tiempo_abastecimiento_tabaco').prop('disabled', true);
+                        
+                        $('#tiempo_consumo_tabaco').attr('disabled',false);
+                        $('#cantidad_tabaco').attr('disabled',false);
+
+                    }else{
+                        $('#exconsumidor_tabaco').attr('disabled', false);
+                        $('#tiempo_abastecimiento_tabaco').prop('disabled', false);
+
+                        $('#tiempo_consumo_tabaco').attr('disabled',true);
+                        $('#cantidad_tabaco').attr('disabled',true);
+
+                    }
+                }
+            </script>
             <tr>
                 <td>
                     <div class="form-group">
@@ -534,7 +562,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-sm">
         <thead>
             <tr class="grey text-center">
                 <th colspan="5">
@@ -568,11 +596,11 @@
                 <td>
                     <div class="md-form md-outline mt-0">
                         <input type="text" id="cual_que_actividad_fisica_uno" name="cual_que_actividad_fisica_uno" value="{{ old('cual_que_actividad_fisica_uno') }}" class="form-control @error('cual_que_actividad_fisica_uno') is-invalid @enderror">
-                        <label for="cual_que_actividad_fisica_uno">¿CUÁL o QUÉ?</label>
+                        <label for="cual_que_actividad_fisica_uno">¿Cuál?</label>
                     </div>
                     <div class="md-form md-outline mt-0">
                         <input type="text" id="cual_que_actividad_fisica_dos" name="cual_que_actividad_fisica_dos" value="{{ old('cual_que_actividad_fisica_dos') }}" class="form-control @error('cual_que_actividad_fisica_dos') is-invalid @enderror">
-                        <label for="cual_que_actividad_fisica_dos">¿CUÁL o QUÉ?</label>
+                        <label for="cual_que_actividad_fisica_dos">¿Cuál?</label>
                     </div>
                 </td>
                 <td>
@@ -600,15 +628,29 @@
                         </select>
                     </div>
                 </td>
-                <td colspan="2">
+                <td>
                     <div class="md-form md-outline mt-0">
                         <input type="text" id="cual_que_actividad_mediacion_habitual_uno" name="cual_que_actividad_mediacion_habitual_uno" value="{{ old('cual_que_actividad_mediacion_habitual_uno') }}" class="form-control @error('cual_que_actividad_mediacion_habitual_uno') is-invalid @enderror">
-                        <label for="cual_que_actividad_mediacion_habitual_uno">¿CUÁL o QUÉ?</label>
+                        <label for="cual_que_actividad_mediacion_habitual_uno">¿Cuál?</label>
                     </div>
+                    
                     <div class="md-form md-outline mt-0">
                         <input type="text" id="cual_que_actividad_mediacion_habitual_dos" name="cual_que_actividad_mediacion_habitual_dos" value="{{ old('cual_que_actividad_mediacion_habitual_dos') }}" class="form-control @error('cual_que_actividad_mediacion_habitual_dos') is-invalid @enderror">
-                        <label for="cual_que_actividad_mediacion_habitual_dos">¿CUÁL o QUÉ?</label>
+                        <label for="cual_que_actividad_mediacion_habitual_dos">¿Cuál?</label>
                     </div>
+                
+                </td>
+                <td>
+                    <div class="md-form md-outline mt-0">
+                        <input type="text" id="tiempo_mediacion_habitual_uno" name="tiempo_mediacion_habitual_uno" value="{{ old('tiempo_mediacion_habitual_uno') }}" class="form-control @error('tiempo_mediacion_habitual_uno') is-invalid @enderror">
+                        <label for="tiempo_mediacion_habitual_uno">Tiempo</label>
+                    </div>
+                    
+                    <div class="md-form md-outline mt-0">
+                        <input type="text" id="tiempo_mediacion_habitual_dos" name="tiempo_mediacion_habitual_dos" value="{{ old('tiempo_mediacion_habitual_dos') }}" class="form-control @error('tiempo_mediacion_habitual_dos') is-invalid @enderror">
+                        <label for="tiempo_mediacion_habitual_dos">Tiempo</label>
+                    </div>
+
                 </td>
             </tr>
 
@@ -626,11 +668,11 @@
                 <td colspan="2">
                     <div class="md-form md-outline mt-0">
                         <input type="text" id="cual_que_alergias_uno" name="cual_que_alergias_uno" value="{{ old('cual_que_alergias_uno') }}" class="form-control @error('cual_que_alergias_uno') is-invalid @enderror">
-                        <label for="cual_que_alergias_uno">¿CUÁL o QUÉ?</label>
+                        <label for="cual_que_alergias_uno">¿Cuál?</label>
                     </div>
                     <div class="md-form md-outline mt-0">
                         <input type="text" id="cual_que_alergias_dos" name="cual_que_alergias_dos" value="{{ old('cual_que_alergias_dos') }}" class="form-control @error('cual_que_alergias_dos') is-invalid @enderror">
-                        <label for="cual_que_alergias_dos">¿CUÁL o QUÉ?</label>
+                        <label for="cual_que_alergias_dos">¿Cuál?</label>
                     </div>
                 </td>
             </tr>

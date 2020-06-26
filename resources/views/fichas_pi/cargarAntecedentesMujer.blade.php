@@ -1,4 +1,4 @@
-<table class="table table-bordered">
+<table class="table table-bordered table-sm">
     <thead>
         <tr>
             <th colspan="12" class="grey text-center">

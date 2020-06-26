@@ -118,6 +118,10 @@ class FichasPI extends Controller
             $f->mediacion_habitual=$request->mediacion_habitual;
             $f->cual_que_actividad_mediacion_habitual_uno=$request->cual_que_actividad_mediacion_habitual_uno;
             $f->cual_que_actividad_mediacion_habitual_dos=$request->cual_que_actividad_mediacion_habitual_dos;
+            
+            $f->tiempo_mediacion_habitual_uno=$request->tiempo_mediacion_habitual_uno;
+            $f->tiempo_mediacion_habitual_dos=$request->tiempo_mediacion_habitual_dos;
+
             $f->alergias=$request->alergias;
             $f->cual_que_alergias_uno=$request->cual_que_alergias_uno;
             $f->cual_que_alergias_dos=$request->cual_que_alergias_dos;
@@ -163,7 +167,7 @@ class FichasPI extends Controller
     {
         
         $test_f=TestFagerstorm::findOrFail($request->test_f);
-        $test_f->p_1=$request->p_1??null;
+        $test_f->p_1=$request->p_1;
         $test_f->p_2=$request->p_2;
         $test_f->p_3=$request->p_3;
         $test_f->p_4=$request->p_4;
@@ -171,5 +175,16 @@ class FichasPI extends Controller
         $test_f->p_6=$request->p_6;
         $test_f->save();
         return redirect()->route('detalleFichaPI',$test_f->fichaPI_m->id);
+    }
+
+    public function actualizarTestCage(Request $request)
+    {
+        $test_c=TestCage::findOrFail($request->test_c);
+        $test_c->p_1=$request->p_1;
+        $test_c->p_2=$request->p_2;
+        $test_c->p_3=$request->p_3;
+        $test_c->p_4=$request->p_4;
+        $test_c->save();
+        return redirect()->route('detalleFichaPI',$test_c->fichaPI_m->id);
     }
 }
