@@ -92,6 +92,9 @@ class CreateFichaPISTable extends Migration
             $table->string('mediacion_habitual')->nullable();
             $table->string('cual_que_actividad_mediacion_habitual_uno')->nullable();
             $table->string('cual_que_actividad_mediacion_habitual_dos')->nullable();
+            $table->string('tiempo_mediacion_habitual_uno')->nullable();
+            $table->string('tiempo_mediacion_habitual_dos')->nullable();
+
             $table->string('alergias')->nullable();
             $table->string('cual_que_alergias_uno')->nullable();
             $table->string('cual_que_alergias_dos')->nullable();

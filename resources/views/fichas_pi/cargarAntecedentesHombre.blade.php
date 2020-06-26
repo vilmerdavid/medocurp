@@ -1,5 +1,5 @@
 
-<table class="table table-bordered">
+<table class="table table-bordered table-sm">
     <thead>
         <tr>
             <th colspan="6" class="grey text-center">
@@ -35,7 +35,7 @@
             <td>
                 <div class="md-form md-outline">
                     <input type="number" id="tiempo_ape_hombre" name="tiempo_ape_hombre" value="{{ old('tiempo_ape_hombre') }}" class="form-control @error('tiempo_ape_hombre') is-invalid @enderror">
-                    <label for="tiempo_ape_hombre">Tiempo APE</label>
+                    <label for="tiempo_ape_hombre">Tiempo último APE</label>
                 </div>
             </td>
             <td>
@@ -65,7 +65,7 @@
             <td>
                 <div class="md-form md-outline">
                     <input type="number" id="tiempo_eco_prostatico_hombre" name="tiempo_eco_prostatico_hombre" value="{{ old('tiempo_eco_prostatico_hombre') }}" class="form-control @error('tiempo_eco_prostatico_hombre') is-invalid @enderror">
-                    <label for="tiempo_eco_prostatico_hombre">Tiempo ECO protático</label>
+                    <label for="tiempo_eco_prostatico_hombre">Tiempo último ECO protático</label>
                 </div>
             </td>
             <td>
@@ -81,10 +81,10 @@
                 PLANIFICACIÓN FAMILIAR
             </th>
             <th>
-                HV
+                HIHOS VIVOS
             </th>
             <th>
-                HM
+                HIJOS MUERTOS
             </th>
         </tr>
         
@@ -101,13 +101,13 @@
             <td>
                 <div class="md-form md-outline mt-0">
                     <input type="text" id="hv_hombre" name="hv_hombre" value="{{ old('hv_hombre') }}" class="form-control @error('hv_hombre') is-invalid @enderror">
-                    <label for="hv_hombre">HV</label>
+                    <label for="hv_hombre">Hijos vivos</label>
                 </div>
             </td>
             <td>
                 <div class="md-form md-outline mt-0">
                     <input type="text" id="hm_hombre" name="hm_hombre" value="{{ old('hm_hombre') }}" class="form-control @error('hm_hombre') is-invalid @enderror">
-                    <label for="hm_hombre">HM</label>
+                    <label for="hm_hombre">Hijos muertos</label>
                 </div>
             </td>
         </tr>

@@ -42,4 +42,5 @@ Route::get('/crear-ficha-prelaboral-inicial/{empresa}', 'FichasPI@crear')->name(
 Route::post('/guardar-ficha-prelaboral-inicial', 'FichasPI@guardar')->name('guardarFichaPI');
 Route::get('/detalle-ficha-prelaboral-inicial/{id}', 'FichasPI@detalle')->name('detalleFichaPI');
 Route::post('/actualizar-test-fagerstom', 'FichasPI@actualizarTestFagerstom')->name('actualizarTestFagerstom');
+Route::post('/actualizar-test-cage', 'FichasPI@actualizarTestCage')->name('actualizarTestCage');
 
