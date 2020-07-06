@@ -37,4 +37,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     // @deivid, obtener nombres completos
+     public function getApellidosNombresAttribute()
+     {
+         return "{$this->apellido_uno} {$this->apellido_dos} {$this->nombre_uno} {$this->nombre_dos}";
+     }
 }

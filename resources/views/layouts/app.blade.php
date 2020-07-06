@@ -67,6 +67,11 @@
             <li class="nav-item" id="menuEmpresas">
               <a class="nav-link" href="{{ route('empresas') }}">Empresas</a>
             </li>
+            
+            <li class="nav-item" id="menuEmpresas">
+              <a class="nav-link" href="{{ route('fichas') }}">Fichas</a>
+            </li>
+
             @endauth
 
           </ul>

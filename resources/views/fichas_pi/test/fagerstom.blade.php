@@ -108,7 +108,7 @@
                 </tr>
                 <tr class="text-center">
                     <td colspan="2">
-                        <button class="btn btn-primary btn-sm" type="submit">Guardar test</button>
+                        <button class="btn btn-danger" type="submit">GUARDAR TEST DE FAGERSTOM</button>
                     </td>
                 </tr>
             </tfoot>

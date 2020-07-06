@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\FichasPI\EmpresasDataTable;
+use App\DataTables\FichasPIDataTable;
 use App\Http\Requests\RqGuardarFichaPI;
 use App\Models\AreaTrabajo;
 use App\Models\Empresa;
 use App\Models\FichaPI;
+use App\Models\Pregunta;
+use App\Models\TestAsist;
 use App\Models\TestCage;
 use App\Models\TestFagerstorm;
 use App\Models\TestFagertom;
@@ -17,6 +20,12 @@ use PHPUnit\Util\Test;
 
 class FichasPI extends Controller
 {
+
+    public function index(FichasPIDataTable $dataTable)
+    {
+        return $dataTable->render('fichas_pi.index');
+    }
+
     public function crear(EmpresasDataTable $dataTable,$idEmp)
     {
         $empresa=Empresa::findOrFail($idEmp);
@@ -128,17 +137,27 @@ class FichasPI extends Controller
             $f->observacion_estilo_vida=$request->observacion_estilo_vida;
             $f->save();
 
-            if($request->tabaco){
-                $test_f=new TestFagerstorm();
-                $test_f->ficha_p_i_id=$f->id;
-                $test_f->save();
-            }
+            $test_f=new TestFagerstorm();
+            $test_f->ficha_p_i_id=$f->id;
+            $test_f->save();
+        
+        
+            $test_c=new TestCage();
+            $test_c->ficha_p_i_id=$f->id;
+            $test_c->save();
             
-            if($request->alcohol){
-                $test_c=new TestCage();
-                $test_c->ficha_p_i_id=$f->id;
-                $test_c->save();
+            
+            foreach (Pregunta::all() as $p) {
+                $test_a=new TestAsist();
+                $test_a->ficha_p_i_id=$f->id;
+                $test_a->pregunta_id=$p->id;
+                $test_a->codigo=$p->codigo;
+                $test_a->save();
             }
+
+           
+            
+           
 
             DB::commit();
             $request->session()->flash('success','Ficha prelaboral incial, ingresado');
@@ -158,7 +177,8 @@ class FichasPI extends Controller
         $data = array(
             'ficha' => $fi ,
             'test_f'=>$fi->testFagerstom_m,
-            'test_c'=>$fi->testCage_m
+            'test_c'=>$fi->testCage_m,
+            'test_a'=>$fi->testAsist_m
         );
         return view('fichas_pi.detalle',$data);
     }
@@ -186,5 +206,19 @@ class FichasPI extends Controller
         $test_c->p_4=$request->p_4;
         $test_c->save();
         return redirect()->route('detalleFichaPI',$test_c->fichaPI_m->id);
+    }
+
+
+    public function actualizarTestAsis(Request $request)
+    {
+        
+        foreach ($request->pregunta as $id_t_a => $valor) {
+            $t_a=TestAsist::find($id_t_a);
+            $t_a->valor=$valor;
+            $t_a->save();
+        }
+
+        return redirect()->route('detalleFichaPI',$request->ficha);
+        
     }
 }

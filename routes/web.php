@@ -43,4 +43,7 @@ Route::post('/guardar-ficha-prelaboral-inicial', 'FichasPI@guardar')->name('guar
 Route::get('/detalle-ficha-prelaboral-inicial/{id}', 'FichasPI@detalle')->name('detalleFichaPI');
 Route::post('/actualizar-test-fagerstom', 'FichasPI@actualizarTestFagerstom')->name('actualizarTestFagerstom');
 Route::post('/actualizar-test-cage', 'FichasPI@actualizarTestCage')->name('actualizarTestCage');
+Route::post('/actualizar-test-asi', 'FichasPI@actualizarTestAsis')->name('actualizarTestAsis');
+
+Route::get('/fichas-prelaborales-iniciales', 'FichasPI@index')->name('fichas');
 
