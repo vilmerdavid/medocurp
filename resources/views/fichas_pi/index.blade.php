@@ -5,7 +5,6 @@
     <div class="card">
         <div class="card-header">
             Listado de fichas Prelaborales Iniciales
-            <a href="{{ route('crearEmmpresa') }}" class="float-right">Crear</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -27,7 +26,7 @@
 
 @push('scriptsFooter')
     <script>
-        $('#menuEmpresas').addClass('active')
+        $('#menuFichas').addClass('active')
     </script>
      {!! $dataTable->scripts() !!}
 @endpush

@@ -65,8 +65,13 @@ aria-hidden="true">
 
 @push('scriptsFooter')
 
+
 {!! $dataTable->scripts() !!}
 
+<script>
+  $('#menuInicio').addClass('active')
+  
+</script>
 
 @endpush
 @endsection

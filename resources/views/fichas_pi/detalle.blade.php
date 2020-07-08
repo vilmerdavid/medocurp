@@ -55,7 +55,10 @@
 @push('scriptsFooter')
 
 <script>
+    $('#menuFichas').addClass('active')
     $('#mene_assis').addClass('active')
+    
+    
 </script>
 <script src="{{ asset('js/api/test_fagerstom.js') }}"></script>
 <script src="{{ asset('js/api/test_cage.js') }}"></script>

@@ -32,6 +32,7 @@ class CreateAntecedendentetrabajosTable extends Migration
             $table->decimal('e')->nullable();
             $table->decimal('p')->nullable();
             $table->string('observaciones')->nullable();
+            $table->decimal('nea')->nullable();
 
         });
     }

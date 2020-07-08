@@ -9,6 +9,6 @@
       <a class="nav-link" id="menu_antecedente_trabajo" href="{{ route('antecedentesTrabajo',$ficha->id) }}">TRABAJO</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      <a class="nav-link" id="menu" href="#">Otros</a>
     </li>
   </ul>

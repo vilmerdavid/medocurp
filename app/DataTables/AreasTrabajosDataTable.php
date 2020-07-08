@@ -21,7 +21,9 @@ class AreasTrabajosDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'areastrabajos.action');
+            ->addColumn('action', function($area){
+                return view('empresas.accionArea',['area'=>$area])->render();
+            });
     }
 
     /**
@@ -46,7 +48,8 @@ class AreasTrabajosDataTable extends DataTable
                     ->setTableId('areastrabajos-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->parameters($this->getBuilderParameters());
+                    ->parameters($this->getBuilderParameters())
+                    ->dom('frtip');;
     }
 
     /**

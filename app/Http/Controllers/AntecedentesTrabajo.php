@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Antecedendentetrabajo;
 use App\Models\FichaPI;
+use App\Models\Nea;
 use Illuminate\Http\Request;
 
 class AntecedentesTrabajo extends Controller
@@ -57,6 +58,36 @@ class AntecedentesTrabajo extends Controller
         $a->observaciones=$request->observaciones;
         $a->save();
         $request->session()->flash('success','Antecedente de trabajo actualizado');
+        return redirect()->route('antecedentesTrabajo',$a->fichaPI_m->id);
+    }
+
+    public function actualizarNea(Request $request)
+    {
+        $request->validate([
+            'nea'=>'integer|min:1'
+        ]);
+        $ficha=FichaPI::findOrFail($request->ficha);
+        $nea=$ficha->nea_m;
+        if(!$nea){
+            $nea=new Nea();
+            $nea->ficha_p_i_id=$ficha->id;
+        }
+        $nea->valor=$request->nea;
+        $nea->save();
+        $request->session()->flash('success','Nea actualizado');
+        return redirect()->route('antecedentesTrabajo',$ficha->id);
+
+    }
+
+    public function eliminar(Request $request,$idAnte)
+    {
+        $a=Antecedendentetrabajo::findOrFail($idAnte);
+        try {
+            $a->delete();
+            $request->session()->flash('success','Antecedente de trabajo eliminado');
+        } catch (\Throwable $th) {
+            $request->session()->flash('info','Antecedente de trabajo no eliminado');
+        }
         return redirect()->route('antecedentesTrabajo',$a->fichaPI_m->id);
     }
 }

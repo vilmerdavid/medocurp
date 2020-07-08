@@ -28,19 +28,31 @@ class Empresas extends Controller
 
     public function guardar(Request $request)
     {
+        if($request->empresa){
+            $rq_nombre='required|string|max:255|unique:empresas,nombre,'.$request->empresa;
+        }else{
+            $rq_nombre='required|string|max:255|unique:empresas';
+        }
+
         $request->validate([
-            'logo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'empresa'=>'nullable',
+            'logo'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'version'=>'required|string|max:255',
             'codigo'=>'required|string|max:255',
-            'nombre'=>'required|string|max:255|unique:empresas',
+            'nombre'=>$rq_nombre,
             'ruc'=>'required|string|max:255',
             'ciiu'=>'required|string|max:255',
             'establecimiento'=>'required|string|max:255',
         ]);
-        $emp=new Empresa();
+
+        if($request->empresa){
+            $emp=Empresa::findOrFail($request->empresa);
+        }else{
+            $emp=new Empresa();
+        }
+        
         $emp->logo='';
         
-
         $emp->version=$request->version;
         $emp->codigo=$request->codigo;
         $emp->nombre=$request->nombre;
@@ -60,7 +72,14 @@ class Empresas extends Controller
                 $emp->save();
             }
         }
-        $request->session()->flash('success','Empresa ingresado');
+        
+        if($request->empresa){
+            $request->session()->flash('success','Empresa actualizado');
+        }else{
+            $request->session()->flash('success','Empresa ingresado');
+        }
+
+        
         return redirect()->route('empresas');
     }
 
@@ -100,5 +119,18 @@ class Empresas extends Controller
         $emp=Empresa::findOrFail($idEmp);
         $data = array('emp' => $emp );
         return view('empresas.editar',$data);
+    }
+
+
+    public function eliminarArea(Request $request,$idArea)
+    {
+        $area=AreaTrabajo::findOrFail($idArea);
+        try {
+            $area->delete();
+            $request->session()->flash('success','Área de trabajo eliminado');
+        } catch (\Throwable $th) {
+            $request->session()->flash('info','Área de trabajo no eliminado');
+        }
+        return redirect()->route('areas',$area->empresa_m->id);
     }
 }

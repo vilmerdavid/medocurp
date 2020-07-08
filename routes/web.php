@@ -36,6 +36,7 @@ Route::get('/eliminar-empresa/{id}', 'Empresas@eliminar')->name('eliminarEmpresa
 Route::get('/editar-empresa/{id}', 'Empresas@editar')->name('editarEmpresa');
 Route::get('/areas/{empresa}', 'Empresas@areas')->name('areas');
 Route::post('/guardar-area', 'Empresas@guardarArea')->name('guardarArea');
+Route::get('/eliminar-area/{area}', 'Empresas@eliminarArea')->name('eliminarArea');
 
 // rutas para fichas prelaboral inicial
 Route::get('/crear-ficha-prelaboral-inicial/{empresa}', 'FichasPI@crear')->name('crearFichaPI');
@@ -53,5 +54,7 @@ Route::post('/cambiar-empresa-editar-ficha-p-i', 'FichasPI@cambiarEmpresaEditarF
 Route::get('/antecedentes-trabajo/{ficha}', 'AntecedentesTrabajo@index')->name('antecedentesTrabajo');
 Route::post('/antecedentes-trabajo-guardar', 'AntecedentesTrabajo@guardar')->name('guardarAntecedenteTrabajo');
 Route::post('/antecedentes-trabajo-actualizar', 'AntecedentesTrabajo@actualizar')->name('actualizarAntecedenteTrabajo');
+Route::post('/actualizar-nea', 'AntecedentesTrabajo@actualizarNea')->name('actualizarNea');
+Route::get('/eliminar-antecedente-laboral/{id}', 'AntecedentesTrabajo@eliminar')->name('eliminarAntecedenteLaboral');
 
 

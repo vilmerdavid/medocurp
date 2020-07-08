@@ -18,14 +18,14 @@
   <!-- Your custom styles (optional) -->
   <link href="{{ asset('mdb/css/style.min.css') }}" rel="stylesheet">
 
+  
 
-
-<!-- JQuery -->
-<script type="text/javascript" src="{{ asset('mdb/js/jquery-3.4.1.min.js') }}"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="{{ asset('mdb/js/popper.min.js') }}"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="{{ asset('mdb/js/bootstrap.min.js') }}"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="{{ asset('mdb/js/jquery-3.4.1.min.js') }}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{{ asset('mdb/js/popper.min.js') }}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{ asset('mdb/js/bootstrap.min.js') }}"></script>
 
 
 @stack('scriptsHeader')
@@ -37,7 +37,7 @@
 
     <!-- Navbar -->
     
-    <nav class="navbar navbar-expand-lg white">
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
       <div class="container">
 
         <!-- Brand -->
@@ -59,7 +59,7 @@
           <ul class="navbar-nav mr-auto">
             
             @auth
-            <li class="nav-item">
+            <li class="nav-item" id="menuInicio">
               <a class="nav-link" href="{{ route('home') }}">Inicio
                 <span class="sr-only">(current)</span>
               </a>
@@ -69,7 +69,7 @@
             </li>
             
             <li class="nav-item" id="menuFichas">
-              <a class="nav-link active" href="{{ route('fichas') }}">Fichas</a>
+              <a class="nav-link" href="{{ route('fichas') }}">Fichas</a>
             </li>
 
             @endauth
@@ -160,53 +160,47 @@
   </main>
   <!--Main layout-->
 
-  <!--Footer-->
-  <footer class="page-footer font-small special-color-dark pt-4 mt-3">
 
-    <!-- Footer Elements -->
-    <div class="container">
-
-      <!-- Social buttons -->
-      <ul class="list-unstyled list-inline text-center">
-        <li class="list-inline-item">
-          <a class="btn-floating btn-fb mx-1">
-            <i class="fab fa-facebook-f"> </i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-tw mx-1">
-            <i class="fab fa-twitter"> </i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-gplus mx-1">
-            <i class="fab fa-google-plus-g"> </i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-li mx-1">
-            <i class="fab fa-linkedin-in"> </i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-dribbble mx-1">
-            <i class="fab fa-dribbble"> </i>
-          </a>
-        </li>
-      </ul>
-      <!-- Social buttons -->
-
-    </div>
-    <!-- Footer Elements -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
-  </footer>
   <!-- Footer -->
+<footer class="page-footer font-small primary-color darken-3 my-3">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© {{ date('Y') }} Copyright:
+    <a href="{{ url('/') }}">{{ config('app.name','na') }}</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 
   <!-- SCRIPTS -->
   <!-- MDB core JavaScript -->

@@ -15,6 +15,12 @@ class FichaPI extends Model
     }
 
 
+    public function nea_m()
+    {
+        return $this->hasOne(Nea::class,'ficha_p_i_id');
+    }
+
+
     public function testCage_m()
     {
         return $this->hasOne(TestCage::class,'ficha_p_i_id');

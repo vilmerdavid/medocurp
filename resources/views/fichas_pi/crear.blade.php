@@ -64,7 +64,7 @@
     {!! $dataTable->scripts() !!}
 
     <script>
-        $('#menuEmpresas').addClass('active')
+        $('#menuFichas').addClass('active')
         
         
 

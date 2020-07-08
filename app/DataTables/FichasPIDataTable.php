@@ -43,7 +43,9 @@ class FichasPIDataTable extends DataTable
                 });            
             })
 
-            
+            ->editColumn('created_at',function($fi){
+                return $fi->created_at;
+            })
             ->addColumn('action', function($fi){
                 return view('fichas_pi.accion',['fi'=>$fi])->render();
             });
@@ -91,6 +93,7 @@ class FichasPIDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id')->title('Número de archivo'),
             Column::make('user_id')->title('Historía clínica'),
+            Column::make('created_at')->title('Fecha de ingreso'),
         ];
     }
 

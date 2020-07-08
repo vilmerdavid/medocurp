@@ -5,7 +5,16 @@
 
 <div class="container-fluid">
     <div class="table-responsive">
-        <table class="table table-bordered">
+
+
+        {{-- este valor es para obtener  el TDT total --}}
+        @php($valor_tdt=0)
+
+        @php($nea=$ficha->nea_m->valor??'1')
+
+
+        <table class="table table-bordered table-sm">
+            
             <thead>
                 
                 <tr>
@@ -18,10 +27,10 @@
                     <th>
                         ACTIVIDADES QUE DESEMPEÑABA
                     </th>
-                    <th>
+                    <th style="width: 8%;">
                         TDT (m)
                     </th>
-                    <th>
+                    <th style="width: 5%;">
                         SSO
                     </th>
                     <th class="text-center">
@@ -29,25 +38,27 @@
                         <table class="table my-0">
                             
                             <tr>
-                                <td>F</td>
-                                <td>M</td>
-                                <td>Q</td>
-                                <td>B</td>
-                                <td>E</td>
-                                <td>P</td>
+                                <td data-toggle="tooltip" data-placement="top" title="Físico">F</td>
+                                <td data-toggle="tooltip" data-placement="top" title="Mecánico">M</td>
+                                <td data-toggle="tooltip" data-placement="top" title="Químico">Q</td>
+                                <td data-toggle="tooltip" data-placement="top" title="Biólogico">B</td>
+                                <td data-toggle="tooltip" data-placement="top" title="Ergonómico">E</td>
+                                <td data-toggle="tooltip" data-placement="top" title="Psicosocial">P</td>
                             </tr>
                         </table>
                     </th>
                     <th>
                         OBSERVACIONES
                     </th>
-                    <th>
+                    <th style="width: 5%;">
 
                     </th>
                 </tr>
 
                 
             </thead>
+
+            
             <tbody>
 
                 <form action="{{ route('guardarAntecedenteTrabajo') }}" method="POST">
@@ -225,6 +236,22 @@
                                         </span>
                                     @enderror
                                 </div>
+
+
+                                @switch(true)
+                                    @case($a->tdt<1)
+                                        @php($valor_tdt+=0)
+                                        @break
+                                    @case($a->tdt<37)
+                                        @php($valor_tdt+=1)
+                                        @break
+                                    @case($a->tdt>36)
+                                        @php($valor_tdt+=2)
+                                        @break
+                                    @default
+                                        
+                                @endswitch
+
                             </td>
                             <td>
                                 <select name="sso" id="sso_{{ $a->id }}">
@@ -298,6 +325,10 @@
                                 <button type="submit" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Actualizar">
                                     <i class="fas fa-pen"></i>
                                 </button>
+                                <button type="button" onclick="eliminar(this);" data-msg="{{ $a->empresa }}" data-url="{{ route('eliminarAntecedenteLaboral',$a->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+
                             </td>
                         </tr>
                     </form>
@@ -307,27 +338,39 @@
             <tfoot>
                 <tr class="table-info">
                     <th>
-                        N° EA:
+                        N° EA: 
                     </th>
                     <td class="">
-                        <div class="md-form md-outline my-0 table-light">
-                            <input type="text" id="nea" name="nea" value="" class="form-control @error('nea') is-invalid @enderror" required>
-                            <label for="nea">NEA</label>
-                            @error('nea')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+
+                        <form action="{{ route('actualizarNea') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="ficha" value="{{ $ficha->id }}">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control @error('nea') is-invalid @enderror" placeholder="Ingrese.." aria-label="Recipient's username"
+                                  aria-describedby="button-addon2" name="nea" value="{{ old('nea',$nea) }}" >
+                                <div class="input-group-append">
+                                  <button class="btn btn-md btn-dark m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2">Actualizar</button>
+                                </div>
+                                @error('nea')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </form>
+
                     </td>
                     <th>
                         TIEMPO TOTAL DE TRABAJO
                     </th>
                     <td>
+                        <strong>TDT={{ $valor_tdt }}</strong>
+                        <br>
                         {{ $antecedentes->sum('tdt') }} meses
+                        
                     </td>
                     <td>
-
+                        SSO={{ $antecedentes->sum('sso') }}
                     </td>
                     <td>
                         <table class="table">
@@ -368,7 +411,7 @@
                     <td colspan="3">
                         @php(
                             
-                            $fisico=($antecedentes->sum('f')+$antecedentes->sum('tdt')+$antecedentes->sum('sso'))/2
+                            $fisico=($antecedentes->sum('f')+$valor_tdt+$antecedentes->sum('sso'))/$nea
 
                         )
 
@@ -380,10 +423,10 @@
                                 Leve
                                 @break
                             @case($fisico<=7.5)
-                                Moderado
+                                <span class="badge badge-warning">Moderado</span>
                                 @break
                             @case($fisico<=20)
-                                Alto
+                            <span class="badge badge-danger">Alto</span>
                                 @break
                             @default
                                 
@@ -392,30 +435,230 @@
                         {{ $fisico }}
 
                     </td>
+                    
                     <th>BIOLÓGICO</th>
-                    <td colspan="3"></td>
+                    <td colspan="3">
+                        @php(
+                            
+                            $biologico=($antecedentes->sum('b')+$valor_tdt+$antecedentes->sum('sso'))/$nea
+
+                        )
+
+                        @switch(true)
+                            @case($biologico==2.1)
+                                No existe
+                                @break
+                            @case($biologico<=5)
+                                Leve
+                                @break
+                            @case($biologico<=7.5)
+                                <span class="badge badge-warning">Moderado</span>
+                                @break
+                            @case($biologico<=20)
+                            <span class="badge badge-danger">Alto</span>
+                                @break
+                            @default
+                                
+                        @endswitch
+                        
+                        {{ $biologico }}
+                    </td>
                 </tr>
                 <tr class="table-info text-center">
                     <th>MECÁNICO</th>
-                    <td colspan="3"></td>
+                    <td colspan="3">
+                        
+
+                        @php(
+                            
+                            $mecanico=($antecedentes->sum('m')+$valor_tdt+$antecedentes->sum('sso'))/$nea
+
+                        )
+
+                        @switch(true)
+                            @case($mecanico==2.1)
+                                No existe
+                                @break
+                            @case($mecanico<=5)
+                                Leve
+                                @break
+                            @case($mecanico<=7.5)
+                                <span class="badge badge-warning">Moderado</span>
+                                @break
+                            @case($mecanico<=20)
+                            <span class="badge badge-danger">Alto</span>
+                                @break
+                            @default
+                                
+                        @endswitch
+                        
+                        {{ $mecanico }}
+
+
+                    </td>
                     <th>ERGONÓMICO</th>
-                    <td colspan="3"></td>
+                    <td colspan="3">
+
+                        @php(
+                            
+                            $ergonomico=($antecedentes->sum('e')+$valor_tdt+$antecedentes->sum('sso'))/$nea
+
+                        )
+
+                        @switch(true)
+                            @case($ergonomico==2.1)
+                                No existe
+                                @break
+                            @case($ergonomico<=5)
+                                Leve
+                                @break
+                            @case($ergonomico<=7.5)
+                                <span class="badge badge-warning">Moderado</span>
+                                @break
+                            @case($ergonomico<=20)
+                            <span class="badge badge-danger">Alto</span>
+                                @break
+                            @default
+                                
+                        @endswitch
+                        
+                        {{ $ergonomico }}
+
+
+                    </td>
                 </tr>
                 <tr class="table-info text-center">
                     <th>QUÍMICO</th>
-                    <td colspan="3"></td>
+                    <td colspan="3">
+
+                        @php(
+                            
+                            $quimico=($antecedentes->sum('q')+$valor_tdt+$antecedentes->sum('sso'))/$nea
+
+                        )
+
+                        @switch(true)
+                            @case($quimico==2.1)
+                                No existe
+                                @break
+                            @case($quimico<=5)
+                                Leve
+                                @break
+                            @case($quimico<=7.5)
+                                <span class="badge badge-warning">Moderado</span>
+                                @break
+                            @case($quimico<=20)
+                            <span class="badge badge-danger">Alto</span>
+                                @break
+                            @default
+                                
+                        @endswitch
+                        
+                        {{ $quimico }}
+
+                    </td>
                     <th>PSICOSOCIAL</th>
-                    <td colspan="3"></td>
+                    <td colspan="3">
+
+                        @php(
+                            
+                            $psicosocial=($antecedentes->sum('p')+$valor_tdt+$antecedentes->sum('sso'))/$nea
+
+                        )
+
+                        @switch(true)
+                            @case($psicosocial==2.1)
+                                No existe
+                                @break
+                            @case($psicosocial<=5)
+                                Leve
+                                @break
+                            @case($psicosocial<=7.5)
+                                <span class="badge badge-warning">Moderado</span>
+                                @break
+                            @case($psicosocial<=20)
+                            <span class="badge badge-danger">Alto</span>
+                                @break
+                            @default
+                                
+                        @endswitch
+                        
+                        {{ $psicosocial }}
+
+                    </td>
                 </tr>
                 
             </tfoot>
         </table>
+
+
     </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr class="table-primary text-center">
+                    <th colspan="3">ACCIDENTES DE TRABAJO (DESCRIPCIÓN)</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">FUE CALIFICADO POR EL INSTITUTO DE SEGURIDAD SOCIAL CORRESPONIENTE:</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="md-form md-outline">
+                            <input type="text" id="especificar" name="especificar" value="{{ old('especificar') }}" class="form-control @error('especificar') is-invalid @enderror">
+                            <label for="especificar" class="active">Especificar</label>
+                            @error('especificar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </td>
+                    <td>
+                        <div class="md-form md-outline">
+                            <input type="date" id="fecha" name="fecha" value="{{ old('fecha') }}" class="form-control @error('fecha') is-invalid @enderror">
+                            <label for="fecha">Fecha</label>
+                            @error('fecha')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </td>
+                </tr>
 
+                <tr>
+                    <td colspan="3">
+                        <div class="md-form md-outline my-0">
+                            <textarea class="form-control @error('observaciones_at') is-invalid @enderror" name="observaciones_at" id="observaciones_at" required>{{ old('observaciones_at') }}</textarea>
+                            <label for="observaciones_at">Observaciones</label>
+                        </div>
+                    </td>
+                </tr>
 
+                <tr>
+                    <td colspan="3">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 
 @prepend('scriptsHeader')
-
+    {{-- confirm --}}
+    <link rel="stylesheet" href="{{ asset('js/confirm/jquery-confirm.min.css') }}">
+    <script src="{{ asset('js/confirm/jquery-confirm.min.js') }}"></script>
 @endprepend
 
 @push('scriptsFooter')

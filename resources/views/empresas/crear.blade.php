@@ -88,4 +88,12 @@
         </div>
     </form>
 </div>
+
+
+@push('scriptsFooter')
+    <script>
+        $('#menuEmpresas').addClass('active')
+    </script>
+     
+@endpush
 @endsection

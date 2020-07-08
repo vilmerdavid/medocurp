@@ -48,7 +48,8 @@ class EmpresasDataTable extends DataTable
                     ->setTableId('empresas-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->parameters($this->getBuilderParameters());
+                    ->parameters($this->getBuilderParameters())
+                    ->dom('frtip');
     }
 
     /**
