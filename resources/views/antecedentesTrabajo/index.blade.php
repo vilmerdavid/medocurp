@@ -593,6 +593,7 @@
 
 
     </div>
+    
     <div class="table-responsive">
         <table class="table table-bordered table-sm">
             <thead>
@@ -601,55 +602,111 @@
                 </tr>
             </thead>
             <tfoot>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">FUE CALIFICADO POR EL INSTITUTO DE SEGURIDAD SOCIAL CORRESPONIENTE:</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option></option>
-                                <option value="SI">SI</option>
-                                <option value="NO">NO</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="md-form md-outline">
-                            <input type="text" id="especificar" name="especificar" value="{{ old('especificar') }}" class="form-control @error('especificar') is-invalid @enderror">
-                            <label for="especificar" class="active">Especificar</label>
-                            @error('especificar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </td>
-                    <td>
-                        <div class="md-form md-outline">
-                            <input type="date" id="fecha" name="fecha" value="{{ old('fecha') }}" class="form-control @error('fecha') is-invalid @enderror">
-                            <label for="fecha">Fecha</label>
-                            @error('fecha')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </td>
-                </tr>
+                <form action="{{ route('actualizarAccidenteEnfermedad') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="ficha" value="{{ $ficha->id }}">
+                    
+                    <tr>
+                        <td style="width: 20%;">
+                            @php($accidente_trabajo=$ficha->nea_m->accidente_trabajo??'')
+                            <div class="form-group">
+                                <label for="accidente_trabajo">FUE CALIFICADO POR EL INSTITUTO DE SEGURIDAD SOCIAL CORRESPONIENTE:</label>
+                                <select class="form-control" id="accidente_trabajo" name="accidente_trabajo">
+                                    <option></option>
+                                    <option value="SI" {{ $accidente_trabajo=='SI'?'selected':'' }}>SI</option>
+                                    <option value="NO" {{ $accidente_trabajo=='NO'?'selected':'' }}>NO</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td style="width: 50%">
+                            <div class="md-form md-outline">
+                                <input type="text" id="especificar_accidente" name="especificar_accidente" value="{{ old('especificar_accidente',$ficha->nea_m->especificar_accidente??'') }}" class="form-control @error('especificar_accidente') is-invalid @enderror">
+                                <label for="especificar_accidente" class="active">Especificar</label>
+                                @error('especificar_accidente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </td>
+                        <td>
+                            <div class="md-form md-outline">
+                                <input type="date" id="fecha_accidente" name="fecha_accidente" value="{{ old('fecha_accidente',$ficha->nea_m->fecha_accidente??'') }}" class="form-control @error('fecha_accidente') is-invalid @enderror">
+                                <label for="fecha_accidente">Fecha</label>
+                                @error('fecha_accidente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td colspan="3">
-                        <div class="md-form md-outline my-0">
-                            <textarea class="form-control @error('observaciones_at') is-invalid @enderror" name="observaciones_at" id="observaciones_at" required>{{ old('observaciones_at') }}</textarea>
-                            <label for="observaciones_at">Observaciones</label>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="md-form md-outline my-0">
+                                <textarea class="form-control @error('observaciones_accidente') is-invalid @enderror" name="observaciones_accidente" id="observaciones_accidente" >{{ old('observaciones_accidente',$ficha->nea_m->observaciones_accidente??'') }}</textarea>
+                                <label for="observaciones_accidente">Observaciones</label>
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td colspan="3">
-                        <button type="button" class="btn btn-primary">Guardar</button>
-                    </td>
-                </tr>
+                    <tr>
+                        <th colspan="3" class="table-primary text-center">
+                            ENFERMEDADES PROFESIONALES
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                @php($enfermedad_profesional=$ficha->nea_m->enfermedad_profesional??'')
+                                <label for="enfermedad_profesional">FUE CALIFICADO POR EL INSTITUTO DE SEGURIDAD SOCIAL CORRESPONIENTE:</label>
+                                <select class="form-control" id="enfermedad_profesional" name="enfermedad_profesional">
+                                    <option></option>
+                                    <option value="SI" {{ $enfermedad_profesional=='SI'?'selected':'' }}>SI</option>
+                                    <option value="NO" {{ $enfermedad_profesional=='NO'?'selected':'' }}>NO</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="md-form md-outline">
+                                <input type="text" id="especificar_enfermedad" name="especificar_enfermedad" value="{{ old('especificar_enfermedad',$ficha->nea_m->especificar_enfermedad??'') }}" class="form-control @error('especificar_enfermedad') is-invalid @enderror">
+                                <label for="especificar_enfermedad" class="active">Especificar</label>
+                                @error('especificar_enfermedad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </td>
+                        <td>
+                            <div class="md-form md-outline">
+                                <input type="date" id="fecha_enfermedad" name="fecha_enfermedad" value="{{ old('fecha_enfermedad',$ficha->nea_m->fecha_enfermedad??'') }}" class="form-control @error('fecha_enfermedad') is-invalid @enderror">
+                                <label for="fecha_enfermedad">Fecha</label>
+                                @error('fecha_enfermedad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <div class="md-form md-outline my-0">
+                                <textarea class="form-control @error('observaciones_enfermedad') is-invalid @enderror" name="observaciones_enfermedad" id="observaciones_enfermedad" >{{ old('observaciones_enfermedad',$ficha->nea_m->observaciones_enfermedad??'') }}</textarea>
+                                <label for="observaciones_enfermedad">Observaciones</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar Accidentes de trabajo, enfermedades profesionales</button>
+                        </td>
+                    </tr>
+                </form>
+
             </tfoot>
         </table>
     </div>

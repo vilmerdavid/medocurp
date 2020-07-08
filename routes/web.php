@@ -56,5 +56,6 @@ Route::post('/antecedentes-trabajo-guardar', 'AntecedentesTrabajo@guardar')->nam
 Route::post('/antecedentes-trabajo-actualizar', 'AntecedentesTrabajo@actualizar')->name('actualizarAntecedenteTrabajo');
 Route::post('/actualizar-nea', 'AntecedentesTrabajo@actualizarNea')->name('actualizarNea');
 Route::get('/eliminar-antecedente-laboral/{id}', 'AntecedentesTrabajo@eliminar')->name('eliminarAntecedenteLaboral');
+Route::post('/actualizar-accidente-enfermedad', 'AntecedentesTrabajo@actualizarAccidenteEnfermedad')->name('actualizarAccidenteEnfermedad');
 
 

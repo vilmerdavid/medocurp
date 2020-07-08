@@ -18,6 +18,17 @@ class CreateNeasTable extends Migration
             $table->timestamps();
             $table->decimal('valor')->nullable();
 
+            $table->string('accidente_trabajo')->nullable();
+            $table->string('especificar_accidente')->nullable();
+            $table->string('fecha_accidente')->nullable();
+            $table->string('observaciones_accidente')->nullable();
+
+            $table->string('enfermedad_profesional')->nullable();
+            $table->string('especificar_enfermedad')->nullable();
+            $table->string('fecha_enfermedad')->nullable();
+            $table->string('observaciones_enfermedad')->nullable();
+            
+
             $table->unsignedBigInteger('ficha_p_i_id');
             $table->foreign('ficha_p_i_id')->references('id')->on('ficha_p_i_s');
             

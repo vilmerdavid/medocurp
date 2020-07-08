@@ -90,4 +90,28 @@ class AntecedentesTrabajo extends Controller
         }
         return redirect()->route('antecedentesTrabajo',$a->fichaPI_m->id);
     }
+
+    public function actualizarAccidenteEnfermedad(Request $request)
+    {
+        $ficha=FichaPI::findOrFail($request->ficha);
+        $nea=$ficha->nea_m;
+        if(!$nea){
+            $nea=new Nea();
+            $nea->ficha_p_i_id=$ficha->id;
+        }
+        
+        $nea->accidente_trabajo=$request->accidente_trabajo;
+        $nea->especificar_accidente=$request->especificar_accidente;
+        $nea->fecha_accidente=$request->fecha_accidente;
+        $nea->observaciones_accidente=$request->observaciones_accidente;
+        $nea->enfermedad_profesional=$request->enfermedad_profesional;
+        $nea->especificar_enfermedad=$request->especificar_enfermedad;
+        $nea->fecha_enfermedad=$request->fecha_enfermedad;
+        $nea->observaciones_enfermedad=$request->observaciones_enfermedad;
+
+        $nea->save();
+        $request->session()->flash('success','ACCIDENTES DE TRABAJO, ENFERMEDADES PROFESIONALES ACTUALIZADOS');
+        return redirect()->route('antecedentesTrabajo',$ficha->id);
+
+    }
 }
