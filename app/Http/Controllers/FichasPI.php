@@ -17,10 +17,14 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Util\Test;
-
+Use PDF;
 class FichasPI extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(FichasPIDataTable $dataTable)
     {
         return $dataTable->render('fichas_pi.index');
@@ -29,7 +33,7 @@ class FichasPI extends Controller
     public function crear(EmpresasDataTable $dataTable,$idEmp)
     {
         $empresa=Empresa::findOrFail($idEmp);
-        $data = array('empresa' => $empresa );
+        $data = array('empresa' => $empresa,'ficha' =>FichaPI::find(0));
         return $dataTable->render('fichas_pi.crear',$data);
     }
 
@@ -39,7 +43,11 @@ class FichasPI extends Controller
         $areaTrabajo=AreaTrabajo::findOrFail($request->area_trabajo);
         try {
             DB::beginTransaction();
-            $u=new User();
+            $u=User::find($request->usuario_id);
+            if(!$u){
+                $u=new User();
+            }
+            
             $u->historia_clinica_ci=$request->historia_clinica_ci;
             $u->numero_archivo=$request->numero_archivo;
             $u->apellido_uno=$request->apellido_uno;
@@ -60,7 +68,11 @@ class FichasPI extends Controller
             $u->puesto_trabajo=$request->puesto_trabajo;
             $u->save();
 
-            $f=new FichaPI();
+            $f=FichaPI::find($request->fichaPi_id);
+            if(!$f){
+                $f=new FichaPI();
+            }
+            
             $f->user_id=$u->id;
             $f->area_trabajo_id=$request->area_trabajo;
             $f->actividades_relevantes=$request->actividades_relevantes;
@@ -79,6 +91,7 @@ class FichasPI extends Controller
             $f->hm_hombre=$request->hm_hombre;
             $f->observaciones_hombre=$request->observaciones_hombre;
             $f->menarquia_mujer=$request->menarquia_mujer;
+            
             $f->ciclos_mujer=$request->ciclos_mujer;
             $f->disminorrea_mujer=$request->disminorrea_mujer;
             $f->fum_mujer=$request->fum_mujer;
@@ -103,17 +116,23 @@ class FichasPI extends Controller
             $f->tiempo_mamografia_mujer=$request->tiempo_mamografia_mujer;
             $f->resultado_mamografia_mujer=$request->resultado_mamografia_mujer;
             $f->observaciones_mujer=$request->observaciones_mujer;
+            
             $f->tabaco=$request->tabaco;
+
             $f->tiempo_consumo_tabaco=$request->tiempo_consumo_tabaco;
             $f->cantidad_tabaco=$request->cantidad_tabaco;
             $f->exconsumidor_tabaco=$request->exconsumidor_tabaco;
             $f->tiempo_abastecimiento_tabaco=$request->tiempo_abastecimiento_tabaco;
+            
             $f->alcohol=$request->alcohol;
+
             $f->tiempo_consumo_alcohol=$request->tiempo_consumo_alcohol;
             $f->cantidad_alcohol=$request->cantidad_alcohol;
             $f->exconsumidor_alcohol=$request->exconsumidor_alcohol;
             $f->tiempo_abastecimiento_alcohol=$request->tiempo_abastecimiento_alcohol;
+            
             $f->otras_drogas=$request->otras_drogas;
+
             $f->cual_droga=$request->cual_droga;
             $f->tiempo_consumo_otras_drogas=$request->tiempo_consumo_otras_drogas;
             $f->cantidad_otras_drogas=$request->cantidad_otras_drogas;
@@ -137,31 +156,39 @@ class FichasPI extends Controller
             $f->observacion_estilo_vida=$request->observacion_estilo_vida;
             $f->save();
 
-            $test_f=new TestFagerstorm();
-            $test_f->ficha_p_i_id=$f->id;
-            $test_f->save();
-        
-        
-            $test_c=new TestCage();
-            $test_c->ficha_p_i_id=$f->id;
-            $test_c->save();
-            
-            
-            foreach (Pregunta::all() as $p) {
-                $test_a=new TestAsist();
-                $test_a->ficha_p_i_id=$f->id;
-                $test_a->pregunta_id=$p->id;
-                $test_a->codigo=$p->codigo;
-                $test_a->save();
+            if(!$f->testFagerstom_m){
+                $test_f=new TestFagerstorm();
+                $test_f->ficha_p_i_id=$f->id;
+                $test_f->save();
             }
-
-           
             
-           
+        
+            if(!$f->testCage_m){
+                $test_c=new TestCage();
+                $test_c->ficha_p_i_id=$f->id;
+                $test_c->save();
+            }
+            
+            if(!count($f->testAsist_m)>0){
+                foreach (Pregunta::all() as $p) {
+                    $test_a=new TestAsist();
+                    $test_a->ficha_p_i_id=$f->id;
+                    $test_a->pregunta_id=$p->id;
+                    $test_a->codigo=$p->codigo;
+                    $test_a->save();
+                }
+            }
+            
 
             DB::commit();
-            $request->session()->flash('success','Ficha prelaboral incial, ingresado');
-            return  redirect()->route('detalleFichaPI',$f->id);
+            if($request->fichaPi_id){
+                $request->session()->flash('success','Ficha prelaboral incial, actualizado');    
+            }else{
+                $request->session()->flash('success','Ficha prelaboral incial, ingresado');
+            }
+            
+
+            return  redirect()->route('editarFichaPI',$f->id);
         } catch (\Throwable $th) {
             DB::rollback();
             return $th->getMessage();
@@ -194,6 +221,8 @@ class FichasPI extends Controller
         $test_f->p_5=$request->p_5;
         $test_f->p_6=$request->p_6;
         $test_f->save();
+        $test_f->fichaPI_m->otras_drogas=$request->aplicarasis_fagerstom;
+        $test_f->fichaPI_m->save();
         return redirect()->route('detalleFichaPI',$test_f->fichaPI_m->id);
     }
 
@@ -205,6 +234,10 @@ class FichasPI extends Controller
         $test_c->p_3=$request->p_3;
         $test_c->p_4=$request->p_4;
         $test_c->save();
+
+        $test_c->fichaPI_m->otras_drogas=$request->aplicarasis_fagerstom;
+        $test_c->fichaPI_m->save();
+
         return redirect()->route('detalleFichaPI',$test_c->fichaPI_m->id);
     }
 
@@ -221,4 +254,35 @@ class FichasPI extends Controller
         return redirect()->route('detalleFichaPI',$request->ficha);
         
     }
+
+    public function descargarPdfInformeAsis($ficha)
+    {
+        $data = array('ficha' => FichaPI::find($ficha) );
+        $pdf = PDF::loadView('fichas_pi.test.pdfInforme', $data);
+        return $pdf->download('Informe de asis.pdf');
+    }
+
+ 
+    public function editar(EmpresasDataTable $dataTable,$idFicha)
+    {
+        $ficha=FichaPI::findOrFail($idFicha);
+        $data = array('empresa' => $ficha->areaTrabajo_m->empresa_m,'ficha'=>$ficha );
+        return $dataTable->with('opcion','editar')->render('fichas_pi.editar',$data);
+    }
+
+    public function cambiarEmpresaEditarFichaPI(Request $request)
+    {
+        $ficha=FichaPI::findOrFail($request->ficha);
+        $empresa=Empresa::findOrFail($request->empresa);
+        $area_t=$empresa->areaTrabajos_m()->first();
+        $ficha->area_trabajo_id=$area_t->id;
+        $ficha->save();
+        $data = array('url' => route('editarFichaPI', $request->ficha) );
+        return response()->json($data);
+    }
+
+
+
+
+
 }

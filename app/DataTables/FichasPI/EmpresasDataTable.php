@@ -25,7 +25,7 @@ class EmpresasDataTable extends DataTable
                 return view('fichas_pi.logo_empresa',['emp'=>$emp])->render();
             })
             ->addColumn('action', function($emp){
-                return view('fichas_pi.accion_empresa',['emp'=>$emp])->render();
+                return view('fichas_pi.accion_empresa',['emp'=>$emp,'opcion'=>$this->opcion])->render();
             })
             ->rawColumns(['logo','action']);
     }

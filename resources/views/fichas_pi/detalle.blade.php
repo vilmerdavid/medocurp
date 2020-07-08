@@ -2,9 +2,12 @@
 @section('breadcrumbs', Breadcrumbs::render('home'))
 @section('content')
 
-<div class="container-fluid">
+@include('fichas_pi.menu')
 
-    @if ($test_f)
+
+<div class="container">
+
+    @if ($ficha->tabaco=='SI')
         
         @include('fichas_pi.test.fagerstom',['test_f'=>$test_f])
 
@@ -15,8 +18,8 @@
     @endif
 </div>
 
-<div class="container-fluid">
-    @if ($test_c)
+<div class="container">
+    @if ($ficha->alcohol=='SI')
         @include('fichas_pi.test.cage',['test_c'=>$test_c])
     @else
         <div class="alert alert-success" role="alert">
@@ -24,10 +27,10 @@
         </div>
     @endif
 </div>
-<div class="container-fluid">
 
-
-    @if (count($test_a)>0)
+<div class="container">
+    
+    @if ($ficha->otras_drogas=='SI')
        @include('fichas_pi.test.asist',['test_a'=>$test_a])
     @else
         <div class="alert alert-success" role="alert">
@@ -51,8 +54,12 @@
 
 @push('scriptsFooter')
 
+<script>
+    $('#mene_assis').addClass('active')
+</script>
 <script src="{{ asset('js/api/test_fagerstom.js') }}"></script>
 <script src="{{ asset('js/api/test_cage.js') }}"></script>
+<script src="{{ asset('js/api/test_asis.js') }}"></script>
 
 @endpush
 @endsection

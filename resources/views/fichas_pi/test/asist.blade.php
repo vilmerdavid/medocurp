@@ -1,5 +1,5 @@
 
-<form action="{{ route('actualizarTestAsis') }}" method="POST">
+<form action="{{ route('actualizarTestAsis') }}" method="POST" id="form_test_asis">
     @csrf
     <input type="hidden" name="ficha" value="{{ $ficha->id }}">
     <table class="table table-sm">
@@ -7,7 +7,9 @@
             
             <tr class="table-primary text-center">
                 <th colspan="3">
-                    <strong><i class="fas fa-wine-bottle fa-2x"></i> 
+                    <strong>
+                        
+                        <i class="fas fa-cannabis fa-2x"></i>
                         Prueba de detección de consumo de alcohol, tabaco y otras drogas - ASSIST V3.0
                     </strong>
                 </th>
@@ -324,8 +326,8 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>
-                    <button type="submit" class="btn btn-primary btn-sm">Guardar TEST ASIS</button>
+                <td colspan="3" class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar TEST ASIS</button>
                 </td>
             </tr>
         </tfoot>

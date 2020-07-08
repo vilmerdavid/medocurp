@@ -104,6 +104,7 @@
                     </td>
                     <td id="resultado_aplicat_test_asist">
                         NO APLICA TEST ASIST
+                        <input type="hidden" name="aplicarasis_fagerstom">
                     </td>
                 </tr>
                 <tr class="text-center">

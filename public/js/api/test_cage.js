@@ -45,7 +45,8 @@ suma_cage=0;
      // mostrar aplicat test asists
      function verificar_resultado_test_cage_asist(){
         if($('#resultado_dependencia_cage').html()!='Abstemio - Bebedor social'){
-            $('#resultado_aplicar_test_cage_asist').html('APLICAT TEST ASIST');
+            
+            $('#resultado_aplicar_test_cage_asist').html('APLICAR TEST ASIST');
         }else{
             $('#resultado_aplicar_test_cage_asist').html('NO APLICA TEST ASIST');
         }

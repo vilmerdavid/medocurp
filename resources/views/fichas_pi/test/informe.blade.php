@@ -1,3 +1,5 @@
+
+
 <div class="table-responsive">
 
 
@@ -57,9 +59,61 @@
                 <td>
                     {{ $ficha->informeTabaco->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+
+                    @switch(true)
+                        @case($ficha->informeTabaco->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeTabaco->sum('valor')<=26)
+                            Intervención breve        
+                            @break
+                        
+                        @case($ficha->informeTabaco->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeTabaco->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeTabaco->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeTabaco->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeTabaco->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeTabaco->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeTabaco->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        
+                        @case($ficha->informeTabaco->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeTabaco->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Alcohol
@@ -68,10 +122,57 @@
                     {{ $ficha->informeAlcohol->sum('valor') }}
                 </td>
                 <td>
-                    
+                    @switch(true)
+                        @case($ficha->informeAlcohol->sum('valor')<=10)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeAlcohol->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeAlcohol->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
                 </td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAlcohol->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeAlcohol->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeAlcohol->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeAlcohol->sum('valor')>26)
+                        <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAlcohol->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeAlcohol->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        
+                        @case($ficha->informeAlcohol->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeAlcohol->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Cannabis
@@ -79,9 +180,58 @@
                 <td>
                     {{ $ficha->informeCannabis->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeCannabis->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeCannabis->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeCannabis->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    
+                    @switch(true)
+                        @case($ficha->informeCannabis->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeCannabis->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeCannabis->sum('valor')<=26)
+                        <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeCannabis->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeCannabis->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeCannabis->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        
+                        @case($ficha->informeCannabis->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeCannabis->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Cocaína
@@ -89,9 +239,56 @@
                 <td>
                     {{ $ficha->informeCocaina->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeCocaina->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeCocaina->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeCocaina->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeCocaina->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeCocaina->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Anfetaminas
@@ -99,9 +296,56 @@
                 <td>
                     {{ $ficha->informeAnfetaminas->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAnfetaminas->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAnfetaminas->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeAnfetaminas->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAnfetaminas->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeAnfetaminas->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Inhalantes
@@ -109,9 +353,56 @@
                 <td>
                     {{ $ficha->informeInhalantes->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeInhalantes->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeInhalantes->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeInhalantes->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeInhalantes->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeInhalantes->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Tranquilizantes
@@ -119,9 +410,56 @@
                 <td>
                     {{ $ficha->informeTranquilizantes->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeTranquilizantes->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeTranquilizantes->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeTranquilizantes->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeTranquilizantes->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeTranquilizantes->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Alucinógenos
@@ -129,9 +467,56 @@
                 <td>
                     {{ $ficha->informeAlucinogenos->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAlucinogenos->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAlucinogenos->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeAlucinogenos->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeAlucinogenos->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeAlucinogenos->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Opiáceos
@@ -139,9 +524,56 @@
                 <td>
                     {{ $ficha->informeOpiaceos->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeOpiaceos->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeOpiaceos->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeOpiaceos->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeOpiaceos->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeOpiaceos->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <td>Otras drogas
@@ -149,13 +581,64 @@
                 <td>
                     {{ $ficha->informeOtrasDrogas->sum('valor') }}
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=3)
+                            Sin intervención
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=26)
+                            Intervención breve
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')>26)
+                            Tratamiento intensivo
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=1)
+                            No existe
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=3)
+                            Riesgo bajo
+                            @break
+                        
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=26)
+                            <span class="badge badge-warning">Riesgo moderado</span>
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')>26)
+                            <span class="badge badge-danger">Riesgo alto</span>
+                            @break
+                        @default
+                            
+                    @endswitch
+                </td>
+                <td>
+                    @switch(true)
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=1)
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=3)
+                            Su actual forma de consumo de sustancias, representa un riesgo bajo para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')<=26)
+                            Su actual forma de consumo de sustancias, representa un riesgo considerable para su salud o para ocasionarle otro tipo de problemas.
+                            @break
+                        @case($ficha->informeOtrasDrogas->sum('valor')>26)
+                            Su actual forma de consumo de sustancias, representa un riesgo elevado para ocasionarle problemas graves de salud, sociales, económicos, legales, de pareja, entre otros. Probablemente sea dependiente
+                            @break
+                        @default
+                    @endswitch
+                </td>
             </tr>
         </tbody>
         <tfoot>
-
+            <tr>
+                <td colspan="5" class="text-center">
+                    <a href="{{ route('descargarPdfInformeAsis',$ficha->id) }}" class="btn btn-info">Descargar PDF</a>
+                </td>
+            </tr>
         </tfoot>
     </table>
 

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class FichaPI extends Model
 {
+    
     public function testFagerstom_m()
     {
         return $this->hasOne(TestFagerstorm::class,'ficha_p_i_id');
@@ -18,6 +20,10 @@ class FichaPI extends Model
         return $this->hasOne(TestCage::class,'ficha_p_i_id');
     }
 
+    public function antecedentesTrabajo_m()
+    {
+        return $this->hasMany(Antecedendentetrabajo::class,'ficha_p_i_id');
+    }
     
 
     public function testAsist_m()
