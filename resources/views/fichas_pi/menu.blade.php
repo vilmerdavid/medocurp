@@ -9,6 +9,10 @@
       <a class="nav-link" id="menu_antecedente_trabajo" href="{{ route('antecedentesTrabajo',$ficha->id) }}">TRABAJO</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="menu" href="#">Otros</a>
+      <a class="nav-link" id="menu_patologicos" href="{{ route('antecedentesPatologicos',$ficha->id) }}">PATOLÓGICOS</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" id="menu_riesgos" href="{{ route('factoresRiesgos',$ficha->id) }}">RIESGOS</a>
+    </li>
+
   </ul>

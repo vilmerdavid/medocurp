@@ -58,4 +58,15 @@ Route::post('/actualizar-nea', 'AntecedentesTrabajo@actualizarNea')->name('actua
 Route::get('/eliminar-antecedente-laboral/{id}', 'AntecedentesTrabajo@eliminar')->name('eliminarAntecedenteLaboral');
 Route::post('/actualizar-accidente-enfermedad', 'AntecedentesTrabajo@actualizarAccidenteEnfermedad')->name('actualizarAccidenteEnfermedad');
 
+// rutas para antecednetes patologicos
+Route::get('/antecedentes-patologicos/{ficha}', 'Patologicos@index')->name('antecedentesPatologicos');
+Route::post('/antecedentes-patologicos-guardar', 'Patologicos@guardar')->name('actualizarPatologico');
+
+// factores de riesgos
+Route::get('/factores-riesgos/{ficha}', 'Riesgos@index')->name('factoresRiesgos');
+Route::post('/factores-riesgos-guardar', 'Riesgos@guardar')->name('factoresRiesgosGuardar');
+Route::post('/factores-riesgos-actualizar', 'Riesgos@actualizar')->name('actualizarFactorItems');
+Route::get('/factores-riesgos-eliminar/{factor}', 'Riesgos@eliminar')->name('eliminarFactor');
+
+
 
