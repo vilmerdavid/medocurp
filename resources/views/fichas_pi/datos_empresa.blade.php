@@ -28,7 +28,7 @@
                 <th>
                     INSTITUCIÓN DEL SISTEMA O NOMBRE DE LA EMPRESA
                 </th>
-                <th>
+                <th>  
                     R.U.C
                 </th>
                 <th>
@@ -485,7 +485,7 @@
                 <td>
                     <div class="form-group">
                         <label for="alcohol">ALCOHOL</label>
-                        <select class="form-control" id="alcohol" name="alcohol">
+                        <select class="form-control" id="alcohol" name="alcohol" onchange="selecionarAlcohol(this);">
                             @php($alcohol=$ficha->alcohol??'')
                             <option></option>
                             <option value="SI" {{ $alcohol=='SI'?'selected':'' }}>SI</option>
@@ -506,7 +506,7 @@
                     </div>
                 </td>
                 <td>
-                    <select class="form-control mt-4" id="exconsumidor_alcohol" name="exconsumidor_alcohol">
+                    <select class="form-control mt-4" id="exconsumidor_alcohol" name="exconsumidor_alcohol" >
                         @php($exconsumidor_alcohol=$ficha->exconsumidor_alcohol??'')
                         <option></option>
                         <option value="SI" {{ $exconsumidor_alcohol=='SI'?'selected':'' }}>SI</option>
@@ -520,12 +520,31 @@
                     </div>
                 </td>
             </tr>
+            <script>
+                function selecionarAlcohol(arg){
+                    if($(arg).val()=='SI'){
+                        $('#exconsumidor_alcohol').attr('disabled', true);
+                        $('#tiempo_abastecimiento_alcohol').prop('disabled', true);
+                        
+                        $('#tiempo_consumo_alcohol').attr('disabled',false);
+                        $('#cantidad_alcohol').attr('disabled',false);
+
+                    }else{
+                        $('#exconsumidor_alcohol').attr('disabled', false);
+                        $('#tiempo_abastecimiento_alcohol').prop('disabled', false);
+
+                        $('#tiempo_consumo_alcohol').attr('disabled',true);
+                        $('#cantidad_alcohol').attr('disabled',true);
+
+                    }
+                }
+            </script>
             <tr>
                 <td>
                     <div class="form-group">
                         <label for="otras_drogas">Otras drogas</label>
                         @php($otras_drogas=$ficha->otras_drogas??'')
-                        <select class="form-control" id="otras_drogas" name="otras_drogas" onchange="mostrarOtrasDrogas(this);">
+                        <select class="form-control" id="otras_drogas" name="otras_drogas" onchange="seleccionarDrogas(this);" >
                             
                             <option></option>
                             <option value="SI" {{ $otras_drogas=='SI'?'selected':'' }}>SI</option>
@@ -579,6 +598,26 @@
                     </div>
                 </td>
             </tr>
+            <script>
+                function seleccionarDrogas(arg){
+                    if($(arg).val()=='SI'){
+                     
+                        $('#exconsumidor_otras_drogas').attr('disabled', true);
+                        $('#tiempo_abastecimiento_otras_drogas').prop('disabled', true);
+                    // $('#selecionar_drogas').prop('disabled', true);
+                        $('#tiempo_consumo_otras_drogas').attr('disabled',false);
+                        $('#cantidad_otras_drogas').attr('disabled',false);
+                        $('#selecionar_drogas').show();
+                    }else{
+                        $('#exconsumidor_otras_drogas').attr('disabled', false);
+                        $('#tiempo_abastecimiento_otras_drogas').prop('disabled', false);
+
+                        $('#tiempo_consumo_otras_drogas').attr('disabled',true);
+                        $('#cantidad_otras_drogas').attr('disabled',true);
+                        $('#selecionar_drogas').hide();
+                    }
+                }
+            </script>
         </tbody>
     </table>
 

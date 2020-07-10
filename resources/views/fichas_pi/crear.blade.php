@@ -92,7 +92,7 @@
 
         $('#antecedentes').load("{{ route('cargarAntecedentesHombre') }}");
 
-        function mostrarOtrasDrogas(arg){
+       function mostrarOtrasDrogas(arg){
           var valor=$(arg).val();
           if(valor=='SI'){
             $('#selecionar_drogas').show();

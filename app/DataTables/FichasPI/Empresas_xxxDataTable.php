@@ -2,7 +2,7 @@
 
 namespace App\DataTables\FichasPI;
 
-use App\FichasPI/Empresas_xxx;
+use App\FichasPI\Empresas_xxx;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -30,7 +30,7 @@ class Empresas_xxxDataTable extends DataTable
      * @param \App\FichasPI/Empresas_xxx $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(FichasPI/Empresas_xxx $model)
+    public function query(FichasPI\Empresas_xxx $model)
     {
         return $model->newQuery();
     }

@@ -24,7 +24,7 @@
     
             <td>
                 <div class="form-group">
-                    
+                <label for="eco_prostatico_hombre">APE</label>
                     <select class="form-control" id="ape_hombre" name="ape_hombre" id="ape_hombre">
                         @php($ape_hombre=$ficha->ape_hombre??'')
                         <option></option>

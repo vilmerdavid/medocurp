@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $email_user=env('EMAIL_USER', '');
         if(!User::where('email',$email_user)->first()){
             $user=new User();
-            $user->name ='admin';
+            $user->name ='richarperez@utc.edu.ec';
             $user->email =$email_user;
             $user->password =Hash::make($email_user);
             $user->save();
