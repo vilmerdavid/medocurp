@@ -100,6 +100,8 @@ class CreateFichaPISTable extends Migration
             $table->string('cual_que_alergias_dos')->nullable();
             $table->string('observacion_estilo_vida')->nullable();
 
+            $table->string('enfermedad_actual')->nullable();
+
             
 
         });

@@ -14,6 +14,16 @@ class FichaPI extends Model
         return $this->hasOne(TestFagerstorm::class,'ficha_p_i_id');
     }
 
+    public function revisiones_m()
+    {
+        return $this->hasOne(Revision::class,'ficha_p_i_id');
+    }
+
+    public function actividadExtralaboral_m()
+    {
+        return $this->hasMany(Actividad::class,'ficha_p_i_id');
+    }
+
     public function factores_m()
     {
         return $this->hasMany(Factores::class,'ficha_p_i_id');

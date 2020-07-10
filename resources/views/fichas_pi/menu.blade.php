@@ -14,5 +14,12 @@
     <li class="nav-item">
       <a class="nav-link" id="menu_riesgos" href="{{ route('factoresRiesgos',$ficha->id) }}">RIESGOS</a>
     </li>
-
+    <li class="nav-item">
+      <a class="nav-link" id="menu_actividades" href="{{ route('actividadesExtralaborales',$ficha->id) }}">ACTIVIDADES E.L</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="menu_revisiones" href="{{ route('revisionOrganosSistemas',$ficha->id) }}">
+        R. ÓRGANOS Y SISTEMAS
+      </a>
+    </li>
   </ul>
