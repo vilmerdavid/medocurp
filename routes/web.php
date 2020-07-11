@@ -79,4 +79,13 @@ Route::get('/revision-organos-sistemas/{ficha}', 'Revisiones@index')->name('revi
 Route::post('/revision-organos-sistemas-actualizar', 'Revisiones@actualizar')->name('actualizarRevisionOrganosSistemas');
 
 
+// contantes
+Route::get('/constantes/{ficha}', 'Constantes@index')->name('constantes');
+Route::post('/actualizar-contantes', 'Constantes@actualizar')->name('actualizarContantes');
+
+// examens fisicos
+Route::post('/actualizar-examen_fisico', 'Constantes@actualizarExamenFisico')->name('actualizarExamenFisico');
+
+
+
 

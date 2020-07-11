@@ -22,4 +22,11 @@
         R. ÓRGANOS Y SISTEMAS
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" id="menu_constantes" href="{{ route('constantes',$ficha->id) }}">
+        J. CONSTANTES V.A
+      </a>
+    </li>
+
   </ul>
