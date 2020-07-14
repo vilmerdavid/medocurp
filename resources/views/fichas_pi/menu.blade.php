@@ -29,4 +29,18 @@
       </a>
     </li>
 
+
+    <li class="nav-item">
+      <a class="nav-link" id="menu_resultados_generales" href="{{ route('resultadosGenerales',$ficha->id) }}">
+        L. RESULTADOS EX.G
+      </a>
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-link" id="menu_diagnostico" href="{{ route('diagnosticos',$ficha->id) }}">
+        M. DIAGNÓSTICO
+      </a>
+    </li>
+
   </ul>

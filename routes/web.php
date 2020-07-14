@@ -85,6 +85,16 @@ Route::post('/actualizar-contantes', 'Constantes@actualizar')->name('actualizarC
 
 // examens fisicos
 Route::post('/actualizar-examen_fisico', 'Constantes@actualizarExamenFisico')->name('actualizarExamenFisico');
+// resulktado de examenes generales
+Route::get('/resultados-examenes-generales/{ficha}', 'ResultadosGenerales@index')->name('resultadosGenerales');
+Route::post('/actualizar-resultados-examenes-generales', 'ResultadosGenerales@actualizar')->name('actualizarResultadosGenerales');
+
+// diagnostico
+Route::get('/diagnosticos/{ficha}', 'Diagnosticos@index')->name('diagnosticos');
+Route::post('/diagnosticos-guardar', 'Diagnosticos@guardar')->name('guardarDiagnostico');
+Route::post('/diagnosticos-actualizar', 'Diagnosticos@actualizar')->name('actualizarDiagnostico');
+Route::get('/diagnosticos-eliminar/{dg}', 'Diagnosticos@eliminar')->name('eliminarDiagnostico');
+
 
 
 

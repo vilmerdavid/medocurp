@@ -28,9 +28,19 @@ class FichaPI extends Model
         return $this->hasOne(Revision::class,'ficha_p_i_id');
     }
 
+    public function resultadoGeneral_m()
+    {
+        return $this->hasOne(Resultadogeneral::class,'ficha_p_i_id');
+    }
+
     public function actividadExtralaboral_m()
     {
         return $this->hasMany(Actividad::class,'ficha_p_i_id');
+    }
+
+    public function diagnostico_m()
+    {
+        return $this->hasMany(Diagnostico::class,'ficha_p_i_id');
     }
 
     public function factores_m()
