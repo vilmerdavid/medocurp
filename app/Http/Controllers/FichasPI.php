@@ -221,8 +221,11 @@ class FichasPI extends Controller
         $test_f->p_5=$request->p_5;
         $test_f->p_6=$request->p_6;
         $test_f->save();
+        $request->aplicarasis_fagerstom;
         $test_f->fichaPI_m->otras_drogas=$request->aplicarasis_fagerstom;
         $test_f->fichaPI_m->save();
+
+        
         return redirect()->route('detalleFichaPI',$test_f->fichaPI_m->id);
     }
 

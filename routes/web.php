@@ -95,6 +95,13 @@ Route::post('/diagnosticos-guardar', 'Diagnosticos@guardar')->name('guardarDiagn
 Route::post('/diagnosticos-actualizar', 'Diagnosticos@actualizar')->name('actualizarDiagnostico');
 Route::get('/diagnosticos-eliminar/{dg}', 'Diagnosticos@eliminar')->name('eliminarDiagnostico');
 
+// aptitudes medicas
+Route::get('/aptitudes-medicas/{ficha}', 'AptitudesMedicas@index')->name('aptitudesMedicas');
+Route::post('/aptitudes-medicas-guardar', 'AptitudesMedicas@actualizar')->name('actualizarAptitud');
+Route::post('/guardar-recomendacion', 'AptitudesMedicas@guardarRecomendacion')->name('guardarRecomendacion');
+Route::post('/actualizar-recomendacion', 'AptitudesMedicas@actualizarRecomendacion')->name('actualizarRecomendacion');
+Route::get('/eliminar-recomendacion/{recomendacion}', 'AptitudesMedicas@eliminarRecomendacion')->name('eliminarRecomendacion');
+
 
 
 

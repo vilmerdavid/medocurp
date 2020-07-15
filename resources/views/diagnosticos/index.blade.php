@@ -175,13 +175,27 @@
                             @endswitch
                         </td>
                     </tr>
+                    <tr class="table-info">
+                        <th colspan="5" class="text-center">
+                            SCORE DE FARMINGHAM
+                        </th>
+                    </tr>
+                    <tr class="table-info">
+                        <td colspan="3">
+                            Riesgo cardiovasular a 10 años
+                        </td>
+                        <td>
+                            Err:502
+                        </td>
+                        <td>
+                            Err:502
+                        </td>
+                    </tr>
                 </tfoot>
             </table>
         </div>
     </div>
-    <div class="card-footer text-muted">
-        Footer
-    </div>
+    
 </div>
 </div>
 
@@ -195,7 +209,7 @@
 
     <script>
         $('#menuFichas').addClass('active')
-        $('#menu_resultados_generales').addClass('active')
+        $('#menu_diagnostico').addClass('active')
 
      
     </script>

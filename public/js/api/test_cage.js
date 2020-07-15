@@ -47,13 +47,15 @@ suma_cage=0;
         if($('#resultado_dependencia_cage').html()!='Abstemio - Bebedor social'){
             
             $('#resultado_aplicar_test_cage_asist').html('APLICAR TEST ASIST');
+            $('#aplicarasis_fagerstom_cage').val('SI');
         }else{
             $('#resultado_aplicar_test_cage_asist').html('NO APLICA TEST ASIST');
+            $('#aplicarasis_fagerstom_cage').val('NO');
         }
     }
     verificar_resultado_test_cage_asist();
 
-    $('#form_test_cage').submit(function( event ) {
+    $('#form_test_cage_x').submit(function( event ) {
         
         event.preventDefault();
 

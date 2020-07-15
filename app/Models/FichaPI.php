@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-
+use App\Aptitudmedica;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +17,15 @@ class FichaPI extends Model
     public function constante_m()
     {
         return $this->hasOne(Constante::class,'ficha_p_i_id');
+    }
+
+    public function recomendacion_m()
+    {
+        return $this->hasMany(Recomendacion::class,'ficha_p_i_id');
+    }
+    public function aptitud_m()
+    {
+        return $this->hasOne(Aptitudmedica::class,'ficha_p_i_id');
     }
 
     public function examenFisico_m()

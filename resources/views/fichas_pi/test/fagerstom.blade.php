@@ -96,7 +96,10 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="2" class="table-danger text-center">Valoración de dependencia a la nicotina</th>
+                    <th colspan="2" class="table-danger text-center">Valoración de dependencia a la nicotina
+                        <input type="hidden" name="aplicarasis_fagerstom" id="aplicarasis_fagerstom">
+                    </th>
+                    
                 </tr>
                 <tr class="text-center">
                     <td id="resultado_dependencia_fagerstom">
@@ -104,7 +107,7 @@
                     </td>
                     <td id="resultado_aplicat_test_asist">
                         NO APLICA TEST ASIST
-                        <input type="hidden" name="aplicarasis_fagerstom">
+                        
                     </td>
                 </tr>
                 <tr class="text-center">

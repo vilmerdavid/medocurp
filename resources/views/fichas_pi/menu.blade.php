@@ -43,4 +43,10 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" id="menu_aptitudes_medicas" href="{{ route('aptitudesMedicas',$ficha->id) }}">
+        N. APTITUD M
+      </a>
+    </li>
+
   </ul>

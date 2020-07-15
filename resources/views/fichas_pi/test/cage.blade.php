@@ -71,6 +71,7 @@
                 </tr>
                 <tr class="text-center">
                     <td colspan="2">
+                        <input type="hidden" name="aplicarasis_fagerstom" id="aplicarasis_fagerstom_cage">
                         <button class="btn btn-warning text-dark" type="submit">GUARDAR TEST DE CAGE</button>
                     </td>
                 </tr>

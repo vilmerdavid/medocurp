@@ -44,7 +44,7 @@
             $('#aplicarasis_fagerstom').val('SI');
         }else{
             $('#resultado_aplicat_test_asist').html('NO APLICA TEST ASIST');
-            $('#aplicarasis_fagerstom').val('SI');
+            $('#aplicarasis_fagerstom').val('NO');
         }
     }
     verificar_resultado_asist();
@@ -60,7 +60,7 @@
     });
 
     // actualizar formulario de test
-    $( "#form_fagerstom" ).submit(function( event ) {
+    $( "#form_fagerstom_x" ).submit(function( event ) {
         
         event.preventDefault();
 
