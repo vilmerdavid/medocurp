@@ -102,6 +102,10 @@ Route::post('/guardar-recomendacion', 'AptitudesMedicas@guardarRecomendacion')->
 Route::post('/actualizar-recomendacion', 'AptitudesMedicas@actualizarRecomendacion')->name('actualizarRecomendacion');
 Route::get('/eliminar-recomendacion/{recomendacion}', 'AptitudesMedicas@eliminarRecomendacion')->name('eliminarRecomendacion');
 
+// scores
+Route::get('/scores/{ficha}', 'Scores@index')->name('scores');
+Route::post('/scores-actualizar', 'Scores@actualizarScore')->name('actualizarScore');
+
 
 
 

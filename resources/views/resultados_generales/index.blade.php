@@ -102,7 +102,7 @@
                                     @php
                                         $glucosa_valor=$rg->glucosa_valor??'';
                                     @endphp
-                                    @if (!$glucosa_valor<=15)
+                                    @if (!$glucosa_valor<=115)
                                         Alerta!
                                         <br>    
                                     @endif

@@ -101,6 +101,7 @@ class CreateFichaPISTable extends Migration
             $table->string('observacion_estilo_vida')->nullable();
 
             $table->string('enfermedad_actual')->nullable();
+            $table->decimal('valor_score')->nullable();
 
             
 

@@ -49,4 +49,10 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" id="menu_score" href="{{ route('scores',$ficha->id) }}">
+        SCORE DE FARMINGHAM
+      </a>
+    </li>
+
   </ul>
