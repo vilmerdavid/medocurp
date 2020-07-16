@@ -14,7 +14,9 @@ class Diagnosticos extends Controller
         $data = array(
             'ficha' => $ficha,
             'diagnosticos'=>$ficha->diagnostico_m,
-            'constante'=>$ficha->constante_m
+            'constante'=>$ficha->constante_m,
+            'paciente'=>$ficha->user_m,
+            'rg'=>$ficha->resultadoGeneral_m,
          );
         return view('diagnosticos.index',$data);
     }

@@ -55,4 +55,10 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" id="menu_certificado_medico" href="{{ route('certificadoMedico',$ficha->id) }}">
+        CERTIFICADO MÉDICO
+      </a>
+    </li>
+
   </ul>

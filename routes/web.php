@@ -105,6 +105,9 @@ Route::get('/eliminar-recomendacion/{recomendacion}', 'AptitudesMedicas@eliminar
 // scores
 Route::get('/scores/{ficha}', 'Scores@index')->name('scores');
 Route::post('/scores-actualizar', 'Scores@actualizarScore')->name('actualizarScore');
+Route::get('/certificado-medico/{ficha}', 'Scores@certificadoMedico')->name('certificadoMedico');
+Route::get('/descargar-certificado/{ficha}', 'Scores@descargarCertificado')->name('descargarCertificado');
+Route::post('/actualizar-certificadomedico', 'Scores@actualizarCertificadoMedico')->name('actualizarCertificadoMedico');
 
 
 
