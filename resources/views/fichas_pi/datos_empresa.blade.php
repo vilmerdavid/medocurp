@@ -257,6 +257,7 @@
                     <option value="Bisexual" {{ $e_orientacion_sexual=='Bisexual'?'selected':'' }}>Bisexual</option>
                     <option value="No sabe" {{ $e_orientacion_sexual=='No sabe'?'selected':'' }}>No sabe</option>
                     <option value="No responde" {{ $e_orientacion_sexual=='No responde'?'selected':'' }}>No responde</option>
+                    <option value="Homosexual" {{ $e_orientacion_sexual=='Homosexual'?'selected':'' }}>Homosexual</option>
                 </select>
                 </td>
                 <td>
@@ -377,6 +378,11 @@
                         <textarea class="form-control @error('antecedentes_clinicos') is-invalid @enderror" name="antecedentes_clinicos" id="antecedentes_clinicos" required>{{ old('antecedentes_clinicos',$ficha->antecedentes_clinicos??'Ninguna') }}</textarea>
                         <label for="antecedentes_clinicos">ANTECEDENTES PATOLÓGICOS CLÍNICOS</label>
                     </div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
                     <div class="md-form md-outline my-0">
                         <textarea class="form-control @error('antecedentes_quirurgicos') is-invalid @enderror" name="antecedentes_quirurgicos" id="antecedentes_quirurgicos" required>{{ old('antecedentes_quirurgicos',$ficha->antecedentes_quirurgicos??'Ninguna') }}</textarea>
                         <label for="antecedentes_quirurgicos">ANTECEDENTES PATOLÓGICOS QUIRÚRGICOS</label>

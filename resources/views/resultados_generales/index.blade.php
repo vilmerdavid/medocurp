@@ -42,11 +42,11 @@
                                 </td>
                                 <td>
                                     @php
-                                        $hematocrito_valor=$rg->hematocrito_valor??'';
+                                        $hematocrito_valor=$rg->hematocrito_valor??0;
                                     @endphp
-                                    @if (!$hematocrito_valor<=47)
+                                    @if (!($hematocrito_valor<=47)) 
                                         Alerta!
-                                    @endif                                  
+                                    @endif           
                                 </td>
                             </tr>
                             <tr>
@@ -61,9 +61,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $hemoglobina_valor=$rg->hemoglobina_valor??'';
+                                        $hemoglobina_valor=$rg->hemoglobina_valor??0;
                                     @endphp
-                                    @if (!$hemoglobina_valor<=16.2)
+                                    @if (!($hemoglobina_valor<=16.2))
                                         Alerta!
                                     @endif
                                 </td>
@@ -80,9 +80,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $urea_valor=$rg->urea_valor??'';
+                                        $urea_valor=$rg->urea_valor??0;
                                     @endphp
-                                    @if (!$urea_valor<=50)
+                                    @if (!($urea_valor<=50))
                                         Alerta!                                        
                                     @endif
                                 </td>
@@ -100,9 +100,9 @@
                                 <td>
                                     
                                     @php
-                                        $glucosa_valor=$rg->glucosa_valor??'';
+                                        $glucosa_valor=$rg->glucosa_valor??0;
                                     @endphp
-                                    @if (!$glucosa_valor<=115)
+                                    @if (!($glucosa_valor<=115))
                                         Alerta!
                                         <br>    
                                     @endif
@@ -130,9 +130,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $creatinina_valor=$rg->creatinina_valor??'';
+                                        $creatinina_valor=$rg->creatinina_valor??0;
                                     @endphp
-                                    @if (!$creatinina_valor<=1.2)
+                                    @if (!($creatinina_valor<=1.2))
                                         Alerta!
                                     @endif
                                 </td>
@@ -149,10 +149,10 @@
                                 </td>
                                 <td>
                                     @php
-                                        $colesterol_valor=$rg->colesterol_valor??'';
+                                        $colesterol_valor=$rg->colesterol_valor??0;
                                     @endphp
 
-                                    @if (!$colesterol_valor<=200)
+                                    @if (!($colesterol_valor<=200))
                                         Alerta!
                                     @endif
                                 </td>
@@ -169,9 +169,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $trigliceridos_m_valor=$rg->trigliceridos_m_valor??'';
+                                        $trigliceridos_m_valor=$rg->trigliceridos_m_valor??0;
                                     @endphp
-                                    @if (!$trigliceridos_m_valor<=165)
+                                    @if (!($trigliceridos_m_valor<=165))
                                         !!!
                                     @endif
                                 </td>
@@ -188,9 +188,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $trigliceridos_f_valor=$rg->trigliceridos_f_valor??'';
+                                        $trigliceridos_f_valor=$rg->trigliceridos_f_valor??0;
                                     @endphp
-                                    @if (!$trigliceridos_f_valor<=140)
+                                    @if (!($trigliceridos_f_valor<=140))
                                         !!!
                                     @endif
                                 </td>
@@ -207,9 +207,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $acido_urico_m_valor=$rg->acido_urico_m_valor??'';
+                                        $acido_urico_m_valor=$rg->acido_urico_m_valor??0;
                                     @endphp
-                                    @if (!$acido_urico_m_valor<=7)
+                                    @if (!($acido_urico_m_valor<=7))
                                         !!!
                                     @endif
                                 </td>
@@ -226,9 +226,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $acido_urico_f_valor=$rg->acido_urico_f_valor??'';
+                                        $acido_urico_f_valor=$rg->acido_urico_f_valor??0;
                                     @endphp
-                                    @if (!$acido_urico_f_valor<=5.7)
+                                    @if (!($acido_urico_f_valor<=5.7))
                                         !!!
                                     @endif
                                 </td>
@@ -245,10 +245,10 @@
                                 </td>
                                 <td>
                                     @php
-                                        $tgo_valor=$rg->tgo_valor??'';
+                                        $tgo_valor=$rg->tgo_valor??0;
                                     @endphp
 
-                                    @if (!$tgo_valor<=38)
+                                    @if (!($tgo_valor<=38))
                                         Alerta!
                                     @endif
                                 </td>
@@ -265,9 +265,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $tgp_valor=$rg->tgp_valor??'';
+                                        $tgp_valor=$rg->tgp_valor??0;
                                     @endphp
-                                    @if (!$tgp_valor<=40)
+                                    @if (!($tgp_valor<=40))
                                         Alerta!
                                     @endif
                                 </td>
@@ -284,9 +284,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $psa_valor=$rg->psa_valor??'';
+                                        $psa_valor=$rg->psa_valor??0;
                                     @endphp
-                                    @if (!$psa_valor<=4)
+                                    @if (!($psa_valor<=4))
                                         Alerta!
                                     @endif
                                 </td>
@@ -300,7 +300,7 @@
                                 </td>
                                 <td>
                                     @php
-                                        $emo_valor=$rg->emo_valor??'';
+                                        $emo_valor=$rg->emo_valor??0;
                                     @endphp
                                     <select name="emo_valor" id="emo_valor" class="form-control @error('emo_valor') is-invalid @enderror">
                                         <option value=""></option>
@@ -338,9 +338,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $agregar_a_valor=$rg->agregar_a_valor??'';
+                                        $agregar_a_valor=$rg->agregar_a_valor??0;
                                     @endphp
-                                    @if (!$agregar_a_valor<=40)
+                                    @if (!($agregar_a_valor<=40))
                                         Alerta!
                                     @endif
                                 </td>
@@ -367,9 +367,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $agregar_b_valor=$rg->agregar_b_valor??'';
+                                        $agregar_b_valor=$rg->agregar_b_valor??0;
                                     @endphp
-                                    @if (!$agregar_b_valor<=40)
+                                    @if (!($agregar_b_valor<=40))
                                         Alerta!
                                     @endif
                                 </td>
@@ -396,9 +396,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $agregar_c_valor=$rg->agregar_c_valor??'';
+                                        $agregar_c_valor=$rg->agregar_c_valor??0;
                                     @endphp
-                                    @if (!$agregar_c_valor<=40)
+                                    @if (!($agregar_c_valor<=40))
                                         Alerta!
                                     @endif
                                 </td>

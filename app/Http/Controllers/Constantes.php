@@ -12,7 +12,13 @@ class Constantes extends Controller
     public function index($idFicha)
     {
         $ficha=FichaPI::findOrFail($idFicha);
-        $data = array('ficha' => $ficha,'constante'=>$ficha->constante_m,'ex'=>$ficha->examenFisico_m );
+        $ex=$ficha->examenFisico_m;
+        if(!$ex){
+            $ex=new Examenfisico();
+            $ex->ficha_p_i_id=$ficha->id;
+            $ex->save();
+        }
+        $data = array('ficha' => $ficha,'constante'=>$ficha->constante_m,'ex'=>$ex );
         return view('constantes.index',$data);
     }
 

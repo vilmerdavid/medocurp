@@ -158,7 +158,7 @@
                         </td>
                         <td>
                             @php
-                                $colesterol_total_valor=$rg->colesterol_valor??'';
+                                $colesterol_total_valor=$rg->colesterol_valor??0;
                             @endphp
                             {{ $colesterol_total_valor }}
                         </td>
@@ -248,7 +248,7 @@
                         </td>
                         <td>
                             @php
-                                $contante_valor=$constante->presion_arterial_uno??'';
+                                $contante_valor=$constante->presion_arterial_uno??0;
                             @endphp
 
                             {{ $contante_valor }}

@@ -114,4 +114,6 @@ class AntecedentesTrabajo extends Controller
         return redirect()->route('antecedentesTrabajo',$ficha->id);
 
     }
+
+    
 }

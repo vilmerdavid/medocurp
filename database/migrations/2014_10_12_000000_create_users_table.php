@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration
             );
             $table->enum('grupo_sanguineo',$grupo_sanguineo)->nullable();
             $table->enum('lateralidad',['Derecho','Izquierdo','Ambidiestro'])->nullable();
-            $table->enum('orientacion_sexual',['Heterosexual','Gay','Lesbiana','Bisexual','No sabe','No responde'])->nullable();
+            $table->enum('orientacion_sexual',['Heterosexual','Gay','Lesbiana','Bisexual','No sabe','No responde','Homosexual'])->nullable();
             $table->enum('identidad_genero',['Masculino','Femenino','Transfemenino','Transmasculino','Ninguno','No responde','No sabe'])->nullable();
             $table->enum('discapacidad',['No','Auditiva','Física','Intelectual','Lenguaje','Psicosocial'])->nullable();
             $table->decimal('porcentaje_discapacidad',9,2)->nullable();

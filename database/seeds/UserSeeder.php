@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $role_admin = Role::create(['name' => 'Administrador']);
         $role_secre = Role::create(['name' => 'Secretaria']);
 
-        $email_user=env('EMAIL_USER', '');
+        $email_user='richarperez@utc.edu.ec';
         if(!User::where('email',$email_user)->first()){
             $user=new User();
             $user->name ='richarperez@utc.edu.ec';

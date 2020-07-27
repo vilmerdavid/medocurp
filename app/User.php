@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Http\Controllers\FichasPI;
+use App\Models\FichaPI;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,9 +40,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    
+
      // @deivid, obtener nombres completos
      public function getApellidosNombresAttribute()
      {
          return "{$this->apellido_uno} {$this->apellido_dos} {$this->nombre_uno} {$this->nombre_dos}";
      }
+
+     //  un usuario tiene  varias fichas
+    public function fichas_m()
+    {
+        return $this->hasMany(FichaPI::class);
+    }
+
+
+    
 }

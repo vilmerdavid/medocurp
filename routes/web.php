@@ -49,6 +49,7 @@ Route::get('/fichas-prelaborales-iniciales', 'FichasPI@index')->name('fichas');
 Route::get('/descargar-pdf-informe-asis/{ficha}', 'FichasPI@descargarPdfInformeAsis')->name('descargarPdfInformeAsis');
 Route::get('/editar-ficha-p-i/{ficha}', 'FichasPI@editar')->name('editarFichaPI');
 Route::post('/cambiar-empresa-editar-ficha-p-i', 'FichasPI@cambiarEmpresaEditarFichaPI')->name('cambiarEmpresaEditarFichaPI');
+Route::get('/obtener-antecedentes-patologicos-clinicos-anteriores', 'FichasPI@obtenerAntecedentesPatologicosClinicos')->name('obtenerAntecedentesPatologicosClinicos');
 
 // rutas para antecedentes de trabajo
 Route::get('/antecedentes-trabajo/{ficha}', 'AntecedentesTrabajo@index')->name('antecedentesTrabajo');

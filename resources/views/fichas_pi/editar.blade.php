@@ -150,6 +150,16 @@
             });
         }
 
+
+        function obtenerAntecedentesPatologicosClinicos(){
+          $.get( "{{ route('obtenerAntecedentesPatologicosClinicos') }}", { ficha: {{ $ficha->id }} } )
+          .done(function( data ) {
+            console.log(data)
+          });
+          
+        }
+
+        obtenerAntecedentesPatologicosClinicos();
     </script>
 
 

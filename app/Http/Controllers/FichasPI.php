@@ -286,6 +286,13 @@ class FichasPI extends Controller
 
 
 
+    public function obtenerAntecedentesPatologicosClinicos(Request $request)
+    {
+        $ficha=FichaPI::findOrFail($request->ficha);
+        
+        return $fi=$ficha->user_m->fichas_m->where('id','<',$ficha->id)->first();
+        return response()->json($fi);
+    }
 
 
 }

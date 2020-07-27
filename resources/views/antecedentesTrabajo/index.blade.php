@@ -61,6 +61,9 @@
             
             <tbody>
 
+                @if (count($antecedentes)<4)
+                    
+                
                 <form action="{{ route('guardarAntecedenteTrabajo') }}" method="POST">
                     
                     <tr>
@@ -186,6 +189,9 @@
                         </td>
                     </tr>
                 </form>
+
+                @endif
+
 
                 @foreach ($antecedentes as $a)
                     <form action="{{ route('actualizarAntecedenteTrabajo') }}" method="POST">
@@ -346,10 +352,10 @@
                             @csrf
                             <input type="hidden" name="ficha" value="{{ $ficha->id }}">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control @error('nea') is-invalid @enderror" placeholder="Ingrese.." aria-label="Recipient's username"
-                                  aria-describedby="button-addon2" name="nea" value="{{ old('nea',$nea) }}" >
+                                <input type="number" class="form-control @error('nea') is-invalid @enderror" placeholder="Ingrese.." aria-label="Recipient's username"
+                                  aria-describedby="button-addon2" name="nea" value="{{ old('nea',$nea) }}" max="4" >
                                 <div class="input-group-append">
-                                  <button class="btn btn-md btn-dark m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2">Actualizar</button>
+                                  <button class="btn btn-md btn-dark m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2">Calcular</button>
                                 </div>
                                 @error('nea')
                                     <span class="invalid-feedback" role="alert">

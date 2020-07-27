@@ -13,8 +13,8 @@
             </div>
             <div class="card-body">
                 <div class="md-form md-outline my-0">
-                    <input type="text" name="enf_cardio_vascular" id="enf_cardio_vascular" value="{{ old('enf_cardio_vascular',$patologico->enf_cardio_vascular??'No refiere') }}" class="form-control @error('enf_cardio_vascular') is-invalid @enderror" autofocus>
-                    <label for="enf_cardio_vascular">Enfermedad cardio vascular</label>
+                    <input type="text" name="enf_cardio_vascular" id="enf_cardio_vascular" value="{{ old('enf_cardio_vascular',$patologico->enf_cardio_vascular??'No refiere') }}" class="form-control form-control-lg @error('enf_cardio_vascular') is-invalid @enderror" autofocus>
+                    <label for="enf_cardio_vascular" class="h1">Enfermedad cardio vascular</label>
                     @error('enf_cardio_vascular')
                         <span>
                             <strong>
