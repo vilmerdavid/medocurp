@@ -110,7 +110,7 @@
             <td>
                 <div class="md-form md-outline mt-0">
                     <input type="text" id="hm_hombre" name="hm_hombre" value="{{ old('hm_hombre',$ficha->hm_hombre??'') }}" class="form-control @error('hm_hombre') is-invalid @enderror">
-                    <label for="hm_hombre" class="active">Hijos muertos</label>
+                    <label for="hm_hombre" class="active" >Hijos muertos</label>
                 </div>
             </td>
         </tr>

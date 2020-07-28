@@ -182,9 +182,9 @@ class FichasPI extends Controller
 
             DB::commit();
             if($request->fichaPi_id){
-                $request->session()->flash('success','Ficha prelaboral incial, actualizado');    
+                $request->session()->flash('success','Ficha prelaboral incial, actualizada');    
             }else{
-                $request->session()->flash('success','Ficha prelaboral incial, ingresado');
+                $request->session()->flash('success','Ficha prelaboral incial, ingresada');
             }
             
 
@@ -192,7 +192,7 @@ class FichasPI extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
             return $th->getMessage();
-            $request->session()->flash('info','Ficha prelaboral incial no ingresado, vuelva intentar');
+            $request->session()->flash('info','Ficha prelaboral incial no ingresada, vuelva intentar');
             return  redirect()->route('crearFichaPI',$areaTrabajo->empresa_m->id)->withInput();
         }
 
