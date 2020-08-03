@@ -60,7 +60,7 @@
                 </td>
                 <td>
                     <div class="md-form md-outline my-0">
-                        <input type="text" id="historia_clinica_ci" name="historia_clinica_ci" value="{{ old('historia_clinica_ci',$ficha->user_m->historia_clinica_ci??'') }}" class="form-control @error('historia_clinica_ci') is-invalid @enderror"  required>
+                        <input type="text" id="historia_clinica_ci" onkeyup="verificarUsuario(this);" name="historia_clinica_ci" value="{{ old('historia_clinica_ci',$ficha->user_m->historia_clinica_ci??'') }}" class="form-control @error('historia_clinica_ci') is-invalid @enderror"  required>
                         <label for="historia_clinica_ci">C.I</label>
                         @error('historia_clinica_ci')
                             <span class="invalid-feedback" role="alert">
@@ -378,7 +378,7 @@
                         <textarea class="form-control @error('antecedentes_clinicos') is-invalid @enderror" name="antecedentes_clinicos" id="antecedentes_clinicos" required>{{ old('antecedentes_clinicos',$ficha->antecedentes_clinicos??'Ninguna') }}</textarea>
                         <label for="antecedentes_clinicos">ANTECEDENTES PATOLÓGICOS CLÍNICOS</label>
                     </div>
-                    
+                    <button class="btn btn-primary btn-sm" type="button" id="btnantecedentesPatologicosClinicos" onclick="antecedentesPatologicosClinicos(this);" style="display: none;">(REVISAR ANTERIORES)</button>
                 </td>
             </tr>
             <tr>
@@ -387,6 +387,7 @@
                         <textarea class="form-control @error('antecedentes_quirurgicos') is-invalid @enderror" name="antecedentes_quirurgicos" id="antecedentes_quirurgicos" required>{{ old('antecedentes_quirurgicos',$ficha->antecedentes_quirurgicos??'Ninguna') }}</textarea>
                         <label for="antecedentes_quirurgicos">ANTECEDENTES PATOLÓGICOS QUIRÚRGICOS</label>
                     </div>
+                    <button class="btn btn-primary btn-sm" type="button" id="btnantecedentesPatologicosQuirurgicos" onclick="antecedentesPatologicosQuirurgicos(this);" style="display: none;">(REVISAR ANTERIORES)</button>
                 </td>
             </tr>
         </tbody>

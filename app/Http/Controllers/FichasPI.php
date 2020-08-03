@@ -43,7 +43,7 @@ class FichasPI extends Controller
         $areaTrabajo=AreaTrabajo::findOrFail($request->area_trabajo);
         try {
             DB::beginTransaction();
-            $u=User::find($request->usuario_id);
+            $u=User::where('historia_clinica_ci',$request->historia_clinica_ci)->first();
             if(!$u){
                 $u=new User();
             }
@@ -198,6 +198,48 @@ class FichasPI extends Controller
 
     }
 
+
+    public function obtenerUsuarioXhistoriaClinica(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        if($u){
+            return response()->json($u);
+        }
+        return response()->json(null);
+        
+    }
+
+    public function verantecedentesPatologicosClinicos(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        if($u){
+            return $u->fichas_m->last()->orderBy('id','desc')->first();
+        }
+        return response()->json(null);
+    }
+
+    public function verantecedentesPatologicosQuirurgicos(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        if($u){
+            return $u->fichas_m->last()->orderBy('id','desc')->first();
+        }
+        return response()->json(null);
+    }
+
+    public function verantecedentesPatologicosGineco(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        return view('fichas_pi.verantecedentesPatologicosGineco',$data);
+    }
+
+    public function verantecedentesReproductivos(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        return view('fichas_pi.verantecedentesReproductivos',$data);
+    }
     public function detalle($idFi)
     {
         $fi=FichaPI::findOrFail($idFi);

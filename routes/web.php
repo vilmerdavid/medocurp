@@ -50,6 +50,11 @@ Route::get('/descargar-pdf-informe-asis/{ficha}', 'FichasPI@descargarPdfInformeA
 Route::get('/editar-ficha-p-i/{ficha}', 'FichasPI@editar')->name('editarFichaPI');
 Route::post('/cambiar-empresa-editar-ficha-p-i', 'FichasPI@cambiarEmpresaEditarFichaPI')->name('cambiarEmpresaEditarFichaPI');
 Route::get('/obtener-antecedentes-patologicos-clinicos-anteriores', 'FichasPI@obtenerAntecedentesPatologicosClinicos')->name('obtenerAntecedentesPatologicosClinicos');
+Route::post('/obtener-usuario-x-historia-clinica', 'FichasPI@obtenerUsuarioXhistoriaClinica')->name('obtenerUsuarioXhistoriaClinica');
+Route::post('/verantecedentes-patologicos-clinicos', 'FichasPI@verantecedentesPatologicosClinicos')->name('verantecedentesPatologicosClinicos');
+Route::post('/verantecedentes-patologicos-quirurgicos', 'FichasPI@verantecedentesPatologicosQuirurgicos')->name('verantecedentesPatologicosQuirurgicos');
+Route::post('/verantecedentes-patologicos-gineco', 'FichasPI@verantecedentesPatologicosGineco')->name('verantecedentesPatologicosGineco');
+Route::post('/verantecedentes-reproductivos', 'FichasPI@verantecedentesReproductivos')->name('verantecedentesReproductivos');
 
 // rutas para antecedentes de trabajo
 Route::get('/antecedentes-trabajo/{ficha}', 'AntecedentesTrabajo@index')->name('antecedentesTrabajo');

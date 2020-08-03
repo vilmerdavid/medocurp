@@ -115,7 +115,7 @@
 
         var opcion_sexo=$('#sexo option:selected').val();
         
-        if(opcion_sexo=='HOMBRE'){
+        if(opcion_sexo=='Hombre'){
             var url="{{ route('cargarAntecedentesHombre',$ficha->id) }}";
             $('#antecedentes').load(url);
         }else{

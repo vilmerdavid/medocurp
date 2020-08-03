@@ -2,8 +2,11 @@
 <table class="table table-bordered table-sm">
     <thead>
         <tr>
-            <th colspan="6" class="grey text-center">
+            <th colspan="2" class="grey text-center">
                 ANTECEDENTES REPRODUCTIVOS MASCULINOS
+            </th>
+            <th >
+                <button class="btn btn-primary btn-sm btn-block" type="button" id="btnantecedentesReproductivos" onclick="antecedentesReproductivos(this);">(REVISAR ANTERIORES)</button>
             </th>
         </tr>
         <tr class="grey lighten-2 text-center">

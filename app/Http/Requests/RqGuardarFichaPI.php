@@ -23,23 +23,16 @@ class RqGuardarFichaPI extends FormRequest
      */
     public function rules()
     {
-        if($this->input('usuario_id')){
-            $historia_clinica_ci='required|string|max:255|unique:users,historia_clinica_ci,'.$this->input('usuario_id');
-            $numero_archivo='required|string|max:255|unique:users,numero_archivo,'.$this->input('usuario_id');
-        }else{
-            $historia_clinica_ci='required|string|max:255|unique:users';
-            $numero_archivo='required|string|max:255|unique:users';
-        }
-
-
+    
+        
 
         $rg_decimal="/^[0-9,]+(\.\d{0,2})?$/";
         return [
             'usuario_id'=>'nullable',
             'fichaPi_id'=>'nullable',
             // validacion paciente
-            'historia_clinica_ci'=>$historia_clinica_ci,
-            'numero_archivo'=>$numero_archivo,
+            'historia_clinica_ci'=>'required|string|max:255',
+            'numero_archivo'=>'required|string|max:255',
             'apellido_uno'=>'required|string|max:255',
             'apellido_dos'=>'nullable|string|max:255',
             'nombre_uno'=>'required|string|max:255',

@@ -1,9 +1,12 @@
 <table class="table table-bordered table-sm">
     <thead>
         <tr>
-            <th colspan="12" class="grey text-center">
+            <th colspan="10" class="grey text-center">
                 ANTECEDENTES PATOLÓGICOS GINECO OBSTÉTRICOS
             </th>
+            <td colspan="2">
+                <button class="btn btn-primary btn-sm btn-block" type="button" id="btnantecedentesPatologicosGineco" onclick="antecedentesPatologicosGineco(this);">(REVISAR ANTERIORES)</button>
+            </td>
         </tr>
 
         <tr class="grey lighten-2 text-center">
