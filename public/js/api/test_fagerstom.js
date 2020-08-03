@@ -40,10 +40,10 @@
     // mostrar aplicat test asists
     function verificar_resultado_asist(){
         if($('#resultado_dependencia_fagerstom').html()=='Dependencia moderada' || $('#resultado_dependencia_fagerstom').html()=='Dependencia alta'){
-            $('#resultado_aplicat_test_asist').html('APLICAR TEST ASIST');
+            $('#resultado_aplicat_test_asist').html('APLICAR TEST ASSIST');
             $('#aplicarasis_fagerstom').val('SI');
         }else{
-            $('#resultado_aplicat_test_asist').html('NO APLICA TEST ASIST');
+            $('#resultado_aplicat_test_asist').html('NO APLICA TEST ASSIST');
             $('#aplicarasis_fagerstom').val('NO');
         }
     }

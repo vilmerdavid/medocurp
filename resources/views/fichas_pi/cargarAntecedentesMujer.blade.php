@@ -26,19 +26,19 @@
                 G
             </th>
             <th>
-                P
+                PARTOS
             </th>
             <th>
-                C
+                CESÁREAS
             </th>
             <th>
-                A
+                ABORTOS
             </th>
             <th>
-                HV
+                HIJOS VIVOS
             </th>
             <th>
-                HM
+                HIJOS MUERTOS
             </th>
             <th>
                 VIDA SEXUAL ACTIVA

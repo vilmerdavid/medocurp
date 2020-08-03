@@ -41,9 +41,9 @@
                             <td>
                                 <select name="tiempo" class="form-control" id="">
                                     <option></option>
-                                    <option value="< 1/3">< 1/3</option>
-                                    <option value="1/3 a 2/3">1/3 a 2/3</option>
-                                    <option value=">2/3">>2/3</option>
+                                    <option value="< 1/3">Menor a un Tercio de tiempo</option>
+                                    <option value="1/3 a 2/3">De un Tercio a dos Tercio de tiempo</option>
+                                    <option value=">2/3">Más de Dos Tercio de Tiempo</option>
                                 </select>
                             </td>
                             <td>

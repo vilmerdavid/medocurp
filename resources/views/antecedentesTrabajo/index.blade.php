@@ -28,7 +28,7 @@
                         ACTIVIDADES QUE DESEMPEÑABA
                     </th>
                     <th style="width: 8%;">
-                        TDT (m)
+                        TIEMPO DE TRABAJO(m)
                     </th>
                     <th style="width: 5%;">
                         SSO
@@ -105,7 +105,7 @@
                         <td>
                             <div class="md-form md-outline my-0">
                                 <input type="number" id="tdt" name="tdt" value="{{ old('tdt') }}" class="form-control @error('tdt') is-invalid @enderror" required>
-                                <label for="tdt">TDT(m)</label>
+                                <label for="tdt" >TDT(m)</label>
                                 @error('tdt')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -235,7 +235,7 @@
                             <td>
                                 <div class="md-form md-outline my-0">
                                     <input type="number" id="tdt_{{ $a->id }}" name="tdt" value="{{ old('tdt',$a->tdt) }}" class="form-control @error('tdt') is-invalid @enderror" required>
-                                    <label for="tdt_{{ $a->id }}">TDT(m)</label>
+                                    <label for="tdt_{{ $a->id }}" >TDT(m)</label>
                                     @error('tdt')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -344,7 +344,7 @@
             <tfoot>
                 <tr class="table-info">
                     <th>
-                        N° EA: 
+                        Número de Empresas Anteriores:
                     </th>
                     <td class="">
 
@@ -370,7 +370,7 @@
                         TIEMPO TOTAL DE TRABAJO
                     </th>
                     <td>
-                        <strong>TDT={{ $valor_tdt }}</strong>
+                        <strong data-toggle="tooltip" data-placement="top"  title="TIEMPO DE TRABAJO">TDT={{ $valor_tdt }}</strong>
                         <br>
                         {{ $antecedentes->sum('tdt') }} meses
                         

@@ -60,10 +60,10 @@
                     <td>
                         <select  id="" class="form-control p_fagerstom" name="p_4">
                             <option value=""></option>
-                            <option value="0" {{ $test_f->p_4=='0'?'selected':'' }}>< 10/d</option>
-                            <option value="1" {{ $test_f->p_4=='1'?'selected':'' }}>De 11 a 20/d</option>
-                            <option value="2" {{ $test_f->p_4=='2'?'selected':'' }}>De 21 a 30/d</option>
-                            <option value="3" {{ $test_f->p_4=='3'?'selected':'' }}>> 30/d</option>
+                            <option value="0" {{ $test_f->p_4=='0'?'selected':'' }}>Menos de 10 unidades por día</option>
+                            <option value="1" {{ $test_f->p_4=='1'?'selected':'' }}>De 11 a 20 unidades por día</option>
+                            <option value="2" {{ $test_f->p_4=='2'?'selected':'' }}>De 21 a 30 unidades por día</option>
+                            <option value="3" {{ $test_f->p_4=='3'?'selected':'' }}>Más de 30 unidades por día</option>
                         </select>
                     </td>
                 </tr>
@@ -106,7 +106,7 @@
                         NO TIENE DEPENDENCIA
                     </td>
                     <td id="resultado_aplicat_test_asist">
-                        NO APLICA TEST ASIST
+                        NO APLICA TEST ASSIST 
                         
                     </td>
                 </tr>

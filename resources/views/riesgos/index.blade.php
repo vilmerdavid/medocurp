@@ -122,9 +122,9 @@
                         <td>
                             <select name="{{ $r->nombre }}" id="{{ $r->nombre }}">
                                 <option value=""></option>
-                                <option value="L">L</option>
-                                <option value="M">M</option>
-                                <option value="A">A</option>
+                                <option value="L">LEVE</option>
+                                <option value="M">MODERADO</option>
+                                <option value="A">ALTO</option>
                             </select>
                         </td>
                         @endif
@@ -191,9 +191,9 @@
                                         <input type="hidden" name="factoritems[{{ $ri->pivot->id }}]" value="{{ $ri->pivot->id }}">
                                         <select name="valor[{{ $ri->pivot->id }}]">
                                             <option value=""></option>
-                                            <option value="L" {{ $ri->pivot->valor=='L'?'selected':'' }}>L</option>
-                                            <option value="M" {{ $ri->pivot->valor=='M'?'selected':'' }}>M</option>
-                                            <option value="A" {{ $ri->pivot->valor=='A'?'selected':'' }}>A</option>
+                                            <option value="L" {{ $ri->pivot->valor=='L'?'selected':'' }}>Leve</option>
+                                            <option value="M" {{ $ri->pivot->valor=='M'?'selected':'' }}>Moderado</option>
+                                            <option value="A" {{ $ri->pivot->valor=='A'?'selected':'' }}>Alto</option>
                                         </select>
                                     </td>
                                 
