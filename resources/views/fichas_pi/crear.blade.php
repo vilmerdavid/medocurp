@@ -6,10 +6,25 @@
       @csrf
         <div class="card">
             <div class="card-header">
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
-                    <i class="fas fa-university"></i>
-                    Cambiar de empresa
+              <div class="form-row">
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
+                      <i class="fas fa-university"></i>
+                      Cambiar de empresa
                   </button>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-group">
+                      <label for="tipoFicha">Selecione tipo de ficha</label>
+                      <select class="form-control" name="tipoFicha" id="tipoFicha" onchange="cambiarTipoFicha(this);">
+                        <option value="DE INGRESO">DE INGRESO</option>
+                        <option value="PERIÓDICA">PERIÓDICA</option>
+                        <option value="DE REINTEGRO">DE REINTEGRO</option>
+                        <option value="DE RETIRO">DE RETIRO</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
             </div>
             <div class="card-body" id="datos_empresa">
                 @include('fichas_pi.datos_empresa',['emp'=>$empresa])
@@ -48,7 +63,7 @@
 
 
   <div class="modal fade" id="modalRevisar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelRes" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-fluid" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabelRes"></h5>
@@ -92,6 +107,17 @@
     <script>
         $('#menuFichas').addClass('active')
         
+
+        function cambiarTipoFicha(arg){
+          var valor=$(arg).val();
+          if(valor=='DE RETIRO'){
+            $('#tabla_ficha_retiro').show();
+          }else{
+            $('#tabla_ficha_retiro').hide();
+          }
+        }
+
+
         function mostrarPorcentajeDiscapacidad(arg){
             var valor=$(arg).val();
             if(valor=='NO'){
@@ -149,9 +175,9 @@
               $('#edad').val(data.edad);
               $("label[for='edad']").addClass("active");
 
-              $('#btnantecedentesPatologicosClinicos').show();
-              $('#btnantecedentesPatologicosQuirurgicos').show();
-              $('#btnantecedentesPatologicosGineco').show();
+              // $('#btnantecedentesPatologicosClinicos').show();
+              // $('#btnantecedentesPatologicosQuirurgicos').show();
+              // $('#btnantecedentesPatologicosGineco').show();
             }else{
               $('#numero_archivo').val('');
               $("label[for='numero_archivo']").removeClass("active");
@@ -165,7 +191,7 @@
               $("label[for='nombre_dos']").removeClass("active");
               $('#edad').val('');
               $("label[for='edad']").removeClass("active");
-              $('#btnantecedentesPatologicosClinicos').hide();
+              // $('#btnantecedentesPatologicosClinicos').hide();
             }
           });
         }
@@ -221,10 +247,29 @@
           })
         }
 
+        function verHabitosToxicos(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('HÁBITOS TÓXICOS')
+          $('#modalbodyRes').load("{{ route('verHabitosToxicosAnteriores') }}",{hc:hc},function(){
+          })
+        }
+        function verEstiloVida(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('ESTILO DE VIDA')
+          $('#modalbodyRes').load("{{ route('verEstiloVida') }}",{hc:hc},function(){
+          })
+        }
+        
+
         $('#modalRevisar').on('hidden.bs.modal', function (e) {
           $('#modalbodyRes').html('');
           $('#exampleModalLabelRes').html('')
         });
+
+
+        
     </script>
 
 

@@ -55,6 +55,8 @@ Route::post('/verantecedentes-patologicos-clinicos', 'FichasPI@verantecedentesPa
 Route::post('/verantecedentes-patologicos-quirurgicos', 'FichasPI@verantecedentesPatologicosQuirurgicos')->name('verantecedentesPatologicosQuirurgicos');
 Route::post('/verantecedentes-patologicos-gineco', 'FichasPI@verantecedentesPatologicosGineco')->name('verantecedentesPatologicosGineco');
 Route::post('/verantecedentes-reproductivos', 'FichasPI@verantecedentesReproductivos')->name('verantecedentesReproductivos');
+Route::post('/ver-habitos-toxicos-anteriores', 'FichasPI@verHabitosToxicosAnteriores')->name('verHabitosToxicosAnteriores');
+Route::post('/ver-estilo-vida', 'FichasPI@verEstiloVida')->name('verEstiloVida');
 
 // rutas para antecedentes de trabajo
 Route::get('/antecedentes-trabajo/{ficha}', 'AntecedentesTrabajo@index')->name('antecedentesTrabajo');

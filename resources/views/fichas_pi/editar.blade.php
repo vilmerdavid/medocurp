@@ -16,14 +16,31 @@
     <form action="{{ route('guardarFichaPI') }}" method="POST">
         <input type="hidden" name="usuario_id" id="usuario_id" value="{{ $ficha->user_m->id??'' }}">
         <input type="hidden" name="fichaPi_id" id="fichaPi_id" value="{{ $ficha->id??'' }}">
-
       @csrf
         <div class="card">
             <div class="card-header">
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
-                    <i class="fas fa-university"></i>
-                    Cambiar de empresa
+                
+              <div class="form-row">
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
+                      <i class="fas fa-university"></i>
+                      Cambiar de empresa
                   </button>
+                </div>
+
+                <div class="col-md-10">
+                  <div class="form-group">
+                      <label for="tipoFicha">Selecione tipo de ficha</label>
+                      <select class="form-control" name="tipoFicha" id="tipoFicha" onchange="cambiarTipoFicha(this);">
+                        <option value="DE INGRESO" {{ $ficha->tipoFicha=='DE INGRESO'?'selected':'' }}>DE INGRESO</option>
+                        <option value="PERIÓDICA" {{ $ficha->tipoFicha=='PERIÓDICA'?'selected':'' }}>PERIÓDICA</option>
+                        <option value="DE REINTEGRO" {{ $ficha->tipoFicha=='DE REINTEGRO'?'selected':'' }}>DE REINTEGRO</option>
+                        <option value="DE RETIRO" {{ $ficha->tipoFicha=='DE RETIRO'?'selected':'' }}>DE RETIRO</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div class="card-body" id="datos_empresa">
                 
@@ -160,6 +177,23 @@
         }
 
         obtenerAntecedentesPatologicosClinicos();
+
+        var valorTipoFicha=$('#tipoFicha').val();
+        if(valorTipoFicha=='DE RETIRO'){
+            $('#tabla_ficha_retiro').show();
+          }else{
+            $('#tabla_ficha_retiro').hide();
+          }
+
+        function cambiarTipoFicha(arg){
+          var valor=$(arg).val();
+          if(valor=='DE RETIRO'){
+            $('#tabla_ficha_retiro').show();
+          }else{
+            $('#tabla_ficha_retiro').hide();
+          }
+        }
+        
     </script>
 
 

@@ -318,15 +318,81 @@
         </tbody>
     </table>
 </div>
+<div class="table-responsive" style="display: none;" id="tabla_ficha_retiro">
+    <table class="table table-bordered table-sm">
+        <tr>
+            <th>
+                FECHA DE SALIDA
+            </th>
+            <th>
+                TIEMPO
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="date" class="form-control" name="fecha_salida" value="{{ $ficha->fecha_salida??'' }}">
+            </td>
+            <td>
+                <input type="time" class="form-control" name="tiempo" value="{{ $ficha->tiempo??'' }}">
+            </td>
+        </tr>
+        
+            <tr class="grey lighten-2 text-center">
+                <th colspan="2">
+                    MOTIVO DE CONSULTA
+                </th>
+            </tr>
+            <tr>
+                <th class="text-danger" colspan="2">
+                    Evaluación médica de retiro laboral
+                </th>
+            </tr>
+        
+        <tbody>
+            <tr>
+                <td>
+                    ACTIVIDADES
+                </td>
+                <td>
+                    FACTORES DE RIESGO
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" name="actividad_uno" value="{{ $ficha->actividad_uno??'' }}">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="riesgo_uno" value="{{ $ficha->riesgo_uno??'' }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" name="actividad_dos" value="{{ $ficha->actividad_dos??'' }}">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="riesgo_dos" value="{{ $ficha->riesgo_dos??'' }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" name="actividad_tres" value="{{ $ficha->actividad_tres??'' }}">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="riesgo_tres" value="{{ $ficha->riesgo_tres??'' }}">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <div class="table-responsive">
     <table class="table table-bordered table-sm">
         <thead class="grey lighten-2">
-        <tr class="grey lighten-2 text-center">
-            <th>
-                ACTIVIDADES RELEVANTES AL PUESTO DE TRABAJO A OCUPAR
-            </th>
-        </tr>
+            <tr class="grey lighten-2 text-center">
+                <th>
+                    ACTIVIDADES RELEVANTES AL PUESTO DE TRABAJO A OCUPAR
+                </th>
+            </tr>
         </thead>
         <tbody>
         <tr>
@@ -378,7 +444,7 @@
                         <textarea class="form-control @error('antecedentes_clinicos') is-invalid @enderror" name="antecedentes_clinicos" id="antecedentes_clinicos" required>{{ old('antecedentes_clinicos',$ficha->antecedentes_clinicos??'Ninguna') }}</textarea>
                         <label for="antecedentes_clinicos">ANTECEDENTES PATOLÓGICOS CLÍNICOS</label>
                     </div>
-                    <button class="btn btn-primary btn-sm" type="button" id="btnantecedentesPatologicosClinicos" onclick="antecedentesPatologicosClinicos(this);" style="display: none;">(REVISAR ANTERIORES)</button>
+                    <button class="btn btn-primary btn-sm" type="button" id="btnantecedentesPatologicosClinicos" onclick="antecedentesPatologicosClinicos(this);">(REVISAR ANTERIORES)</button>
                 </td>
             </tr>
             <tr>
@@ -387,7 +453,7 @@
                         <textarea class="form-control @error('antecedentes_quirurgicos') is-invalid @enderror" name="antecedentes_quirurgicos" id="antecedentes_quirurgicos" required>{{ old('antecedentes_quirurgicos',$ficha->antecedentes_quirurgicos??'Ninguna') }}</textarea>
                         <label for="antecedentes_quirurgicos">ANTECEDENTES PATOLÓGICOS QUIRÚRGICOS</label>
                     </div>
-                    <button class="btn btn-primary btn-sm" type="button" id="btnantecedentesPatologicosQuirurgicos" onclick="antecedentesPatologicosQuirurgicos(this);" style="display: none;">(REVISAR ANTERIORES)</button>
+                    <button class="btn btn-primary btn-sm" type="button" id="btnantecedentesPatologicosQuirurgicos" onclick="antecedentesPatologicosQuirurgicos(this);">(REVISAR ANTERIORES)</button>
                 </td>
             </tr>
         </tbody>
@@ -403,8 +469,11 @@
 <div class="table-responsive">
     <table class="table table-bordered table-sm">
         <thead>
-            <tr class="grey text-center">
-                <th colspan="5">HÁBITOS TÓXICOS</th>
+            <tr>
+                <th class="grey text-center" colspan="4">HÁBITOS TÓXICOS</th>
+                <td>
+                    <button type="button" class="btn btn-sm btn-primary btn-block" onclick="verHabitosToxicos(this);">(REVISAR ANTERIORES)</button>
+                </td>
             
             </tr>
             <tr class="grey lighten-2 text-center">
@@ -633,10 +702,13 @@
 <div class="table-responsive">
     <table class="table table-bordered table-sm">
         <thead>
-            <tr class="grey text-center">
-                <th colspan="5">
+            <tr>
+                <th colspan="2" class="grey text-center">
                 ESTILO DE VIDA 
                 </th>
+                <td>
+                    <button type="button" class="btn btn-sm btn-primary btn-block" onclick="verEstiloVida(this);">(REVISAR ANTERIORES)</button>
+                </td>
             </tr>
             <tr class="grey lighten-2 text-center">
                 <th>

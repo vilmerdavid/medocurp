@@ -80,6 +80,16 @@ class FichasPI extends Controller
             $f->antecedentes_clinicos=$request->antecedentes_clinicos;
             $f->antecedentes_quirurgicos=$request->antecedentes_quirurgicos;
 
+            $f->tipoFicha=$request->tipoFicha;
+            $f->fecha_salida=$request->fecha_salida;
+            $f->tiempo=$request->tiempo;
+            $f->actividad_uno=$request->actividad_uno;
+            $f->riesgo_uno=$request->riesgo_uno;
+            $f->actividad_dos=$request->actividad_dos;
+            $f->riesgo_dos=$request->riesgo_dos;
+            $f->actividad_tres=$request->actividad_tres;
+            $f->riesgo_tres=$request->riesgo_tres;
+
             $f->ape_hombre=$request->ape_hombre;
             $f->tiempo_ape_hombre=$request->tiempo_ape_hombre;
             $f->resultado_ape_hombre=$request->resultado_ape_hombre;
@@ -240,6 +250,23 @@ class FichasPI extends Controller
         $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
         return view('fichas_pi.verantecedentesReproductivos',$data);
     }
+
+    public function verHabitosToxicosAnteriores(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        return view('fichas_pi.verHabitosToxicosAnteriores',$data);
+    }
+
+    public function verEstiloVida(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        return view('fichas_pi.verEstiloVida',$data);
+    }
+
+
+
     public function detalle($idFi)
     {
         $fi=FichaPI::findOrFail($idFi);
