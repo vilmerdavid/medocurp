@@ -128,49 +128,49 @@
                                     <td>
                                         <select name="f" id="f" class="">
                                             <option></option>
-                                            <option value="1">L</option>
-                                            <option value="2.5">M</option>
-                                            <option value="10">A</option>
+                                            <option value="1">Leve</option>
+                                            <option value="2.5">Moderado</option>
+                                            <option value="10">Altoeve</option>
                                         </select>
                                     </td>
                                     <td>
                                         <select name="m" id="m" class="">
                                             <option></option>
-                                            <option value="1">L</option>
-                                            <option value="2.5">M</option>
-                                            <option value="10">A</option>
+                                            <option value="1">Leve</option>
+                                            <option value="2.5">Moderado</option>
+                                            <option value="10">Altoeve</option>
                                         </select>
                                     </td>
                                     <td>
                                         <select name="q" id="q" class="">
                                             <option></option>
-                                            <option value="1">L</option>
-                                            <option value="2.5">M</option>
-                                            <option value="10">A</option>
+                                            <option value="1">Leve</option>
+                                            <option value="2.5">Moderado</option>
+                                            <option value="10">Altoeve</option>
                                         </select>
                                     </td>
                                     <td>
                                         <select name="b" id="b" class="">
                                             <option></option>
-                                            <option value="1">L</option>
-                                            <option value="2.5">M</option>
-                                            <option value="10">A</option>
+                                            <option value="1">Leve</option>
+                                            <option value="2.5">Moderado</option>
+                                            <option value="10">Alto</option>
                                         </select>
                                     </td>
                                     <td>
                                         <select name="e" id="e" class="">
                                             <option></option>
-                                            <option value="1">L</option>
-                                            <option value="2.5">M</option>
-                                            <option value="10">A</option>
+                                            <option value="1">Leve</option>
+                                            <option value="2.5">Moderado</option>
+                                            <option value="10">Alto</option>
                                         </select>
                                     </td>
                                     <td>
                                         <select name="p" id="p" class="">
                                             <option></option>
-                                            <option value="1">L</option>
-                                            <option value="2.5">M</option>
-                                            <option value="10">A</option>
+                                            <option value="1">Leve</option>
+                                            <option value="2.5">Moderado</option>
+                                            <option value="10">Alto</option>
                                         </select>
                                     </td>
                                 </tr>
