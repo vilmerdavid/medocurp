@@ -80,6 +80,28 @@
 
 
 
+  <div class="modal fade" id="modalRevisar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelRes" aria-hidden="true">
+    <div class="modal-dialog modal-fluid" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelRes"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalbodyRes">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
     @prepend('scriptsHeader')
     <link rel="stylesheet" href="{{ asset('js/DataTables/datatables.min.css') }}">
     <script src="{{ asset('js/DataTables/datatables.min.js') }}"></script>
@@ -107,8 +129,8 @@
         $('#menuFichas').addClass('active')
         $('#menu_empresa_usuario').addClass('active')
         
-
-
+        var idFicha="{{ $ficha->id }}";
+        
         function mostrarPorcentajeDiscapacidad(arg){
             var valor=$(arg).val();
             if(valor=='NO'){
@@ -168,15 +190,75 @@
         }
 
 
-        function obtenerAntecedentesPatologicosClinicos(){
-          $.get( "{{ route('obtenerAntecedentesPatologicosClinicos') }}", { ficha: {{ $ficha->id }} } )
-          .done(function( data ) {
-            console.log(data)
+        //revisar antecedentes patologicos clinicos
+        function antecedentesPatologicosClinicos(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('ANTECEDENTES PATOLÓGICOS CLÍNICOS')
+          $.post( "{{ route('verantecedentesPatologicosClinicos') }}", { hc: hc})
+            .done(function( data ) {
+              if(data.antecedentes_clinicos){
+                $('#modalbodyRes').html(data.antecedentes_clinicos)
+              }else{
+                $('#modalbodyRes').html('')
+              }
           });
-          
         }
 
-        obtenerAntecedentesPatologicosClinicos();
+
+        function antecedentesPatologicosQuirurgicos(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('ANTECEDENTES PATOLÓGICOS QUIRÚRGICOS')
+          $.post( "{{ route('verantecedentesPatologicosQuirurgicos') }}", { hc: hc})
+            .done(function( data ) {
+              console.log(data)
+              if(data.antecedentes_quirurgicos){
+                
+                $('#modalbodyRes').html(data.antecedentes_quirurgicos)
+              }else{
+                $('#modalbodyRes').html('')
+              }
+          });
+        }
+
+
+        function antecedentesPatologicosGineco(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('ANTECEDENTES PATOLÓGICOS GINECO OBSTÉTRICOS')
+          $('#modalbodyRes').load("{{ route('verantecedentesPatologicosGineco') }}",{hc:hc},function(){
+          })
+        }
+
+        function antecedentesReproductivos(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('ANTECEDENTES REPRODUCTIVOS MASCULINOS')
+          $('#modalbodyRes').load("{{ route('verantecedentesReproductivos') }}",{hc:hc},function(){
+          })
+        }
+
+        function verHabitosToxicos(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('HÁBITOS TÓXICOS')
+          $('#modalbodyRes').load("{{ route('verHabitosToxicosAnteriores') }}",{hc:hc},function(){
+          })
+        }
+        function verEstiloVida(arg){
+          var hc=$('#historia_clinica_ci').val();
+          $('#modalRevisar').modal('show');
+          $('#exampleModalLabelRes').html('ESTILO DE VIDA')
+          $('#modalbodyRes').load("{{ route('verEstiloVida') }}",{hc:hc},function(){
+          })
+        }
+        
+
+        $('#modalRevisar').on('hidden.bs.modal', function (e) {
+          $('#modalbodyRes').html('');
+          $('#exampleModalLabelRes').html('')
+        });
 
         var valorTipoFicha=$('#tipoFicha').val();
         if(valorTipoFicha=='DE RETIRO'){

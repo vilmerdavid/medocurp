@@ -75,41 +75,41 @@ class CreateFichaPISTable extends Migration
             $table->string('tiempo_mamografia_mujer')->nullable();
             $table->string('resultado_mamografia_mujer')->nullable();
             $table->string('observaciones_mujer')->nullable();
+            
+            $table->string('tabaco')->nullable();
+            $table->string('tiempo_consumo_tabaco')->nullable();
+            $table->string('cantidad_tabaco')->nullable();
+            $table->string('exconsumidor_tabaco')->nullable();
+            $table->string('tiempo_abastecimiento_tabaco')->nullable();
+            $table->string('alcohol')->nullable();
+            
+            $table->string('tiempo_consumo_alcohol')->nullable();
+            $table->string('cantidad_alcohol')->nullable();
+            $table->string('exconsumidor_alcohol')->nullable();
+            $table->string('tiempo_abastecimiento_alcohol')->nullable();
+            $table->string('otras_drogas')->nullable();
+            $table->string('cual_droga')->nullable();
+            $table->string('tiempo_consumo_otras_drogas')->nullable();
+            $table->string('cantidad_otras_drogas')->nullable();
+            $table->string('exconsumidor_otras_drogas')->nullable();
+            
+            $table->string('tiempo_abastecimiento_otras_drogas')->nullable();
+            $table->string('actividad_fisica')->nullable();
+            $table->string('cual_que_actividad_fisica_uno')->nullable();
+            $table->string('cual_que_actividad_fisica_dos')->nullable();
+            $table->string('tiempo_cantidad_actividad_fisica_uno')->nullable();
+            $table->string('tiempo_cantidad_actividad_fisica_dos')->nullable();
+            
+            $table->string('mediacion_habitual')->nullable();
+            $table->string('cual_que_actividad_mediacion_habitual_uno')->nullable();
+            $table->string('cual_que_actividad_mediacion_habitual_dos')->nullable();
+            $table->string('tiempo_mediacion_habitual_uno')->nullable();
+            $table->string('tiempo_mediacion_habitual_dos')->nullable();
 
-            // $table->string('tabaco')->nullable();
-            // $table->string('tiempo_consumo_tabaco')->nullable();
-            // $table->string('cantidad_tabaco')->nullable();
-            // $table->string('exconsumidor_tabaco')->nullable();
-            // $table->string('tiempo_abastecimiento_tabaco')->nullable();
-            // $table->string('alcohol')->nullable();
-            
-            // $table->string('tiempo_consumo_alcohol')->nullable();
-            // $table->string('cantidad_alcohol')->nullable();
-            // $table->string('exconsumidor_alcohol')->nullable();
-            // $table->string('tiempo_abastecimiento_alcohol')->nullable();
-            // $table->string('otras_drogas')->nullable();
-            // $table->string('cual_droga')->nullable();
-            // $table->string('tiempo_consumo_otras_drogas')->nullable();
-            // $table->string('cantidad_otras_drogas')->nullable();
-            // $table->string('exconsumidor_otras_drogas')->nullable();
-            
-            // $table->string('tiempo_abastecimiento_otras_drogas')->nullable();
-            // $table->string('actividad_fisica')->nullable();
-            // $table->string('cual_que_actividad_fisica_uno')->nullable();
-            // $table->string('cual_que_actividad_fisica_dos')->nullable();
-            // $table->string('tiempo_cantidad_actividad_fisica_uno')->nullable();
-            // $table->string('tiempo_cantidad_actividad_fisica_dos')->nullable();
-            
-            // $table->string('mediacion_habitual')->nullable();
-            // $table->string('cual_que_actividad_mediacion_habitual_uno')->nullable();
-            // $table->string('cual_que_actividad_mediacion_habitual_dos')->nullable();
-            // $table->string('tiempo_mediacion_habitual_uno')->nullable();
-            // $table->string('tiempo_mediacion_habitual_dos')->nullable();
-
-            // $table->string('alergias')->nullable();
-            // $table->string('cual_que_alergias_uno')->nullable();
-            // $table->string('cual_que_alergias_dos')->nullable();
-            // $table->string('observacion_estilo_vida')->nullable();
+            $table->string('alergias')->nullable();
+            $table->string('cual_que_alergias_uno')->nullable();
+            $table->string('cual_que_alergias_dos')->nullable();
+            $table->string('observacion_estilo_vida')->nullable();
 
             $table->string('enfermedad_actual')->nullable();
             $table->decimal('valor_score')->nullable();

@@ -223,6 +223,9 @@ class FichasPI extends Controller
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         if($u){
+            if($request->ficha){
+                return $u->fichas_m->where('id','<',$request->id)->last()->orderBy('id','desc')->first();    
+            }
             return $u->fichas_m->last()->orderBy('id','desc')->first();
         }
         return response()->json(null);
@@ -232,6 +235,9 @@ class FichasPI extends Controller
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         if($u){
+            if($request->ficha){
+                return $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+            }
             return $u->fichas_m->last()->orderBy('id','desc')->first();
         }
         return response()->json(null);
@@ -240,28 +246,44 @@ class FichasPI extends Controller
     public function verantecedentesPatologicosGineco(Request $request)
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
-        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
+        if($request->ficha){
+            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+        }
+        $data = array('ficha' =>$ficha);
         return view('fichas_pi.verantecedentesPatologicosGineco',$data);
     }
 
     public function verantecedentesReproductivos(Request $request)
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
-        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
+        if($request->ficha){
+            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+        }
+        $data = array('ficha' =>$ficha);
         return view('fichas_pi.verantecedentesReproductivos',$data);
     }
 
     public function verHabitosToxicosAnteriores(Request $request)
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
-        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
+        if($request->ficha){
+            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+        }
+        $data = array('ficha' =>$ficha);
         return view('fichas_pi.verHabitosToxicosAnteriores',$data);
     }
 
     public function verEstiloVida(Request $request)
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
-        $data = array('ficha' => $u->fichas_m->last()->orderBy('id','desc')->first() );
+        $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
+        if($request->ficha){
+            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+        }
+        $data = array('ficha' =>$ficha);
         return view('fichas_pi.verEstiloVida',$data);
     }
 
@@ -359,8 +381,9 @@ class FichasPI extends Controller
     {
         $ficha=FichaPI::findOrFail($request->ficha);
         
-        return $fi=$ficha->user_m->fichas_m->where('id','<',$ficha->id)->first();
+        return $fi=$ficha->user_m->fichas_m->where('id','<',$ficha->id)->last()->orderBy('id','desc')->first();
         return response()->json($fi);
+        
     }
 
 
