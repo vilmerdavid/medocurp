@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->string('historia_clinica_ci')->nullable()->unique();
-            $table->integer('numero_archivo')->nullable();
+            $table->string('numero_archivo')->nullable();
             
             $table->string('apellido_uno')->nullable();
             $table->string('apellido_dos')->nullable();

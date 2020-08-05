@@ -131,6 +131,7 @@
         
         var idFicha="{{ $ficha->id }}";
         
+
         function mostrarPorcentajeDiscapacidad(arg){
             var valor=$(arg).val();
             if(valor=='NO'){
@@ -195,9 +196,10 @@
           var hc=$('#historia_clinica_ci').val();
           $('#modalRevisar').modal('show');
           $('#exampleModalLabelRes').html('ANTECEDENTES PATOLÓGICOS CLÍNICOS')
-          $.post( "{{ route('verantecedentesPatologicosClinicos') }}", { hc: hc})
+          $.post( "{{ route('verantecedentesPatologicosClinicos') }}", { hc: hc,ficha:idFicha})
             .done(function( data ) {
               if(data.antecedentes_clinicos){
+                console.log(data)
                 $('#modalbodyRes').html(data.antecedentes_clinicos)
               }else{
                 $('#modalbodyRes').html('')
@@ -210,7 +212,7 @@
           var hc=$('#historia_clinica_ci').val();
           $('#modalRevisar').modal('show');
           $('#exampleModalLabelRes').html('ANTECEDENTES PATOLÓGICOS QUIRÚRGICOS')
-          $.post( "{{ route('verantecedentesPatologicosQuirurgicos') }}", { hc: hc})
+          $.post( "{{ route('verantecedentesPatologicosQuirurgicos') }}", { hc: hc,ficha:idFicha})
             .done(function( data ) {
               console.log(data)
               if(data.antecedentes_quirurgicos){
@@ -227,7 +229,7 @@
           var hc=$('#historia_clinica_ci').val();
           $('#modalRevisar').modal('show');
           $('#exampleModalLabelRes').html('ANTECEDENTES PATOLÓGICOS GINECO OBSTÉTRICOS')
-          $('#modalbodyRes').load("{{ route('verantecedentesPatologicosGineco') }}",{hc:hc},function(){
+          $('#modalbodyRes').load("{{ route('verantecedentesPatologicosGineco') }}",{hc: hc,ficha:idFicha},function(){
           })
         }
 
@@ -235,7 +237,7 @@
           var hc=$('#historia_clinica_ci').val();
           $('#modalRevisar').modal('show');
           $('#exampleModalLabelRes').html('ANTECEDENTES REPRODUCTIVOS MASCULINOS')
-          $('#modalbodyRes').load("{{ route('verantecedentesReproductivos') }}",{hc:hc},function(){
+          $('#modalbodyRes').load("{{ route('verantecedentesReproductivos') }}",{hc: hc,ficha:idFicha},function(){
           })
         }
 
@@ -243,14 +245,14 @@
           var hc=$('#historia_clinica_ci').val();
           $('#modalRevisar').modal('show');
           $('#exampleModalLabelRes').html('HÁBITOS TÓXICOS')
-          $('#modalbodyRes').load("{{ route('verHabitosToxicosAnteriores') }}",{hc:hc},function(){
+          $('#modalbodyRes').load("{{ route('verHabitosToxicosAnteriores') }}",{hc: hc,ficha:idFicha},function(){
           })
         }
         function verEstiloVida(arg){
           var hc=$('#historia_clinica_ci').val();
           $('#modalRevisar').modal('show');
           $('#exampleModalLabelRes').html('ESTILO DE VIDA')
-          $('#modalbodyRes').load("{{ route('verEstiloVida') }}",{hc:hc},function(){
+          $('#modalbodyRes').load("{{ route('verEstiloVida') }}",{hc: hc,ficha:idFicha},function(){
           })
         }
         

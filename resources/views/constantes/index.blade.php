@@ -10,6 +10,7 @@
         <div class="card">
             <div class="card-header text-center">
                 J. CONSTANTES VITALES Y ANTROPOMETRÍA
+                <button class="btn btn-sm btn-primary float-right" type="button" onclick="verConstantresVitales(this);">(REVISAR ANTERIORES)</button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -505,8 +506,33 @@
     </form>
 </div>
 
-@prepend('scriptsHeader')
 
+<div class="modal fade" id="modalRevisar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelRes" aria-hidden="true">
+    <div class="modal-dialog modal-fluid" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelRes"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalbodyRes">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+</div>
+@prepend('scriptsHeader')
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @endprepend
 
 @push('scriptsFooter')
@@ -515,6 +541,16 @@
         $('#menuFichas').addClass('active')
         $('#menu_constantes').addClass('active')
 
+        
+        function verConstantresVitales(arg){
+            var hc="{{ $ficha->user_m->historia_clinica_ci??'' }}";           
+            var idFicha="{{ $ficha->id }}";
+            $('#modalRevisar').modal('show');
+            $('#exampleModalLabelRes').html('CONSTANTES VITALES Y ANTROPOMETRÍA')
+            $('#modalbodyRes').load("{{ route('verConstantresVitales') }}",{hc: hc,ficha:idFicha},function(){
+            })
+            
+        }
      
     </script>
 

@@ -219,12 +219,13 @@ class FichasPI extends Controller
         
     }
 
+
     public function verantecedentesPatologicosClinicos(Request $request)
     {
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         if($u){
             if($request->ficha){
-                return $u->fichas_m->where('id','<',$request->id)->last()->orderBy('id','desc')->first();    
+                return $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
             }
             return $u->fichas_m->last()->orderBy('id','desc')->first();
         }
@@ -236,7 +237,7 @@ class FichasPI extends Controller
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         if($u){
             if($request->ficha){
-                return $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+                return $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
             }
             return $u->fichas_m->last()->orderBy('id','desc')->first();
         }
@@ -248,7 +249,7 @@ class FichasPI extends Controller
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
         if($request->ficha){
-            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+            $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
         }
         $data = array('ficha' =>$ficha);
         return view('fichas_pi.verantecedentesPatologicosGineco',$data);
@@ -259,7 +260,7 @@ class FichasPI extends Controller
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
         if($request->ficha){
-            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+            $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
         }
         $data = array('ficha' =>$ficha);
         return view('fichas_pi.verantecedentesReproductivos',$data);
@@ -270,7 +271,7 @@ class FichasPI extends Controller
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
         if($request->ficha){
-            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+            $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
         }
         $data = array('ficha' =>$ficha);
         return view('fichas_pi.verHabitosToxicosAnteriores',$data);
@@ -281,13 +282,36 @@ class FichasPI extends Controller
         $u=User::where('historia_clinica_ci',$request->hc)->first();
         $ficha=$u->fichas_m->last()->orderBy('id','desc')->first();
         if($request->ficha){
-            $ficha= $u->fichas_m->where('id','<',$request->ficha)->last()->orderBy('id','desc')->first();    
+            $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
         }
         $data = array('ficha' =>$ficha);
         return view('fichas_pi.verEstiloVida',$data);
     }
 
+    public function verAntecedentesPatologicosFamiliares(Request $request)
+    {
+        
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
+        $data = array('patologico'=>$ficha->patologico_m);
+        return view('fichas_pi.verAntecedentesPatologicos',$data);
+    }
 
+    public function verRevisionActualOrganos(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
+        $data = array('revision'=>$ficha->revisiones_m);
+        return view('fichas_pi.verRevisionActualOrganos',$data);
+    }
+
+    public function verConstantresVitales(Request $request)
+    {
+        $u=User::where('historia_clinica_ci',$request->hc)->first();
+        $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
+        $data = array('constante'=>$ficha->constante_m);
+        return view('fichas_pi.verConstantresVitales',$data);
+    }
 
     public function detalle($idFi)
     {
@@ -377,14 +401,7 @@ class FichasPI extends Controller
 
 
 
-    public function obtenerAntecedentesPatologicosClinicos(Request $request)
-    {
-        $ficha=FichaPI::findOrFail($request->ficha);
-        
-        return $fi=$ficha->user_m->fichas_m->where('id','<',$ficha->id)->last()->orderBy('id','desc')->first();
-        return response()->json($fi);
-        
-    }
+    
 
 
 }

@@ -49,7 +49,7 @@ Route::get('/fichas-prelaborales-iniciales', 'FichasPI@index')->name('fichas');
 Route::get('/descargar-pdf-informe-asis/{ficha}', 'FichasPI@descargarPdfInformeAsis')->name('descargarPdfInformeAsis');
 Route::get('/editar-ficha-p-i/{ficha}', 'FichasPI@editar')->name('editarFichaPI');
 Route::post('/cambiar-empresa-editar-ficha-p-i', 'FichasPI@cambiarEmpresaEditarFichaPI')->name('cambiarEmpresaEditarFichaPI');
-Route::get('/obtener-antecedentes-patologicos-clinicos-anteriores', 'FichasPI@obtenerAntecedentesPatologicosClinicos')->name('obtenerAntecedentesPatologicosClinicos');
+
 Route::post('/obtener-usuario-x-historia-clinica', 'FichasPI@obtenerUsuarioXhistoriaClinica')->name('obtenerUsuarioXhistoriaClinica');
 Route::post('/verantecedentes-patologicos-clinicos', 'FichasPI@verantecedentesPatologicosClinicos')->name('verantecedentesPatologicosClinicos');
 Route::post('/verantecedentes-patologicos-quirurgicos', 'FichasPI@verantecedentesPatologicosQuirurgicos')->name('verantecedentesPatologicosQuirurgicos');
@@ -57,6 +57,9 @@ Route::post('/verantecedentes-patologicos-gineco', 'FichasPI@verantecedentesPato
 Route::post('/verantecedentes-reproductivos', 'FichasPI@verantecedentesReproductivos')->name('verantecedentesReproductivos');
 Route::post('/ver-habitos-toxicos-anteriores', 'FichasPI@verHabitosToxicosAnteriores')->name('verHabitosToxicosAnteriores');
 Route::post('/ver-estilo-vida', 'FichasPI@verEstiloVida')->name('verEstiloVida');
+Route::post('/ver-antecedentes-patologicos-familiares', 'FichasPI@verAntecedentesPatologicosFamiliares')->name('verAntecedentesPatologicosFamiliares');
+Route::post('/ver-revision-actual-organos', 'FichasPI@verRevisionActualOrganos')->name('verRevisionActualOrganos');
+Route::post('/ver-constantres-vitales', 'FichasPI@verConstantresVitales')->name('verConstantresVitales');
 
 // rutas para antecedentes de trabajo
 Route::get('/antecedentes-trabajo/{ficha}', 'AntecedentesTrabajo@index')->name('antecedentesTrabajo');

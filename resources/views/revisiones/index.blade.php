@@ -9,6 +9,7 @@
         <div class="card">
             <div class="card-header">
                 I. REVISIÓN ACTUAL DE ÓRGANOS Y SISTEMAS
+                <button class="btn btn-sm btn-primary float-right" type="button" onclick="verRevisionActualOrganos(this);">(REVISAR ANTERIORES)</button>
             </div>
             <div class="card-body">
                 <input type="hidden" name="ficha" value="{{ $ficha->id }}">
@@ -111,8 +112,33 @@
     </form>
 </div>
 
+<div class="modal fade" id="modalRevisar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelRes" aria-hidden="true">
+    <div class="modal-dialog modal-fluid" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelRes"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalbodyRes">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 @prepend('scriptsHeader')
-   
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @endprepend
 
 @push('scriptsFooter')
@@ -120,6 +146,16 @@
     <script>
         $('#menuFichas').addClass('active')
         $('#menu_revisiones').addClass('active')
+
+        function verRevisionActualOrganos(arg){
+            var hc="{{ $ficha->user_m->historia_clinica_ci??'' }}";           
+            var idFicha="{{ $ficha->id }}";
+            $('#modalRevisar').modal('show');
+            $('#exampleModalLabelRes').html('REVISIÓN ACTUAL DE ÓRGANOS Y SISTEMAS')
+            $('#modalbodyRes').load("{{ route('verRevisionActualOrganos') }}",{hc: hc,ficha:idFicha},function(){
+            })
+            
+        }
     </script>
 
 @endpush
