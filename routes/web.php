@@ -45,9 +45,9 @@ Route::get('/detalle-ficha-prelaboral-inicial/{id}', 'FichasPI@detalle')->name('
 Route::post('/actualizar-test-fagerstom', 'FichasPI@actualizarTestFagerstom')->name('actualizarTestFagerstom');
 Route::post('/actualizar-test-cage', 'FichasPI@actualizarTestCage')->name('actualizarTestCage');
 Route::post('/actualizar-test-asi', 'FichasPI@actualizarTestAsis')->name('actualizarTestAsis');
-Route::get('/fichas-prelaborales-iniciales', 'FichasPI@index')->name('fichas');
+Route::get('/fichas', 'FichasPI@index')->name('fichas');
 Route::get('/descargar-pdf-informe-asis/{ficha}', 'FichasPI@descargarPdfInformeAsis')->name('descargarPdfInformeAsis');
-Route::get('/editar-ficha-p-i/{ficha}', 'FichasPI@editar')->name('editarFichaPI');
+Route::get('/informacion-ficha-p-i/{ficha}', 'FichasPI@editar')->name('editarFichaPI');
 Route::post('/cambiar-empresa-editar-ficha-p-i', 'FichasPI@cambiarEmpresaEditarFichaPI')->name('cambiarEmpresaEditarFichaPI');
 
 Route::post('/obtener-usuario-x-historia-clinica', 'FichasPI@obtenerUsuarioXhistoriaClinica')->name('obtenerUsuarioXhistoriaClinica');

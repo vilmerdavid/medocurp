@@ -161,7 +161,7 @@
                             <td>
                                 <div class="form-group">
                                     @php
-                                        $evaluacion=$ficha->evaluacion??'';
+                                        $evaluacion=$ficha->tipoFicha??'';
                                     @endphp
                                     <select class="form-control" name="evaluacion">
                                         <option></option>

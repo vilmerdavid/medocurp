@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('breadcrumbs', Breadcrumbs::render('home'))
+@section('breadcrumbs', Breadcrumbs::render('empresas'))
 @section('content')
 <div class="container">
     <div class="card">

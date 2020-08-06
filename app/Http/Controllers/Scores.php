@@ -23,6 +23,8 @@ class Scores extends Controller
     {
         $ficha=FichaPI::findOrFail($request->ficha);
         $ficha->valor_score=$request->valor;
+        $ficha->valor_final_hombre=$request->valor_final_hombre;
+        $ficha->valor_final_final=$request->valor_final_final;
         $ficha->save();
         $request->session()->flash('success','Valor HDL actualizado');
         return redirect()->route('scores',$request->ficha);
@@ -62,7 +64,7 @@ class Scores extends Controller
     public function actualizarCertificadoMedico(Request $request)
     {
         $ficha=FichaPI::findOrFail($request->ficha);
-        $ficha->evaluacion=$request->evaluacion;
+        $ficha->tipoFicha=$request->evaluacion;
         $ficha->evaluacion_a=$request->evaluacion_a;
         $ficha->evaluacion_b=$request->evaluacion_b;
         $ficha->evaluacion_c=$request->evaluacion_c;

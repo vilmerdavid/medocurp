@@ -115,11 +115,13 @@ class CreateFichaPISTable extends Migration
             $table->decimal('valor_score')->nullable();
 
 
-            $table->string('evaluacion')->nullable();
-            $table->decimal('evaluacion_a')->nullable();
+            
+            $table->string('evaluacion_a')->nullable();
             $table->string('evaluacion_b')->nullable();
-            $table->decimal('evaluacion_c')->nullable();
+            $table->string('evaluacion_c')->nullable();
 
+
+            
 
             
 

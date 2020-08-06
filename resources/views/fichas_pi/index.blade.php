@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('breadcrumbs', Breadcrumbs::render('home'))
+@section('breadcrumbs', Breadcrumbs::render('fichas'))
 @section('content')
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Listado de fichas Prelaborales Iniciales
+            Listado de fichas
         </div>
         <div class="card-body">
             <div class="table-responsive">

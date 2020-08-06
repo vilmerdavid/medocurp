@@ -44,11 +44,12 @@ class FichasPIDataTable extends DataTable
             })
 
             ->editColumn('created_at',function($fi){
-                return $fi->created_at;
+                return $fi->created_at.'<small> '.$fi->created_at->diffForHumans().'</small>';
             })
             ->addColumn('action', function($fi){
                 return view('fichas_pi.accion',['fi'=>$fi])->render();
-            });
+            })
+            ->rawColumns(['created_at','action']);
     }
 
     /**
@@ -59,7 +60,7 @@ class FichasPIDataTable extends DataTable
      */
     public function query(FichaPI $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->orderBy('created_at','desc');
     }
 
     /**
@@ -91,8 +92,9 @@ class FichasPIDataTable extends DataTable
                   ->width(60)
                   ->title('Acción')
                   ->addClass('text-center'),
-            Column::make('id')->title('Número de archivo'),
             Column::make('user_id')->title('Historía clínica'),
+            Column::make('id')->title('Número de archivo'),
+            Column::make('tipoFicha')->title('Tipo de ficha'),
             Column::make('created_at')->title('Fecha de ingreso'),
         ];
     }

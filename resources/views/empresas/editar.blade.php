@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('breadcrumbs', Breadcrumbs::render('home'))
+@section('breadcrumbs', Breadcrumbs::render('editarEmpresa',$emp))
 @section('content')
 @if (session('status'))
     <div class="alert alert-success" role="alert">

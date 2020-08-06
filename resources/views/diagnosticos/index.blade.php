@@ -175,16 +175,7 @@
                                 @endswitch
                             </td>
                         </tr>
-                        <tr class="table-info">
-                            <th colspan="5" class="text-center">
-                                SCORE DE FARMINGHAM
-                            </th>
-                        </tr>
-                        <tr class="table-info">
-                            <td colspan="5">
-                                Riesgo cardiovasular a 10 años
-                            </td>
-                        </tr>
+                        
                     </tfoot>
                 </table>
             </div>
@@ -193,6 +184,8 @@
     </div>
 
     @include('scores.datos')
+
+    
 </div>
 
 @prepend('scriptsHeader')

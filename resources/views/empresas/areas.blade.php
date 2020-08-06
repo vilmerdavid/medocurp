@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('breadcrumbs', Breadcrumbs::render('home'))
+@section('breadcrumbs', Breadcrumbs::render('areas',$emp))
 @section('content')
 <div class="container">
     <form action="{{ route('guardarArea') }}" method="POST" enctype="multipart/form-data">
