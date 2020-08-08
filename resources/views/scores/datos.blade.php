@@ -1,10 +1,10 @@
-<div class="card mt-2">
+<div class="card mt-2" >
     <div class="card-header">
         SCORE DE FARMINGHAM
         <br>
         Eventos cardiovasculares a 10 años
     </div>
-    <div class="card-body">
+    <div class="card-body" id="contenidoDeScore">
         <form action="{{ route('actualizarScore') }}" method="POST">
             <div class="table-responsive">
                 <table class="table table-bordered table-sm">
@@ -388,7 +388,7 @@
                             <td>
                                 @php
                                     
-                                    $f1_h=$valor_hombre_edad*log($paciente->edad??'');
+                                    $f1_h=$valor_hombre_edad*log($paciente->edad??'0');
                                     $f2_h=$colesterol_total_hombre*log($colesterol_total_valor);
                                     $f3_h=$hdl_hombre*log($hdl_valor);
                                     $f4_h=$tension_sistolica_hombre*log($contante_valor);
@@ -479,7 +479,7 @@
              </tr>
              <tr class="table-info">
                  <td colspan="4">
-                     Riesgo cardiovasular a 10 años
+                     Riesgo cardiovascular a 10 años
                  </td>
                  <td>
                     @php

@@ -12,40 +12,41 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-sm">
                     <thead>
-                        <tr>
-                            <th>
-                                PR: PRESUNTIVO  DE: DEFINITIVO
+                        <tr colspan="9">
+                            <th colspan="5">
+                                DIAGNOSTICO
                             </th>
-                            <th>
+                            <th colspan="1">
                                 CIE 10
                             </th>
-                            <th>
-                                PR
+                           
+                            <th  colspan="1">
+                                PRESUNTIVO
                             </th>
-                            <th>
-                                DE
+                            <th th colspan="1">
+                                DEFINITIVO
                             </th>
-                            <th></th>
+                            <th colspan="1">ACCIÓN</th>
                         </tr>
                     </thead>
                     <tbody>
                         <form action="{{ route('guardarDiagnostico') }}" method="POST">
                             <tr>
-                                <td>
+                                <td  colspan="5" >
                                     @csrf
                                     <input type="hidden" name="ficha" id="ficha" value="{{ $ficha->id }}">
-                                    <input type="text" class="form-control @error('presuntivo') is-invalid @enderror" name="presuntivo" id="presuntivo" value="{{ old('presuntivo') }}" required>
+                                    <input  type="text" class="form-control @error('presuntivo') is-invalid @enderror" name="presuntivo" id="presuntivo" value="{{ old('presuntivo') }}" required>
                                 </td>
-                                <td>
+                                <td th colspan="1">
                                     <input type="text" class="form-control @error('cie') is-invalid @enderror" name="cie" id="cie" value="{{ old('cie') }}" required>
                                 </td>
-                                <td>
+                                <td th colspan="1">
                                     <input type="text" class="form-control @error('pr') is-invalid @enderror" name="pr" id="pr" value="{{ old('pr') }}" required>
                                 </td>
-                                <td>
+                                <td th colspan="1">
                                     <input type="text" class="form-control @error('de') is-invalid @enderror" name="de" id="de" value="{{ old('de') }}" required>
                                 </td>
-                                <td>
+                                <td th colspan="1">
                                     <button type="submit" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Guardar">
                                         <i class="fas fa-save"></i>
                                     </button>
@@ -58,8 +59,8 @@
 
                         @foreach ($diagnosticos as $dg)
                         <form action="{{ route('actualizarDiagnostico') }}" method="POST">
-                            <tr>
-                                <td>
+                            <tr colspan="9">
+                                <td colspan="5">
                                     @csrf
                                     <input type="hidden" name="diagnostico" id="diagnostico_{{ $dg->id }}" value="{{ $dg->id }}">
                                     <input type="text" class="form-control" name="presuntivo" id="presuntivo_{{ $dg->id }}" value="{{ $dg->presuntivo }}" required>
@@ -90,10 +91,10 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="2">
+                            <th colspan="1" style="width: 10%">
                                 Con mi peso actual:
                             </th>
-                            <td colspan="3">
+                            <td colspan="4">
 
                                 @php
                                                                                     
@@ -114,7 +115,7 @@
                                         Tengo mayor posibilidad de presentar fatiga, enfemedades digestivas, problemas cardíacos, várices
                                         @break
                                     @case($r_i_m_c<35)
-                                        Tengo mayor probabilidad de presentar diabetes, hipertensión arterial, cálculos biliares, enfermedades cardiovasulares, problemas articulares de rodillas y columna
+                                        Tengo mayor probabilidad de presentar diabetes, hipertensión arterial, cálculos biliares, enfermedades cardiovasculares, problemas articulares de rodillas y columna
                                         @break
                                     @case($r_i_m_c<40)
                                         Tengo mayor probabilidad de presentar diabetes, cáncer, angina de pecho, infartos, tromboflebitis, arterioesclerosis, embolias, alteraciones menstruales
@@ -129,10 +130,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th colspan="2">
+                            <th colspan="1">
                                 Con mi Tensión arterial actual
                             </th>
-                            <td colspan="3">
+                            <td colspan="4">
                                 @php
                                     $p1=$constante->presion_arterial_uno??0;
                                     $p2=$constante->presion_arterial_dos??0;
@@ -200,7 +201,7 @@
         $('#menuFichas').addClass('active')
         $('#menu_diagnostico').addClass('active')
 
-     
+     $('#contenidoDeScore').hide()
     </script>
 
 @endpush

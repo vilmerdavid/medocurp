@@ -272,50 +272,50 @@
                                         <td>
                                             <select name="f" id="f_{{ $a->id }}" class="">
                                                 <option></option>
-                                                <option value="1" {{ $a->f=='1'?'selected':'' }}>L</option>
-                                                <option value="2.5" {{ $a->f=='2.5'?'selected':'' }}>M</option>
-                                                <option value="10" {{ $a->f=='10'?'selected':'' }}>A</option>
+                                                <option value="1" {{ $a->f=='1'?'selected':'' }}>Leve</option>
+                                                <option value="2.5" {{ $a->f=='2.5'?'selected':'' }}>Moderado</option>
+                                                <option value="10" {{ $a->f=='10'?'selected':'' }}>Alto</option>
                                             </select>
                                         </td>
                                         <td>
                                             <select name="m" id="m_{{ $a->id }}" class="">
                                                 <option></option>
-                                                <option value="1" {{ $a->m=='1'?'selected':'' }}>L</option>
-                                                <option value="2.5" {{ $a->m=='2.5'?'selected':'' }}>M</option>
-                                                <option value="10" {{ $a->m=='10'?'selected':'' }}>A</option>
+                                                <option value="1" {{ $a->m=='1'?'selected':'' }}>Leve</option>
+                                                <option value="2.5" {{ $a->m=='2.5'?'selected':'' }}>Moderado</option>
+                                                <option value="10" {{ $a->m=='10'?'selected':'' }}>Alto</option>
                                             </select>
                                         </td>
                                         <td>
                                             
                                             <select name="q" id="q_{{ $a->id }}" class="">
                                                 <option></option>
-                                                <option value="1" {{ $a->q=='1'?'selected':'' }}>L</option>
-                                                <option value="2.5" {{ $a->q=='2.5'?'selected':'' }}>M</option>
-                                                <option value="10" {{ $a->q=='10'?'selected':'' }}>A</option>
+                                                <option value="1" {{ $a->q=='1'?'selected':'' }}>Leve</option>
+                                                <option value="2.5" {{ $a->q=='2.5'?'selected':'' }}>Moderado</option>
+                                                <option value="10" {{ $a->q=='10'?'selected':'' }}>Alto</option>
                                             </select>
                                         </td>
                                         <td>
                                             <select name="b" id="b_{{ $a->id }}" class="">
                                                 <option></option>
-                                                <option value="1" {{ $a->b=='1'?'selected':'' }}>L</option>
-                                                <option value="2.5" {{ $a->b=='2.5'?'selected':'' }}>M</option>
-                                                <option value="10" {{ $a->b=='10'?'selected':'' }}>A</option>
+                                                <option value="1" {{ $a->b=='1'?'selected':'' }}>Leve</option>
+                                                <option value="2.5" {{ $a->b=='2.5'?'selected':'' }}>Moderado</option>
+                                                <option value="10" {{ $a->b=='10'?'selected':'' }}>Alto</option>
                                             </select>
                                         </td>
                                         <td>
                                             <select name="e" id="e_{{ $a->id }}" class="">
                                                 <option></option>
-                                                <option value="1" {{ $a->e=='1'?'selected':'' }}>L</option>
-                                                <option value="2.5" {{ $a->e=='2.5'?'selected':'' }}>M</option>
-                                                <option value="10" {{ $a->e=='10'?'selected':'' }}>A</option>
+                                                <option value="1" {{ $a->e=='1'?'selected':'' }}>Leve</option>
+                                                <option value="2.5" {{ $a->e=='2.5'?'selected':'' }}>Moderado</option>
+                                                <option value="10" {{ $a->e=='10'?'selected':'' }}>Alto</option>
                                             </select>
                                         </td>
                                         <td>
                                             <select name="p" id="p_{{ $a->id }}" class="">
                                                 <option></option>
-                                                <option value="1" {{ $a->p=='1'?'selected':'' }}>L</option>
-                                                <option value="2.5" {{ $a->p=='2.5'?'selected':'' }}>M</option>
-                                                <option value="10" {{ $a->p=='10'?'selected':'' }}>A</option>
+                                                <option value="1" {{ $a->p=='1'?'selected':'' }}>Leve</option>
+                                                <option value="2.5" {{ $a->p=='2.5'?'selected':'' }}>Moderado</option>
+                                                <option value="10" {{ $a->p=='10'?'selected':'' }}>Alto</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -372,15 +372,15 @@
                     <td>
                         <strong data-toggle="tooltip" data-placement="top"  title="TIEMPO DE TRABAJO">TDT={{ $valor_tdt }}</strong>
                         <br>
-                        {{ $antecedentes->sum('tdt') }} meses
+                        {{-- {{ $antecedentes->sum('tdt') }} meses --}}
                         
                     </td>
                     <td>
-                        SSO={{ $antecedentes->sum('sso') }}
+                       <strong> SSO={{ $antecedentes->sum('sso') }}</strong>
                     </td>
                     <td>
-                        <table class="table">
-                            <tr>
+                        {{--  <table class="table hidden">
+                            <tr >
                                 <td>
                                     {{ $antecedentes->sum('f') }}
                                 </td>
@@ -401,6 +401,7 @@
                                 </td>
                             </tr>
                         </table>
+                        --}}
                     </td>
                     <td colspan="2">
 
@@ -438,7 +439,8 @@
                                 
                         @endswitch
                         
-                        {{ $fisico }}
+                    {{--  {{ $fisico }} --}}
+                   
 
                     </td>
                     
@@ -467,7 +469,8 @@
                                 
                         @endswitch
                         
-                        {{ $biologico }}
+                        
+                         {{-- {{ $biologico }} --}}
                     </td>
                 </tr>
                 <tr class="table-info text-center">
@@ -498,7 +501,7 @@
                                 
                         @endswitch
                         
-                        {{ $mecanico }}
+                        {{--  {{ $mecanico }}--}}
 
 
                     </td>
@@ -528,7 +531,7 @@
                                 
                         @endswitch
                         
-                        {{ $ergonomico }}
+                       {{-- {{ $ergonomico }} --}} 
 
 
                     </td>
@@ -560,7 +563,8 @@
                                 
                         @endswitch
                         
-                        {{ $quimico }}
+                       
+                        {{--  {{ $quimico }}s --}}
 
                     </td>
                     <th>PSICOSOCIAL</th>
@@ -589,7 +593,8 @@
                                 
                         @endswitch
                         
-                        {{ $psicosocial }}
+                     
+                        {{--     {{ $psicosocial }}--}}
 
                     </td>
                 </tr>

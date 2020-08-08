@@ -14,7 +14,7 @@
     </div>
     <div class="md-form md-outline my-0">
         <input type="text" name="enf_metabolica" id="enf_metabolica" value="{{ old('enf_metabolica',$patologico->enf_metabolica??'No refiere') }}" class="form-control @error('enf_metabolica') is-invalid @enderror">
-        <label for="enf_metabolica" class="active">Enfermedad metabólica</label>
+        <label for="enf_metabolica" class="active">Enfermedad metabólicagjgfj</label>
         @error('enf_metabolica')
             <span>
                 <strong>
@@ -30,9 +30,6 @@
             <span>
                 <strong>
                     {{ $message }}
-                </strong>
-            </span>                        
-        @enderror
     </div>
     <div class="md-form md-outline my-0">
         <input type="text" name="enf_oncologica" id="enf_oncologica" value="{{ old('enf_oncologica',$patologico->enf_oncologica??'No refiere') }}" class="form-control @error('enf_oncologica') is-invalid @enderror">

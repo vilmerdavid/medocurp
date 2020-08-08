@@ -23,8 +23,8 @@ class Scores extends Controller
     {
         $ficha=FichaPI::findOrFail($request->ficha);
         $ficha->valor_score=$request->valor;
-        $ficha->valor_final_hombre=$request->valor_final_hombre;
-        $ficha->valor_final_final=$request->valor_final_final;
+       // $ficha->valor_final_hombre=$request->valor_final_hombre;
+     //   $ficha->valor_final_final=$request->valor_final_final;
         $ficha->save();
         $request->session()->flash('success','Valor HDL actualizado');
         return redirect()->route('scores',$request->ficha);

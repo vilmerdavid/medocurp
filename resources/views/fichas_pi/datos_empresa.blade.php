@@ -2,15 +2,16 @@
 
 <div class="table-responsive">
     <table class="table table-bordered table-sm">
-        <tr>
-            <th scope="col" colspan="5" class="np-logo" style=" width: 100% heigth:100%;background-image:url({{ Storage::url($emp->logo) }})">
+        <tr >
+            <td scope="col" colspan="4"  style=" background-image:url({{ Storage::url($emp->logo) }})">
                 
-            </th>
-            <th>
+            </td>
+        
+            <td>
                 <strong>Versión: </strong>{{ $emp->version }}
                 <hr>
                 <strong>Código: </strong>{{ $emp->codigo }}
-            </th>
+            </td>
         </tr>
     </table>
 </div>
