@@ -25,7 +25,7 @@
                                     $url=asset('img/logo-na.jpg');
                                 @endphp
                             @endif
-                            <td class="np-logo noBorder" style=" background-image:url('{{$url}}'); width: 50%">
+                            <td class="np-logo noBorder" style=" background-image:url('{{$url}}'); width: 25% heigth:40% ">
                                 
                             </td>
                 

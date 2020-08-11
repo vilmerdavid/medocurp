@@ -104,11 +104,11 @@
                                 @endphp
                                 @if ($glucosa_valor<=115)
                                     @php
-                                        $res_dm=1;
+                                        $res_dm=0;
                                     @endphp
                                 @else
                                     @php
-                                        $res_dm=0;
+                                        $res_dm=1;
                                     @endphp
                                 @endif 
                                 <span class="badge badge-dark">

@@ -3,9 +3,20 @@
 <div class="table-responsive">
     <table class="table table-bordered table-sm">
         <tr >
-            <td scope="col" colspan="4"  style=" background-image:url({{ Storage::url($emp->logo) }})">
-                
-            </td>
+            <td style="width: 5%">
+          
+                 <img src="{{ Storage::url($emp->logo) }}" alt="Logo de la empresa" width="150" height="110">
+           
+                </td>
+                <td style="width: 5%">
+                    <img src="{{ asset('img/departamento.PNG') }}" alt="Logo del Doctor" width="400" height="110">
+           
+                    
+                </td>
+                <td style="width: 5%">
+                    <img src="{{ asset('img/logo-richar.png') }}" alt="Logo del Doctor" width="250" height="120">
+           
+                </td>
         
             <td>
                 <strong>Versión: </strong>{{ $emp->version }}

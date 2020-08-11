@@ -6,6 +6,17 @@
     <table class="table table-bordered table-sm">
         <thead>
             <tr>
+                
+                   <td style="width: 5%">
+                       <img src="{{ asset('img/departamento.PNG') }}" alt="Logo del Doctor" width="400" height="110">
+              
+                       
+                   </td>
+                   <td style="width: 5%">
+                       <img src="{{ asset('img/logo-richar.png') }}" alt="Logo del Doctor" width="250" height="120">
+              
+                   </td>
+           
                 <th colspan="5" class="text-center bg-dark text-white">
                     INFORME DEL ASSIST
                 </th>

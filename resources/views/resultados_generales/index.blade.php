@@ -110,7 +110,7 @@
                                         DMNID
 
                                         <strong class="m-l-2">
-                                            @if ($glucosa_valor<=115)
+                                            @if (($glucosa_valor>=115))
                                                 SI
                                             @endif  
                                         </strong>
@@ -172,7 +172,7 @@
                                         $trigliceridos_m_valor=$rg->trigliceridos_m_valor??0;
                                     @endphp
                                     @if (!($trigliceridos_m_valor<=165))
-                                        !!!
+                                    Alerta!
                                     @endif
                                 </td>
                             </tr>
@@ -191,7 +191,7 @@
                                         $trigliceridos_f_valor=$rg->trigliceridos_f_valor??0;
                                     @endphp
                                     @if (!($trigliceridos_f_valor<=140))
-                                        !!!
+                                        Alerta!
                                     @endif
                                 </td>
                             </tr>
@@ -210,7 +210,7 @@
                                         $acido_urico_m_valor=$rg->acido_urico_m_valor??0;
                                     @endphp
                                     @if (!($acido_urico_m_valor<=7))
-                                        !!!
+                                        Alerta!
                                     @endif
                                 </td>
                             </tr>
@@ -229,7 +229,7 @@
                                         $acido_urico_f_valor=$rg->acido_urico_f_valor??0;
                                     @endphp
                                     @if (!($acido_urico_f_valor<=5.7))
-                                        !!!
+                                        Alerta!
                                     @endif
                                 </td>
                             </tr>

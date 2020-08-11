@@ -327,7 +327,7 @@
         <tfoot>
             <tr>
                 <td colspan="3" class="text-center">
-                    <button type="submit" class="btn btn-primary">Guardar TEST ASIS</button>
+                    <button type="submit" class="btn btn-primary">Guardar TEST ASSIST</button>
                 </td>
             </tr>
         </tfoot>
