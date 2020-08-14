@@ -33,6 +33,7 @@ return array(
     'App\\Http\\Controllers\\ResultadosGenerales' => $baseDir . '/app/Http/Controllers/ResultadosGenerales.php',
     'App\\Http\\Controllers\\Revisiones' => $baseDir . '/app/Http/Controllers/Revisiones.php',
     'App\\Http\\Controllers\\Riesgos' => $baseDir . '/app/Http/Controllers/Riesgos.php',
+    'App\\Http\\Controllers\\Scores' => $baseDir . '/app/Http/Controllers/Scores.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
