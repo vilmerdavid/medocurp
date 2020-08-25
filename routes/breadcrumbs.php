@@ -25,6 +25,10 @@ Breadcrumbs::for('areas', function ($trail,$empresa) {
     $trail->parent('empresas');
     $trail->push('Áreas de trabajo', route('areas',$empresa->id));
 });
+Breadcrumbs::for('puestos', function ($trail,$empresa) {
+    $trail->parent('empresas');
+    $trail->push('Puestos de trabajo', route('puestos',$empresa->id));
+});
 
 Breadcrumbs::for('fichas', function ($trail) {
     $trail->parent('home');

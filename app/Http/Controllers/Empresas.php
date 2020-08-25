@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\DataTables\PuestosTrabajosDataTable;
 use App\DataTables\AreasTrabajosDataTable;
 use App\DataTables\EmpresasDataTable;
 use App\Models\AreaTrabajo;
+use App\Models\PuestoTrabajo;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -74,25 +75,16 @@ class Empresas extends Controller
         }
         
         if($request->empresa){
-            $request->session()->flash('success','Empresa actualizado');
+            $request->session()->flash('success','Empresa actualizada');
         }else{
-            $request->session()->flash('success','Empresa ingresado');
+            $request->session()->flash('success','Empresa ingresada');
         }
 
         
         return redirect()->route('empresas');
     }
 
-    public function eliminar(Request $request,$idEmp)
-    {
-        try {
-            Empresa::destroy($idEmp);
-            $request->session()->flash('success','Empresa eliminado');
-        } catch (\Throwable $th) {
-            $request->session()->flash('info','No se puede eliminar empresa');
-        }
-        return redirect()->route('empresas');
-    }
+   
 
     public function areas(AreasTrabajosDataTable $dataTable, $idEmp)
     {
@@ -110,7 +102,7 @@ class Empresas extends Controller
         $area->nombre=$request->nombre;
         $area->empresa_id=$request->empresa;
         $area->save();
-        $request->session()->flash('success','Area de trabajo ingresado');
+        $request->session()->flash('success','Area de trabajo ingresada');
         return redirect()->route('areas',$request->empresa);
     }
 
@@ -127,10 +119,55 @@ class Empresas extends Controller
         $area=AreaTrabajo::findOrFail($idArea);
         try {
             $area->delete();
-            $request->session()->flash('success','Área de trabajo eliminado');
+            $request->session()->flash('success','Área de trabajo eliminada');
         } catch (\Throwable $th) {
-            $request->session()->flash('info','Área de trabajo no eliminado');
+            $request->session()->flash('info','Área de trabajo no eliminada');
         }
         return redirect()->route('areas',$area->empresa_m->id);
+    }
+    //puestos de trabajo
+    public function puestos(PuestosTrabajosDataTable $dataTable, $idEmp)
+    {
+        $empresa=Empresa::findOrFail($idEmp);
+        $data = array('emp' => $empresa );
+        return $dataTable->with('idEmp',$idEmp)->render('empresas.puestos',$data);
+    }
+
+    public function guardarPuesto(Request $request)
+    {
+        $request->validate([
+            'nombre'=>'required|string|max:255',
+        ]);
+        $puesto=new PuestoTrabajo();
+        $puesto->nombre=$request->nombre;
+        $puesto->empresa_id=$request->empresa;
+        $puesto->save();
+        $request->session()->flash('success','Puesto de trabajo ingresada');
+        return redirect()->route('puestos',$request->empresa);
+    }
+
+ 
+
+
+    public function eliminarPuesto(Request $request,$idPuesto)
+    {
+        $puesto=PuestoTrabajo::findOrFail($idPuesto);
+        try {
+            $puesto->delete();
+            $request->session()->flash('success','Puesto de trabajo eliminada');
+        } catch (\Throwable $th) {
+            $request->session()->flash('info','Puesto de trabajo no eliminada');
+        }
+        return redirect()->route('puestos',$puesto->empresa_mt->id);
+    }
+    public function eliminar(Request $request,$idEmp)
+    {
+        try {
+            Empresa::destroy($idEmp);
+            $request->session()->flash('success','Empresa eliminada');
+        } catch (\Throwable $th) {
+            $request->session()->flash('info','No se puede eliminar empresa');
+        }
+        return redirect()->route('empresas');
     }
 }

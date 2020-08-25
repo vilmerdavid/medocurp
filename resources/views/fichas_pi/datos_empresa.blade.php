@@ -163,7 +163,7 @@
                     <option value="Mujer" {{ $e_sexo=='Mujer'?'selected':'' }}>Mujer</option>
                 </select>
             </td>
-            <td>
+            <td style="width: 10%">
                 <div class="md-form md-outline my-0">
                     <input type="number" id="edad" name="edad" value="{{ old('edad',$ficha->user_m->edad??'') }}" class="form-control @error('edad') is-invalid @enderror" required>
                     <label for="edad">Edad</label>
@@ -219,7 +219,7 @@
                     <option value="N.S" {{ $e_grupo_sanguineo=='N.S'?'selected':'' }}>N.S</option>
                 </select>
             </td>
-            <td>
+            <td style="width: 20%">
                 
                 <select class="form-control @error('lateralidad') is-invalid @enderror" id="lateralidad" name="lateralidad" required>
                     @php($e_lateralidad=$ficha->user_m->lateralidad??'')
@@ -272,7 +272,7 @@
                     <option value="Homosexual" {{ $e_orientacion_sexual=='Homosexual'?'selected':'' }}>Homosexual</option>
                 </select>
                 </td>
-                <td>
+                <td style="width: 15%">
                 <select class="form-control @error('identidad_genero') is-invalid @enderror" id="identidad_genero" name="identidad_genero" required>
                     @php($e_identidad_genero=$ficha->user_m->identidad_genero??'')
                     <option value="Masculino" {{ $e_identidad_genero=='Masculino'?'selected':'' }}>Masculino</option>
@@ -284,7 +284,7 @@
                     <option value="No sabe" {{ $e_identidad_genero=='No sabe'?'selected':'' }}>No sabe</option>
                 </select>
                 </td>
-                <td>
+                <td style="width: 15%">
                 <select class="form-control @error('discapacidad') is-invalid @enderror" id="discapacidad" name="discapacidad" onchange="mostrarPorcentajeDiscapacidad(this);" required>
                     @php($e_discapacidad=$ficha->user_m->discapacidad??'')
                     <option value="NO" {{ $e_discapacidad=='NO'?'selected':'' }}>NO</option>
@@ -310,20 +310,30 @@
                     <input type="date" id="fecha_ingreso_trabajo" name="fecha_ingreso_trabajo" value="{{ old('fecha_ingreso_trabajo',$ficha->user_m->fecha_ingreso_trabajo??'') }}" class="form-control @error('fecha_ingreso_trabajo') is-invalid @enderror" required>
                 </td>
                 <td>
-                    <input type="text" id="puesto_trabajo" name="puesto_trabajo" value="{{ old('puesto_trabajo',$ficha->user_m->puesto_trabajo??'') }}" class="form-control @error('puesto_trabajo') is-invalid @enderror" required>
-                </td>
+                    @if (count($emp->puestosTrabajos_m)>0)
+                    <select class="form-control @error('puesto_trabajo') is-invalid @enderror" id="puesto_trabajo" name="puesto_trabajo" required>
+                    @foreach ($emp->puestosTrabajos_m as $puesto)
+                        @php($e_puesto_trabajo=$ficha->puesto_trabajo_id??'')
+                        <option value="{{ $puesto->id }}" {{ $e_puesto_trabajo==$puesto->id?'selected':'' }}>{{ $puesto->nombre }}</option>
+                    @endforeach
+                </select>
+                @else
+                    <div class="alert alert-info" role="alert">
+                    <strong>Empresa sin puestos de trabajo</strong>
+                    </div>
+                @endif  </td>
                 <td>
                 @if (count($emp->areaTrabajos_m)>0)
-                <select class="form-control @error('area_trabajo') is-invalid @enderror" id="area_trabajo" name="area_trabajo" required>
+                    <select class="form-control @error('area_trabajo') is-invalid @enderror" id="area_trabajo" name="area_trabajo" required>
                     @foreach ($emp->areaTrabajos_m as $area)
                         @php($e_area_trabajo=$ficha->area_trabajo_id??'')
                         <option value="{{ $area->id }}" {{ $e_area_trabajo==$area->id?'selected':'' }}>{{ $area->nombre }}</option>
                     @endforeach
                 </select>
                 @else
-                <div class="alert alert-info" role="alert">
+                    <div class="alert alert-info" role="alert">
                     <strong>Empresa sin áreas</strong>
-                </div>
+                    </div>
                 @endif
                 </td>
             </tr>
@@ -472,7 +482,7 @@
     </table>
 </div>
     
-
+{{-- antecedentes de mujeres hombre --}}
 <div class="table-responsive" id="antecedentes">
 
 </div>
@@ -710,7 +720,9 @@
     </table>
 
 </div>
+<div class="table-responsive" id="tester">
 
+</div>
 <div class="table-responsive">
     <table class="table table-bordered table-sm">
         <thead>

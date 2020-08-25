@@ -6,8 +6,9 @@
 
 
 <div class="container">
+    @if ($ficha->tabaco=='')
 
-    @if ($ficha->tabaco=='SI')
+    @elseif ($ficha->tabaco=='SI')
         
         @include('fichas_pi.test.fagerstom',['test_f'=>$test_f])
 

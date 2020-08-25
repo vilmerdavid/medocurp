@@ -45,6 +45,7 @@ class CreateUsersTable extends Migration
             $table->decimal('porcentaje_discapacidad',9,2)->nullable();
             $table->date('fecha_ingreso_trabajo')->nullable();
             $table->string('puesto_trabajo')->nullable();
+            $table->string('puesto_trabajo2')->nullable();
 
         });
     }

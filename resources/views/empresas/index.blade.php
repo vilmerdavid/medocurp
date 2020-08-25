@@ -5,7 +5,11 @@
     <div class="card">
         <div class="card-header">
             Listado de empresas
-            <a href="{{ route('crearEmmpresa') }}" class="float-right">Crear</a>
+          
+            <a href="{{ route('home') }}" class="float-right">Inicio</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a type="button"  href="{{ route('crearEmmpresa') }}" >Crear Empresa</a>
+           
         </div>
         <div class="card-body">
             <div class="table-responsive">

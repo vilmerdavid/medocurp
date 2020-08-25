@@ -43,6 +43,10 @@ Route::get('/editar-empresa/{id}', 'Empresas@editar')->name('editarEmpresa');
 Route::get('/areas/{empresa}', 'Empresas@areas')->name('areas');
 Route::post('/guardar-area', 'Empresas@guardarArea')->name('guardarArea');
 Route::get('/eliminar-area/{area}', 'Empresas@eliminarArea')->name('eliminarArea');
+//puestos de trabajo
+Route::get('/puestos/{empresa}', 'Empresas@puestos')->name('puestos');
+Route::post('/guardar-puesto', 'Empresas@guardarPuesto')->name('guardarPuesto');
+Route::get('/eliminar-puesto/{puesto}', 'Empresas@eliminarPuesto')->name('eliminarPuesto');
 
 // rutas para fichas prelaboral inicial
 Route::get('/crear-ficha-prelaboral-inicial/{empresa}', 'FichasPI@crear')->name('crearFichaPI');

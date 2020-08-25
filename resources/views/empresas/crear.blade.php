@@ -84,7 +84,9 @@
             </div>
             <div class="card-footer text-muted">
                 <button type="submit" class="btn btn-primary">Guardar</button>
+                <a  href="{{ route('home') }}" class="btn btn-primary">Inicio</a>
             </div>
+           
         </div>
     </form>
 </div>

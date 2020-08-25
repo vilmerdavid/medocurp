@@ -11,4 +11,8 @@ class Empresa extends Model
     {
         return $this->hasMany(AreaTrabajo::class);
     }
+    public function puestosTrabajos_m()
+    {
+        return $this->hasMany(PuestoTrabajo::class);
+    }
 }

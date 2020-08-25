@@ -6,6 +6,7 @@ use App\DataTables\FichasPI\EmpresasDataTable;
 use App\DataTables\FichasPIDataTable;
 use App\Http\Requests\RqGuardarFichaPI;
 use App\Models\AreaTrabajo;
+use App\Models\Puestotrabajo;
 use App\Models\Empresa;
 use App\Models\FichaPI;
 use App\Models\Pregunta;
@@ -41,6 +42,7 @@ class FichasPI extends Controller
     public function guardar(RqGuardarFichaPI $request)
     {
         $areaTrabajo=AreaTrabajo::findOrFail($request->area_trabajo);
+        $puestoTrabajo2=PuestoTrabajo::findOrFail($request->puesto_trabajo);
         try {
             DB::beginTransaction();
             $u=User::where('historia_clinica_ci',$request->historia_clinica_ci)->first();
@@ -66,6 +68,7 @@ class FichasPI extends Controller
             $u->porcentaje_discapacidad=$request->porcentaje_discapacidad;
             $u->fecha_ingreso_trabajo=$request->fecha_ingreso_trabajo;
             $u->puesto_trabajo=$request->puesto_trabajo;
+            $u->puesto_trabajo2=$request->puesto_trabajo;
             $u->save();
 
             $f=FichaPI::find($request->fichaPi_id);
@@ -75,6 +78,9 @@ class FichasPI extends Controller
             
             $f->user_id=$u->id;
             $f->area_trabajo_id=$request->area_trabajo;
+            //solo configuradios
+            $f->puesto_trabajo_id=$request->puesto_trabajo;
+            ////////
             $f->actividades_relevantes=$request->actividades_relevantes;
             $f->motivo_cosulta=$request->motivo_cosulta;
             $f->antecedentes_clinicos=$request->antecedentes_clinicos;
@@ -204,6 +210,7 @@ class FichasPI extends Controller
             return $th->getMessage();
             $request->session()->flash('info','Ficha prelaboral incial no ingresada, vuelva intentar');
             return  redirect()->route('crearFichaPI',$areaTrabajo->empresa_m->id)->withInput();
+            return  redirect()->route('crearFichaPI',$puestoTrabajo2->empresa_m->id)->withInput();
         }
 
     }
@@ -262,6 +269,7 @@ class FichasPI extends Controller
         if($request->ficha){
             $ficha= $u->fichas_m()->where('id','<',$request->ficha)->orderBy('id','desc')->first();    
         }
+     
         $data = array('ficha' =>$ficha);
         return view('fichas_pi.verantecedentesReproductivos',$data);
     }
@@ -380,20 +388,23 @@ class FichasPI extends Controller
         return $pdf->download('Informe de asis.pdf');
     }
 
- 
     public function editar(EmpresasDataTable $dataTable,$idFicha)
     {
         $ficha=FichaPI::findOrFail($idFicha);
         $data = array('empresa' => $ficha->areaTrabajo_m->empresa_m,'ficha'=>$ficha );
+      // $data = array('empresa' => $ficha->puestosTrabajo_m->empresa_m,'ficha'=>$ficha );
         return $dataTable->with('opcion','editar')->render('fichas_pi.editar',$data);
     }
-
     public function cambiarEmpresaEditarFichaPI(Request $request)
     {
         $ficha=FichaPI::findOrFail($request->ficha);
         $empresa=Empresa::findOrFail($request->empresa);
         $area_t=$empresa->areaTrabajos_m()->first();
         $ficha->area_trabajo_id=$area_t->id;
+        ////////////////////////////////////
+        $puesto_t=$empresa->areaTrabajos_m()->first();
+        $ficha->puesto_trabajo_id=$puesto_t->id;
+        ///////////////
         $ficha->save();
         $data = array('url' => route('editarFichaPI', $request->ficha) );
         return response()->json($data);

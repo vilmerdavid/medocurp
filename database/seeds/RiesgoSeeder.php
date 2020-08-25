@@ -14,6 +14,7 @@ class RiesgoSeeder extends Seeder
     {
         $atributos = array(
             'puesto_de_trabajo_area',
+            'puesto_de_trabajo_empresa',
             'actividades',
             'temperaturas_altas',
             'temperaturas_bajas',

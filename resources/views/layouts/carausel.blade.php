@@ -135,19 +135,19 @@
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
                 <strong>
-                  Actividades de trabajo
+                  ACTIVIDADES DEL DEPARTAMENTO MÉDICO OCUPACIONAL
                 </strong>
               </h1>
 
               <p>
                 <strong>
-                  Gestión de areas y asignación de trabajo
+                  Vigilancia de la Salud de los trabajadores
                 </strong>
               </p>
 
               <p class="mb-4 d-none d-md-block">
                 <strong>
-                  Reportes a PDF's
+                  Reportes en PDF
                 </strong>
               </p>
 

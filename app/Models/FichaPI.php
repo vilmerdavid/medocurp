@@ -94,7 +94,10 @@ class FichaPI extends Model
         return $this->belongsTo(AreaTrabajo::class,'area_trabajo_id');
     }
 
-
+    public function puestoTrabajo_m()
+    {
+        return $this->belongsTo(PuestoTrabajo::class,'puesto_trabajo_id');
+    }
     // para el informe
     public function informeTabaco()
     {

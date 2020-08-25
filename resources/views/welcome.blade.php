@@ -31,7 +31,7 @@
                 {{ config('app.name') }}
             </h3>
             <p>
-                Sistema médico ocupacional
+                Sistematizacion del Departamento Médico Ocupacional
             </p>
             <p>
                 La salud es la riqueza real y no piezas de oro y plata
@@ -41,8 +41,7 @@
             <hr>
 
             <p class="text-justify">
-                La salud física no es solo una de las más importantes claves para un cuerpo saludable, es el fundamento de la actividad intelectual creativa y dinámica
-            </p>
+                La Organización Mundial de la Salud definae la salud como: “El estado completo de bienestar físico, psíquico  y social de una persona”, y no sólo la ausencia de enfermedad. </p>
 
             
 

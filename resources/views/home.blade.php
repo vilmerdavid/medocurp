@@ -10,23 +10,23 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card" style="width: 18rem; heigth:30rem; ">
-                <img src="{{ asset('img/medicia1.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
-                        <i class="fas fa-university"></i>
-                        CREAR FICHA PRELABORAL INICIAL
-                    </button>
-                </div>
+                      <div class="card" style="width: 18rem; heigth:30rem; "  style="height: 10%">
+              <img src="{{ asset('img/medicina.png') }}"   class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{{ route('empresas') }}"class="btn btn-primary btn-block">Institución/Empresa</a>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6"  style="height: 10%">
+          <div class="card" style="width: 18rem; heigth:30rem; " >
+            <img src="{{ asset('img/medicia1.png') }}"  class="card-img-top" alt="...">
+            <div class="card-body">
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#basicExampleModal">
+                    <i class="fas fa-university"></i>
+                    FICHA PRELABORAL INICIAL
+                </button>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/medicina.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <a href="{{ route('crearEmmpresa') }}" class="btn btn-primary btn-block">Crear Institución/Empresa</a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
