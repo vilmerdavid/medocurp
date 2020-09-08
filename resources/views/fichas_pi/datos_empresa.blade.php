@@ -569,13 +569,17 @@
                         $('#tiempo_consumo_tabaco').attr('disabled',false);
                         $('#cantidad_tabaco').attr('disabled',false);
 
+                        $('#table_fagerstom_test').show()
+
                     }else{
                         $('#exconsumidor_tabaco').attr('disabled', false);
                         $('#tiempo_abastecimiento_tabaco').prop('disabled', false);
 
                         $('#tiempo_consumo_tabaco').attr('disabled',true);
                         $('#cantidad_tabaco').attr('disabled',true);
-
+                        
+                        
+                        $('#table_fagerstom_test').hide()
                     }
                 }
             </script>
@@ -627,13 +631,15 @@
                         $('#tiempo_consumo_alcohol').attr('disabled',false);
                         $('#cantidad_alcohol').attr('disabled',false);
 
+                        $('#table_fagerstom_test').show();
+
                     }else{
                         $('#exconsumidor_alcohol').attr('disabled', false);
                         $('#tiempo_abastecimiento_alcohol').prop('disabled', false);
 
                         $('#tiempo_consumo_alcohol').attr('disabled',true);
                         $('#cantidad_alcohol').attr('disabled',true);
-
+                        $('#table_fagerstom_test').hide();
                     }
                 }
             </script>

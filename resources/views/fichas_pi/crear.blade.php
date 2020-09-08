@@ -27,7 +27,12 @@
             </div>
             </div>
             <div class="card-body" id="datos_empresa">
+
                 @include('fichas_pi.datos_empresa',['emp'=>$empresa])
+
+                @include('fichas_pi.tes.fagerstom')
+
+                @include('fichas_pi.tes.cage')
             </div>
             <div class="card-footer text-muted">
                 <button class="btn btn-primary">Guardar</button>
@@ -104,9 +109,17 @@
     
     {!! $dataTable->scripts() !!}
 
+    <script src="{{ asset('js/api/test_fagerstom.js') }}"></script>
+    <script src="{{ asset('js/api/test_cage.js') }}"></script>
+    <script src="{{ asset('js/api/test_asis.js') }}"></script>
+
+
     <script>
         $('#menuFichas').addClass('active')
         
+        
+        $('#table_fagerstom_test').hide();
+        $('#table_fagerstom_test').hide();
 
         function cambiarTipoFicha(arg){
           var valor=$(arg).val();

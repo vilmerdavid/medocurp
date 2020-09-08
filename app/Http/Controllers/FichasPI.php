@@ -42,7 +42,7 @@ class FichasPI extends Controller
     public function guardar(RqGuardarFichaPI $request)
     {
         $areaTrabajo=AreaTrabajo::findOrFail($request->area_trabajo);
-        $puestoTrabajo2=PuestoTrabajo::findOrFail($request->puesto_trabajo);
+        // $puestoTrabajo2=PuestoTrabajo::findOrFail($request->puesto_trabajo);
         try {
             DB::beginTransaction();
             $u=User::where('historia_clinica_ci',$request->historia_clinica_ci)->first();
@@ -175,6 +175,18 @@ class FichasPI extends Controller
             if(!$f->testFagerstom_m){
                 $test_f=new TestFagerstorm();
                 $test_f->ficha_p_i_id=$f->id;
+
+                $test_f->p_1=$request->pf_1;
+                $test_f->p_2=$request->pf_2;
+                $test_f->p_3=$request->pf_3;
+                $test_f->p_4=$request->pf_4;
+                $test_f->p_5=$request->pf_5;
+                $test_f->p_6=$request->pf_6;
+                
+                $request->aplicarasis_fagerstom;
+                $test_f->fichaPI_m->otras_drogas=$request->aplicarasis_fagerstom;
+                $test_f->fichaPI_m->save();
+
                 $test_f->save();
             }
             
@@ -182,8 +194,15 @@ class FichasPI extends Controller
             if(!$f->testCage_m){
                 $test_c=new TestCage();
                 $test_c->ficha_p_i_id=$f->id;
+                $test_c->p_1=$request->p_1;
+                $test_c->p_2=$request->p_2;
+                $test_c->p_3=$request->p_3;
+                $test_c->p_4=$request->p_4;
                 $test_c->save();
+                $test_c->fichaPI_m->otras_drogas=$request->aplicarasis_fagerstom;
+                $test_c->fichaPI_m->save();
             }
+
             
             if(!count($f->testAsist_m)>0){
                 foreach (Pregunta::all() as $p) {
@@ -210,7 +229,7 @@ class FichasPI extends Controller
             return $th->getMessage();
             $request->session()->flash('info','Ficha prelaboral incial no ingresada, vuelva intentar');
             return  redirect()->route('crearFichaPI',$areaTrabajo->empresa_m->id)->withInput();
-            return  redirect()->route('crearFichaPI',$puestoTrabajo2->empresa_m->id)->withInput();
+            // return  redirect()->route('crearFichaPI',$puestoTrabajo2->empresa_m->id)->withInput();
         }
 
     }
