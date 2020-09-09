@@ -631,7 +631,7 @@
                         $('#tiempo_consumo_alcohol').attr('disabled',false);
                         $('#cantidad_alcohol').attr('disabled',false);
 
-                        $('#table_fagerstom_test').show();
+                        $('#table_test_cage').show();
 
                     }else{
                         $('#exconsumidor_alcohol').attr('disabled', false);
@@ -639,7 +639,8 @@
 
                         $('#tiempo_consumo_alcohol').attr('disabled',true);
                         $('#cantidad_alcohol').attr('disabled',true);
-                        $('#table_fagerstom_test').hide();
+                        
+                        $('#table_test_cage').hide();
                     }
                 }
             </script>
@@ -712,6 +713,9 @@
                         $('#tiempo_consumo_otras_drogas').attr('disabled',false);
                         $('#cantidad_otras_drogas').attr('disabled',false);
                         $('#selecionar_drogas').show();
+                        
+                        $('#table_asist_test').show();
+
                     }else{
                         $('#exconsumidor_otras_drogas').attr('disabled', false);
                         $('#tiempo_abastecimiento_otras_drogas').prop('disabled', false);
@@ -719,6 +723,8 @@
                         $('#tiempo_consumo_otras_drogas').attr('disabled',true);
                         $('#cantidad_otras_drogas').attr('disabled',true);
                         $('#selecionar_drogas').hide();
+
+                        $('#table_asist_test').hide();
                     }
                 }
             </script>

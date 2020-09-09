@@ -34,7 +34,7 @@ class FichasPI extends Controller
     public function crear(EmpresasDataTable $dataTable,$idEmp)
     {
         $empresa=Empresa::findOrFail($idEmp);
-        $data = array('empresa' => $empresa,'ficha' =>FichaPI::find(0));
+        $data = array('empresa' => $empresa,'ficha' =>FichaPI::find(0),'preguntas'=>Pregunta::all());
         return $dataTable->render('fichas_pi.crear',$data);
     }
 
@@ -202,15 +202,21 @@ class FichasPI extends Controller
                 $test_c->fichaPI_m->otras_drogas=$request->aplicarasis_fagerstom;
                 $test_c->fichaPI_m->save();
             }
-
             
-            if(!count($f->testAsist_m)>0){
-                foreach (Pregunta::all() as $p) {
-                    $test_a=new TestAsist();
-                    $test_a->ficha_p_i_id=$f->id;
-                    $test_a->pregunta_id=$p->id;
-                    $test_a->codigo=$p->codigo;
-                    $test_a->save();
+
+            if($request->pregunta){
+                foreach ($request->pregunta as $id_t_a => $valor) {
+                    $p=Pregunta::find($id_t_a);
+                    $t_a=TestAsist::where(['ficha_p_i_id'=>$f->id,'pregunta_id'=>$p->id])->first();
+                    
+                    if(!$t_a){
+                        $t_a=new TestAsist();
+                        $t_a->ficha_p_i_id=$f->id;
+                        $t_a->pregunta_id=$p->id;
+                    }
+                    $t_a->codigo=$p->codigo;
+                    $t_a->valor=$valor;
+                    $t_a->save();
                 }
             }
             

@@ -33,6 +33,10 @@
                 @include('fichas_pi.tes.fagerstom')
 
                 @include('fichas_pi.tes.cage')
+
+                @include('fichas_pi.tes.asist')
+
+
             </div>
             <div class="card-footer text-muted">
                 <button class="btn btn-primary">Guardar</button>
@@ -119,7 +123,8 @@
         
         
         $('#table_fagerstom_test').hide();
-        $('#table_fagerstom_test').hide();
+        $('#table_test_cage').hide();
+        $('#table_asist_test').hide();
 
         function cambiarTipoFicha(arg){
           var valor=$(arg).val();
