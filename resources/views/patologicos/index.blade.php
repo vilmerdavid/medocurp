@@ -144,7 +144,7 @@
 @push('scriptsFooter')
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         $('#menu_patologicos').addClass('active')
 
         var idFicha="{{ $ficha->id }}";

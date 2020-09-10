@@ -26,7 +26,7 @@
 
 @push('scriptsFooter')
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
     </script>
      {!! $dataTable->scripts() !!}
 @endpush

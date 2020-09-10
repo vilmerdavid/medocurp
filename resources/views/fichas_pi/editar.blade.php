@@ -126,7 +126,7 @@
     {!! $dataTable->scripts() !!}
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         $('#menu_empresa_usuario').addClass('active')
         
         var idFicha="{{ $ficha->id }}";

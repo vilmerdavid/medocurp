@@ -119,7 +119,7 @@
 
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         
         
         $('#table_fagerstom_test').hide();

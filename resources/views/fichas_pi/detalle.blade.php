@@ -56,7 +56,7 @@
 @push('scriptsFooter')
 
 <script>
-    $('#menuFichas').addClass('active')
+    $('#menuFichas').addClass('bg-danger')
     $('#mene_assis').addClass('active')
     
     

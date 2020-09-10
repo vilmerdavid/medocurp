@@ -198,7 +198,7 @@
 @push('scriptsFooter')
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         $('#menu_diagnostico').addClass('active')
 
      $('#contenidoDeScore').hide()

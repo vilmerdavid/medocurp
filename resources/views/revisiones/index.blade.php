@@ -144,7 +144,7 @@
 @push('scriptsFooter')
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         $('#menu_revisiones').addClass('active')
 
         function verRevisionActualOrganos(arg){

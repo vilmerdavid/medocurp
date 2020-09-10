@@ -48,7 +48,7 @@
 
 @push('scriptsFooter')
     <script>
-        $('#menuEmpresas').addClass('active')
+        $('#menuEmpresas').addClass('bg-danger')
     </script>
      {!! $dataTable->scripts() !!}
 @endpush

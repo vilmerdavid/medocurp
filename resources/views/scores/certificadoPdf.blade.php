@@ -52,7 +52,7 @@
                 <div class="table-responsive">
                     <table style="border-collapse: collapse; border: none;" class="table">
                         <tr>
-                            @if (Storage::exists($empresa->logo))
+                            @if (Storage::exists($empresa->logo??''))
                                 @php
                                     $url=base_path().'/storage/app/'.$empresa->logo;
                                 @endphp
@@ -73,10 +73,10 @@
                             </td>
                             <th>
                                 <strong>VERSIÓN:</strong>
-                                {{ $empresa->version }}
+                                {{ $empresa->version??'' }}
                                 <hr>
                                 <strong>CÓDIGO:</strong>
-                                {{ $empresa->codigo }}
+                                {{ $empresa->codigo??'' }}
                             </th>
                         </tr>
                         <tr>
@@ -115,22 +115,22 @@
                         </tr>
                         <tr>
                             <td>
-                                {{  $empresa->nombre}}                
+                                {{  $empresa->nombre??''}}                
                             </td>
                             <td>
-                                {{ $empresa->ruc }}
+                                {{ $empresa->ruc??'' }}
                             </td>
                             <td>
-                                {{ $empresa->ciiu }}
+                                {{ $empresa->ciiu??'' }}
                             </td>
                             <td>
-                                {{ $empresa->establecimiento }}
+                                {{ $empresa->establecimiento??'' }}
                             </td>
                             <td>
-                                {{ $paciente->historia_clinica_ci }}
+                                {{ $paciente->historia_clinica_ci??'' }}
                             </td>
                             <td>
-                                {{ $paciente->numero_archivo }}
+                                {{ $paciente->numero_archivo??'' }}
                             </td>
                         </tr>
                 

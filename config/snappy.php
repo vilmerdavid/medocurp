@@ -35,12 +35,8 @@ return [
     
     'pdf' => [
         'enabled' => true,
-        'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"',
-        // 'binary'  => env('WKHTML_PDF_BINARY', '/usr/local/bin/wkhtmltopdf'),
-        //'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf",
-        // 'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"',
-   
-       
+        // 'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"',
+        'binary'  => '/usr/local/bin/wkhtmltopdf-amd64',       
         'timeout' => false,
         'options' => [],
         'env'     => [],
@@ -48,9 +44,7 @@ return [
     
     'image' => [
         'enabled' => true,
-        'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage"',
-         //'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage"',
-        // 'binary'  => env('WKHTML_IMG_BINARY', '/usr/local/bin/wkhtmltoimage'),
+        'binary'  => '/usr/local/bin/wkhtmltoimage-amd64',
         // 'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe"',
         'timeout' => false,
         'options' => [],

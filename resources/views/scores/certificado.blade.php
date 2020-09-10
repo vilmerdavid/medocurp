@@ -357,7 +357,7 @@
 @push('scriptsFooter')
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         $('#menu_certificado_medico').addClass('active')
     </script>
 

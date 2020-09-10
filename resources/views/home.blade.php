@@ -69,7 +69,7 @@ aria-hidden="true">
 {!! $dataTable->scripts() !!}
 
 <script>
-  $('#menuInicio').addClass('active')
+  $('#menuInicio').addClass('bg-danger');
   
 </script>
 

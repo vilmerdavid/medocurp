@@ -1,23 +1,45 @@
 
 
 <div class="table-responsive">
-
+@php
+    $empresa=$ficha->areaTrabajo_m->empresa_m??null;
+@endphp
 
     <table class="table table-bordered table-sm">
         <thead>
+
             <tr>
-                
-                   <td style="width: 5%">
-                       <img src="{{ asset('img/departamento.PNG') }}" alt="Logo del Doctor" width="400" height="110">
-              
-                       
-                   </td>
-                   <td style="width: 5%">
-                       <img src="{{ asset('img/logo-richar.png') }}" alt="Logo del Doctor" width="250" height="120">
-              
-                   </td>
+                @if (Storage::exists($empresa->logo??''))
+                    @php
+                        $url=base_path().'/storage/app/'.$empresa->logo;
+                    @endphp
+                @else
+                    @php
+                        $url=public_path('img/logo-na.jpg');
+                    @endphp
+                @endif
+                <td class="np-logo noBorder" colspan="2" style=" background-image:url('{{$url}}'); width: 50%">
+                    
+                </td>
+    
+                @php
+                    $url_lg=public_path('img/logo-richar.png');
+                @endphp
+                <td colspan="2" class="np-logo noBorder" style=" background-image:url('{{$url_lg}}'); width: 25%">
+                    
+                </td>
+                <th>
+                    <strong>VERSIÓN:</strong>
+                    {{ $empresa->version??'' }}
+                    <hr>
+                    <strong>CÓDIGO:</strong>
+                    {{ $empresa->codigo??'' }}
+                </th>
+            </tr>
+
+            <tr>
            
-                <th colspan="5" class="text-center bg-dark text-white">
+                <th colspan="6" class="text-center bg-dark text-white">
                     INFORME DEL ASSIST
                 </th>
             </tr>
@@ -26,7 +48,7 @@
                     Nombre completo:
                 </th>
                 <td colspan="4">
-                    {{ $ficha->user_m->apellidos_nombres }}
+                    {{ $ficha->user_m->apellidos_nombres??'' }}
                 </td>
             </tr>
             <tr>
@@ -34,7 +56,7 @@
                     Edad:
                 </th>
                 <td colspan="4">
-                    {{ $ficha->user_m->edad }}
+                    {{ $ficha->user_m->edad??'' }}
                 </td>
             </tr>
             <tr>
@@ -42,7 +64,7 @@
                     Puesto de trabajo:
                 </th>
                 <td colspan="4">
-                    {{ $ficha->areaTrabajo_m->nombre }}
+                    {{ $ficha->areaTrabajo_m->nombre??'' }}
                 </td>
             </tr>
             <tr>
@@ -50,7 +72,7 @@
                     Fecha de aplicación:
                 </th>
                 <td colspan="4">
-                    {{ $ficha->user_m->fecha_ingreso_trabajo }}
+                    {{ $ficha->user_m->fecha_ingreso_trabajo??'' }}
                 </td>
             </tr>
             

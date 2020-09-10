@@ -267,7 +267,7 @@
 @push('scriptsFooter')
 
     <script>
-        $('#menuFichas').addClass('active')
+        $('#menuFichas').addClass('bg-danger')
         $('#menu_riesgos').addClass('active')
 
         var header_height = 0;
