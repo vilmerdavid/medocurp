@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81b458e488aa9ec4b5418e610ef4c550",
+    "content-hash": "f55a8c8282f202bf035af230d0deed2e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -60,21 +60,21 @@
         },
         {
             "name": "barryvdh/laravel-snappy",
-            "version": "v0.4.7",
+            "version": "v0.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-snappy.git",
-                "reference": "c412d0c8f40b1326ba0fb16e94957fd1e68374f0"
+                "reference": "1903ab84171072b6bff8d98eb58d38b2c9aaf645"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-snappy/zipball/c412d0c8f40b1326ba0fb16e94957fd1e68374f0",
-                "reference": "c412d0c8f40b1326ba0fb16e94957fd1e68374f0",
+                "url": "https://api.github.com/repos/barryvdh/laravel-snappy/zipball/1903ab84171072b6bff8d98eb58d38b2c9aaf645",
+                "reference": "1903ab84171072b6bff8d98eb58d38b2c9aaf645",
                 "shasum": ""
             },
             "require": {
-                "illuminate/filesystem": "^5.5|^6|^7",
-                "illuminate/support": "^5.5|^6|^7",
+                "illuminate/filesystem": "^5.5|^6|^7|^8",
+                "illuminate/support": "^5.5|^6|^7|^8",
                 "knplabs/knp-snappy": "^1",
                 "php": ">=7"
             },
@@ -117,7 +117,7 @@
                 "wkhtmltoimage",
                 "wkhtmltopdf"
             ],
-            "time": "2020-02-25T20:52:15+00:00"
+            "time": "2020-09-07T12:33:10+00:00"
         },
         {
             "name": "brick/math",
