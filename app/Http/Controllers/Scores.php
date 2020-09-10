@@ -53,7 +53,7 @@ class Scores extends Controller
             'paciente'=>$ficha->user_m,
             'rg'=>$ficha->resultadoGeneral_m,
             'constante'=>$ficha->constante_m,
-            'empresa'=>$ficha->puestoTrabajo_m->empresa_m,
+            'empresa'=>$ficha->puestoTrabajo_m->empresa_m??null,
             'am'=>$ficha->aptitud_m,
             'recomendaciones'=>$ficha->recomendacion_m
         );
