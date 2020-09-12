@@ -48,9 +48,11 @@ suma_cage=0;
             
             $('#resultado_aplicar_test_cage_asist').html('APLICAR TEST ASIST');
             $('#aplicarasis_fagerstom_cage').val('SI');
+            $('#table_asist_test').show();
         }else{
             $('#resultado_aplicar_test_cage_asist').html('NO APLICA TEST ASIST');
             $('#aplicarasis_fagerstom_cage').val('NO');
+            $('#table_asist_test').hide();
         }
     }
     verificar_resultado_test_cage_asist();

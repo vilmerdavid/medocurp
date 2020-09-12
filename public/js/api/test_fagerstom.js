@@ -42,9 +42,11 @@
         if($('#resultado_dependencia_fagerstom').html()=='Dependencia moderada' || $('#resultado_dependencia_fagerstom').html()=='Dependencia alta'){
             $('#resultado_aplicat_test_asist').html('APLICAR TEST ASSIST');
             $('#aplicarasis_fagerstom').val('SI');
+            $('#table_asist_test').show();
         }else{
             $('#resultado_aplicat_test_asist').html('NO APLICA TEST ASSIST');
             $('#aplicarasis_fagerstom').val('NO');
+            $('#table_asist_test').hide();
         }
     }
     verificar_resultado_asist();
